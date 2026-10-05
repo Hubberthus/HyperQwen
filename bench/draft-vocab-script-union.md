@@ -69,17 +69,56 @@ never emit.
 - ties break by id, so a rebuild from the same corpus is byte-identical (verified: two runs,
   same sha256).
 
-## Two things this does not settle
+## Measured: 8 arms, one 3090, WSL2
 
-**No acceptance or tok/s numbers.** Those need a GPU run on Han and Cyrillic prompt sets, with
-the variant against the shipped list at `CTX=long`, which is the arm #196 says to trust. The
-3090 here is the box, but the card is not free; nothing in this branch has run a decode step.
-The claim being tested is narrow: at equal coverage a truncated head beats the full head, and
-more CJK coverage at bounded VRAM beats less.
+`SPEC=mtp CTX=long` (fp8 KV, k=3, `MAX_SEQS=2`), greedy, 8 prompts x 1024 output tokens,
+2 reps. `bench/draft_vocab_run.sh` + `bench/draft_vocab_arm.sh`; raw rows in
+`results.txt`, one per rep. Decode tok/s comes from `vllm bench serve` and is unaffected by
+the counter problem below.
 
-**The corpus is a ~200-token fixture**, not traffic. It exercises the ranking and the cap, and
-it is why this branch's coverage figures are a smoke test rather than a measurement. Real
-numbers need a real corpus.
+| cohort | shipped 40,960 | variant 57,344 | full head 248,044 |
+|---|---:|---:|---:|
+| Han | 43.9 / 46.1 | **75.9 / 71.7** | 80.8 / 82.1 |
+| Cyrillic | 57.6 / 55.9 | **90.6 / 88.1** | 88.0 / 87.9 |
+| English | 88.4 / 89.3 | -- | 82.3 / 87.1 |
+
+tok/step, from `out/steps`:
+
+| cohort | shipped | variant | full head |
+|---|---:|---:|---:|
+| Han | 1.38 | 2.26 ᵃ | 2.09 ᵃ / 2.50 |
+| Cyrillic | 1.68 | 2.63 | 2.71 |
+| English | 2.60 | -- | 2.65 |
+
+- **The union beats the shipped list where the shipped list is broken: Han +64%,
+  Cyrillic +57%.** The Han half replicates across three independent runs.
+- **It does not beat the full head.** Cyrillic ties it (89.4 vs 88.0, inside noise); Han is
+  9% behind (73.8 vs 81.5). So the ceiling for this idea is *parity with `MTP_DRAFT_VOCAB=0`
+  at 4.3x less head* -- a real answer to #196, but not a win over the full head.
+- **English is the control that makes the rest credible.** The 40,960 shipped list *beats* the
+  full head (88.9 vs 84.7), which independently reproduces the `CTX=fast` k=4 claim that
+  truncation wins where coverage is high. Truncation is a coverage bet, not a loss by
+  construction.
+- Leading explanation for the Han shortfall: the ranking corpus was 670 tokens of hand-written
+  text. The 705-token Cyrillic corpus reached 98.4% prompt coverage and reached parity; the
+  CJK one reached 86.7% and fell short. Suggestive, not proof -- the first thing to test is a
+  real corpus.
+
+### Two measurement defects, and what they cost
+
+**Contaminated spec-decode counters.** Three of sixteen reps report `COUNTER-MISMATCH`:
+`steps + accepted` does not land within 2% of the run's own generated-token count. Cause is
+the missing `bench/warmup.sh`: the boot-time profile runs only profiling dummies, so the first
+real requests still pay first-batch transient allocation (gotcha 35) and can JIT serving-path
+kernels (gotcha 45), inflating the cumulative counters the snapshot reads. `steps` reconciles
+with `duration / ms_per_step` in 15 of 16 reps, so tok/step is recoverable as `out/steps` where
+only the *accepted* counter was inflated; `cjk_han` #2 is discarded outright (15.7 ms/step
+against ~30 ms everywhere else is not physical). The fix is to run `bench/warmup.sh` between
+server-up and the first snapshot -- it is what that script is for.
+
+**Everything in `/tmp` is lost on a WSL restart.** Two runs died this way before the snapshots
+and results moved under `$HOME`. The campaign now appends every rep line as it is produced and
+skips arms already present, so an interrupted run resumes instead of restarting.
 
 ## Also fixed on the way
 

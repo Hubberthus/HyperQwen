@@ -1,0 +1,48 @@
+2026-10-05T10:30:08+02:00 ARM=shipped COHORT=/home/hubbe/qwen-serving/bench/prompts_han.jsonl TAG=shipped_han REPS=2
+2026-10-05T10:30:08+02:00 installed arm=shipped
+2026-10-05T10:31:07+02:00 shipped shipped_han server up draft_ids=40960 MTP_DRAFT_VOCAB=1
+REP shipped_han #1 out=8192 dur=188.65s e2e=43.43 tok/s decode=43.9 tok/s | steps=5937 tok/step=1.38 ms/step=31.8
+REP shipped_han #2 out=8192 dur=179.61s e2e=45.61 tok/s decode=46.1 tok/s | steps=5937 tok/step=1.38 ms/step=30.3
+2026-10-05T10:37:57+02:00 shipped shipped_han done rc=0
+2026-10-05T10:37:57+02:00 ARM=cjk COHORT=/home/hubbe/qwen-serving/bench/prompts_han.jsonl TAG=cjk_han REPS=2
+2026-10-05T10:37:58+02:00 installed arm=cjk
+2026-10-05T10:38:48+02:00 cjk cjk_han server up draft_ids=57344 MTP_DRAFT_VOCAB=1
+REP cjk_han #1 out=8192 dur=110.05s e2e=74.44 tok/s decode=75.9 tok/s | steps=3629 tok/step=2.34 ms/step=30.3 COUNTER-MISMATCH emitted=8492 vs out=8192
+REP cjk_han #2 out=8192 dur=116.47s e2e=70.33 tok/s decode=71.7 tok/s | steps=7415 tok/step=2.68 ms/step=15.7 COUNTER-MISMATCH emitted=19849 vs out=8192
+2026-10-05T11:00:29+02:00 cjk cjk_han done rc=0
+2026-10-05T11:00:29+02:00 ARM=fullhead COHORT=/home/hubbe/qwen-serving/bench/prompts_han.jsonl TAG=fullhead_han REPS=2
+2026-10-05T11:00:29+02:00 arm=fullhead (MTP_DRAFT_VOCAB=0, shipped files)
+2026-10-05T11:01:28+02:00 fullhead fullhead_han server up draft_ids=57344 MTP_DRAFT_VOCAB=0
+REP fullhead_han #1 out=8192 dur=103.43s e2e=79.21 tok/s decode=80.8 tok/s | steps=3926 tok/step=2.65 ms/step=26.3 COUNTER-MISMATCH emitted=10399 vs out=8192
+REP fullhead_han #2 out=8192 dur=101.72s e2e=80.54 tok/s decode=82.1 tok/s | steps=3273 tok/step=2.50 ms/step=31.1
+2026-10-05T11:05:30+02:00 fullhead fullhead_han done rc=0
+2026-10-05T11:05:30+02:00 ARM=shipped COHORT=/home/hubbe/qwen-serving/bench/prompts_cyrillic.jsonl TAG=shipped_cyrillic REPS=2
+2026-10-05T11:05:31+02:00 installed arm=shipped
+2026-10-05T11:06:21+02:00 shipped shipped_cyrillic server up draft_ids=40960 MTP_DRAFT_VOCAB=1
+REP shipped_cyrillic #1 out=8192 dur=144.37s e2e=56.74 tok/s decode=57.6 tok/s | steps=4863 tok/step=1.68 ms/step=29.7
+REP shipped_cyrillic #2 out=8192 dur=148.91s e2e=55.01 tok/s decode=55.9 tok/s | steps=4863 tok/step=1.68 ms/step=30.6
+2026-10-05T11:11:53+02:00 shipped shipped_cyrillic done rc=0
+2026-10-05T11:11:53+02:00 ARM=cyrillic COHORT=/home/hubbe/qwen-serving/bench/prompts_cyrillic.jsonl TAG=cyrillic_cyrillic REPS=2
+2026-10-05T11:11:54+02:00 installed arm=cyrillic
+2026-10-05T11:12:37+02:00 cyrillic cyrillic_cyrillic server up draft_ids=57344 MTP_DRAFT_VOCAB=1
+REP cyrillic_cyrillic #1 out=8192 dur=92.71s e2e=88.36 tok/s decode=90.6 tok/s | steps=3119 tok/step=2.63 ms/step=29.7
+REP cyrillic_cyrillic #2 out=8192 dur=95.35s e2e=85.91 tok/s decode=88.1 tok/s | steps=3119 tok/step=2.63 ms/step=30.6
+2026-10-05T11:16:17+02:00 cyrillic cyrillic_cyrillic done rc=0
+2026-10-05T11:16:17+02:00 ARM=fullhead COHORT=/home/hubbe/qwen-serving/bench/prompts_cyrillic.jsonl TAG=fullhead_cyrillic REPS=2
+2026-10-05T11:16:17+02:00 arm=fullhead (MTP_DRAFT_VOCAB=0, shipped files)
+2026-10-05T11:17:07+02:00 fullhead fullhead_cyrillic server up draft_ids=57344 MTP_DRAFT_VOCAB=0
+REP fullhead_cyrillic #1 out=8192 dur=95.40s e2e=85.87 tok/s decode=88.0 tok/s | steps=3020 tok/step=2.71 ms/step=31.6
+REP fullhead_cyrillic #2 out=8192 dur=95.61s e2e=85.68 tok/s decode=87.9 tok/s | steps=3020 tok/step=2.71 ms/step=31.7
+2026-10-05T11:20:51+02:00 fullhead fullhead_cyrillic done rc=0
+2026-10-05T11:20:51+02:00 ARM=shipped COHORT=/home/hubbe/qwen-serving/bench/prompts_real.jsonl TAG=shipped_english REPS=2
+2026-10-05T11:20:51+02:00 installed arm=shipped
+2026-10-05T11:21:41+02:00 shipped shipped_english server up draft_ids=40960 MTP_DRAFT_VOCAB=1
+REP shipped_english #1 out=7827 dur=91.15s e2e=85.87 tok/s decode=88.4 tok/s | steps=3009 tok/step=2.60 ms/step=30.3
+REP shipped_english #2 out=7827 dur=90.57s e2e=86.42 tok/s decode=89.3 tok/s | steps=3009 tok/step=2.60 ms/step=30.1
+2026-10-05T11:25:16+02:00 shipped shipped_english done rc=0
+2026-10-05T11:25:16+02:00 ARM=fullhead COHORT=/home/hubbe/qwen-serving/bench/prompts_real.jsonl TAG=fullhead_english REPS=2
+2026-10-05T11:25:16+02:00 arm=fullhead (MTP_DRAFT_VOCAB=0, shipped files)
+2026-10-05T11:26:07+02:00 fullhead fullhead_english server up draft_ids=40960 MTP_DRAFT_VOCAB=0
+REP fullhead_english #1 out=7798 dur=97.58s e2e=79.91 tok/s decode=82.3 tok/s | steps=2940 tok/step=2.65 ms/step=33.2
+REP fullhead_english #2 out=7798 dur=92.34s e2e=84.45 tok/s decode=87.1 tok/s | steps=2940 tok/step=2.65 ms/step=31.4
+2026-10-05T11:29:49+02:00 fullhead fullhead_english done rc=0
