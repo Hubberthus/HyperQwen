@@ -25,7 +25,7 @@ echo "$(date -Is) ARM=$ARM COHORT=$COHORT TAG=$TAG REPS=$N" >> $RESULTS
 
 install_arm() {
   case "$1" in
-    shipped) P=shipped;; cjk) P=cjk;; cyrillic) P=cyrillic;;
+    shipped) P=shipped;; cjk) P=cjk;; cyrillic) P=cyrillic;; cjk_model) P=cjk_model;;
     *) echo "unknown arm $1" >&2; exit 2;;
   esac
   for f in extras.safetensors ids.pt index.json; do
@@ -38,7 +38,7 @@ install_arm() {
 }
 
 case "$ARM" in
-  shipped|cjk|cyrillic) install_arm "$ARM" >> $RESULTS;;
+  shipped|cjk|cyrillic|cjk_model) install_arm "$ARM" >> $RESULTS;;
   fullhead) echo "$(date -Is) arm=fullhead (MTP_DRAFT_VOCAB=0, shipped files)" >> $RESULTS;;
   *) echo "unknown arm $ARM" >&2; exit 2;;
 esac
@@ -59,6 +59,13 @@ done
 [ "$code" = "200" ] || { echo "$(date -Is) $ARM $TAG SERVER NOT UP" >> $RESULTS; tail -20 $LOG; exit 1; }
 IDS=$(venv/bin/python -c "import torch;print(torch.load('$M/mtp_draft_vocab_ids.pt',map_location='cpu').numel())")
 echo "$(date -Is) $ARM $TAG server up draft_ids=$IDS MTP_DRAFT_VOCAB=$MTP_DRAFT_VOCAB" >> $RESULTS
+
+# Warmup before the first snapshot, always. The boot-time profile runs only
+# profiling dummies, so early requests still pay first-batch transient allocation
+# (gotcha 35) and can JIT serving-path kernels (gotcha 45); without this the
+# cumulative spec-decode counters are inflated and tok/step comes out impossible.
+bash bench/warmup.sh >> $LOG 2>&1 && echo "$(date -Is) $ARM $TAG warmup ok" >> $RESULTS \
+  || echo "$(date -Is) $ARM $TAG WARMUP FAILED" >> $RESULTS
 
 # Line-buffered, and appended per line: a buffering pipe that dies with the
 # process takes everything it had not yet flushed with it. That is how the first
