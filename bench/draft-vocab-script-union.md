@@ -132,9 +132,32 @@ coverage itself:
 | shipped, English | 98.5% | +5.0% |
 
 Every arm within ~2 points of 98-100% coverage ties or beats the full head; the two arms below
-90% lose in proportion. The lever is therefore the **budget**, not the corpus: at 16,384 rows
-the CJK head tops out near 88%, and the uncapped CJK union is 65,920 rows (+168.8 MB). That is
-the next thing to measure, and the prediction is that it closes the Han gap.
+90% lose in proportion. The lever is therefore the **budget**, not the corpus -- which predicted
+that the uncapped CJK union (65,920 added rows, 106,880 ids, 99.7% coverage, +168.8 MB) would
+close the Han gap. It does:
+
+### Follow-up 2: uncapped CJK closes the gap, as predicted
+
+| Han arm | ids | added VRAM | coverage | decode tok/s | tok/step |
+|---|---:|---:|---:|---:|---:|
+| shipped | 40,960 | -- | 11.6% | 43.9 / 46.1 | 1.38 / 1.38 |
+| CJK capped | 57,344 | +41.9 MB | 88.4% | 76.8 / 76.8 | 2.35 / 2.35 |
+| **CJK uncapped** | **106,880** | **+168.8 MB** | **99.7%** | **79.6 / 79.8** | **2.43 / 2.43** |
+| full head | 248,044 | +535 MB | 100% | 80.8 / 82.1 | 2.09 / 2.50 |
+
+**-2.2% against the full head, inside the spread between its own two reps.** Read with the
+Cyrillic and English arms, coverage is the whole story:
+
+| coverage | arms | outcome vs full head |
+|---|---|---|
+| 98-100% | Cyrillic 98.4%, English 98.5%, CJK uncapped 99.7% | +1.6%, +5.0%, -2.2% |
+| 86-88% | CJK capped, twice | -5.8%, -9.4% |
+
+So the defensible claim for this branch is the narrow one: **a per-script union reaches parity
+with `MTP_DRAFT_VOCAB=0` once its coverage reaches ~99%, at 43% of the full head's rows** --
+106,880 against 248,044, +168.8 MB against +535 MB. It does not beat the full head anywhere,
+and at the 16,384-row default it does not come close on Han. The cap is the design's real dial,
+and where it should sit depends on the VRAM a card has spare, which is why it is a knob.
 
 ### Two measurement defects, and what they cost
 

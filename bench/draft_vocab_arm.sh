@@ -25,7 +25,8 @@ echo "$(date -Is) ARM=$ARM COHORT=$COHORT TAG=$TAG REPS=$N" >> $RESULTS
 
 install_arm() {
   case "$1" in
-    shipped) P=shipped;; cjk) P=cjk;; cyrillic) P=cyrillic;; cjk_model) P=cjk_model;;
+    shipped) P=shipped;; cjk) P=cjk;; cyrillic) P=cyrillic;;
+    cjk_model) P=cjk_model;; cjk_full) P=cjk_full;;
     *) echo "unknown arm $1" >&2; exit 2;;
   esac
   for f in extras.safetensors ids.pt index.json; do
@@ -38,7 +39,7 @@ install_arm() {
 }
 
 case "$ARM" in
-  shipped|cjk|cyrillic|cjk_model) install_arm "$ARM" >> $RESULTS;;
+  shipped|cjk|cyrillic|cjk_model|cjk_full) install_arm "$ARM" >> $RESULTS;;
   fullhead) echo "$(date -Is) arm=fullhead (MTP_DRAFT_VOCAB=0, shipped files)" >> $RESULTS;;
   *) echo "unknown arm $ARM" >&2; exit 2;;
 esac

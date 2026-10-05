@@ -54,3 +54,10 @@ REP fullhead_english #2 out=7798 dur=92.34s e2e=84.45 tok/s decode=87.1 tok/s | 
 REP cjkmodel_han #1 out=8192 dur=108.81s e2e=75.29 tok/s decode=76.8 tok/s | steps=3489 tok/step=2.35 ms/step=31.2
 REP cjkmodel_han #2 out=8192 dur=108.69s e2e=75.37 tok/s decode=76.8 tok/s | steps=3489 tok/step=2.35 ms/step=31.2
 2026-10-05T12:13:42+02:00 cjk_model cjkmodel_han done rc=0
+2026-10-05T12:35:11+02:00 ARM=cjk_full COHORT=bench/prompts_han.jsonl TAG=cjkfull_han REPS=2
+2026-10-05T12:35:12+02:00 installed arm=cjk_full
+2026-10-05T12:36:16+02:00 cjk_full cjkfull_han server up draft_ids=106880 MTP_DRAFT_VOCAB=1
+2026-10-05T12:36:55+02:00 cjk_full cjkfull_han warmup ok
+REP cjkfull_han #1 out=8192 dur=105.03s e2e=78.00 tok/s decode=79.6 tok/s | steps=3367 tok/step=2.43 ms/step=31.2
+REP cjkfull_han #2 out=8192 dur=104.59s e2e=78.32 tok/s decode=79.8 tok/s | steps=3367 tok/step=2.43 ms/step=31.1
+2026-10-05T12:40:57+02:00 cjk_full cjkfull_han done rc=0
