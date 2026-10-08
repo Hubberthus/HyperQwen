@@ -5,6 +5,8 @@
 # patches/series itself.
 #
 #   bash patches/apply.sh --list      print the series in apply order, one basename per line
+#   bash patches/apply.sh --list --kvarn
+#                                     print the four KVarN patches in apply order, the same way
 #   bash patches/apply.sh DIR         apply the series to DIR, the vllm PACKAGE directory
 #                                     (site-packages/vllm, not site-packages)
 #   bash patches/apply.sh --kvarn DIR apply the four KVarN patches in kvarn/ to DIR, after
@@ -16,8 +18,8 @@
 # --list always prints the series. When the series and the directory disagree, it also
 # names each offender on stderr and exits 2: a patch that is not in the series is never
 # applied, and a name in the series with no file is a typo. The apply mode refuses to start
-# on that disagreement. --kvarn refuses to start the same way when the KVARN list below and
-# kvarn/*.patch disagree.
+# on that disagreement. --list --kvarn and --kvarn do the same for the KVARN list below and
+# kvarn/*.patch.
 #
 # Apply policy: GNU `patch -p1 --forward --fuzz 0 --no-backup-if-mismatch`, in order, stop
 # at the first patch that fails. An offset means the context matched exactly and the
@@ -52,7 +54,7 @@ KVARN=(kvarn-0.30.0.patch kvarn-v2-runner-0.30.0.patch kvarn-recycled-pages-0.30
        kvarn-fp16-dequant-0.30.0.patch)
 
 usage() {
-  echo "usage: bash patches/apply.sh --list | [--kvarn] DIR  (DIR = the installed vllm package directory)" >&2
+  echo "usage: bash patches/apply.sh --list [--kvarn] | [--kvarn] DIR  (DIR = the installed vllm package directory)" >&2
   exit 2
 }
 
@@ -82,6 +84,11 @@ list() {
   names=$(series)
   printf '%s\n' "$names"
   agree patches/series "$names" "$HERE"
+}
+
+list_kvarn() {
+  printf '%s\n' "${KVARN[@]}"
+  agree "the KVARN list in patches/apply.sh" "$(printf '%s\n' "${KVARN[@]}")" "$KVARN_DIR"
 }
 
 # apply_one DIR PATCH_FILE NAME HINT: apply one patch by the policy above, or exit 1 by name.
@@ -129,7 +136,10 @@ apply_kvarn() {
 }
 
 case "${1:-}" in
-  --list) [ $# -eq 1 ] || usage; list ;;
+  --list)
+    if [ $# -eq 1 ]; then list
+    elif [ $# -eq 2 ] && [ "$2" = --kvarn ]; then list_kvarn
+    else usage; fi ;;
   --kvarn) [ $# -eq 2 ] || usage; apply_kvarn "$2" ;;
   ""|-*) usage ;;
   *) [ $# -eq 1 ] || usage; apply_series "$1" ;;
