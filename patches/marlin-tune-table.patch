@@ -28,7 +28,7 @@ Apply from the installed vllm package directory:
 
 Written against vLLM 0.27.1.
 
---- exported from cpuchip/vllm b84e3edee (marlin-tune-table); regenerate with scripts/export-patch.sh, do not edit ---
+--- exported from b84e3edee (marlin-tune-table); regenerate with scripts/export-patch.sh, do not edit ---
 
 diff --git a/_custom_ops.py b/_custom_ops.py
 index 331121501..5a8aab14c 100644

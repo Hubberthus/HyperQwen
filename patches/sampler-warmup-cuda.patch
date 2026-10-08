@@ -17,7 +17,7 @@ without that gate: with a persistent cache volume the cost is paid once per volu
 Signed-off-by: Andreas Karatzas <akaratza@amd.com>
 Signed-off-by: Michael Stufflebeam <cpuchip@gmail.com>
 
---- exported from cpuchip/vllm 92e7256fa (sampler-warmup-cuda); regenerate with scripts/export-patch.sh, do not edit ---
+--- exported from 92e7256fa (sampler-warmup-cuda); regenerate with scripts/export-patch.sh, do not edit ---
 
 diff --git a/v1/worker/gpu/model_runner.py b/v1/worker/gpu/model_runner.py
 index 46acb1688..857b0d6d5 100644

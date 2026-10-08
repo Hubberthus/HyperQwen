@@ -26,7 +26,7 @@ the scheduler's allocations instead of a per-step window over each request's mam
 window also covered the column before the running one, which align mode frees, so a legitimate
 flush into that page after it was reused as an attention block would have been dropped.
 
---- exported from cpuchip/vllm 40ab8e0 (kvarn-recycled-pages-0.30.0); regenerate with scripts/export-patch.sh, do not edit ---
+--- exported from 40ab8e0 (kvarn-recycled-pages-0.30.0); regenerate with scripts/export-patch.sh, do not edit ---
 
 diff --git a/v1/worker/gpu/model_runner.py b/v1/worker/gpu/model_runner.py
 index ef9c1f3..46acb16 100644
