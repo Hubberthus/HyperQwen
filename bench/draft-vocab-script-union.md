@@ -159,6 +159,30 @@ with `MTP_DRAFT_VOCAB=0` once its coverage reaches ~99%, at 43% of the full head
 and at the 16,384-row default it does not come close on Han. The cap is the design's real dial,
 and where it should sit depends on the VRAM a card has spare, which is why it is a knob.
 
+### Follow-up 3: all-Han same-day re-run (Oct 9), after finding day-to-day drift
+
+A re-run of all four Han arms back-to-back on one day, after a warmup + drifted ~6% slower
+ms/step than Oct 5 was discovered (all Oct 9 arms uniformly affected, so *same-day pairs stay
+valid; cross-day pairs do not*):
+
+| Han cohort, Oct 9 | decode avg | tok/step | ms/step | steps |
+|---|---:|---:|---:|---:|
+| full head | 73.05 | 2.46 | 34.4 | 3324 |
+| CJK capped (57,344 rows, 88.4% cov) | 72.15 | 2.39 | 33.7 | 3434 |
+| CJK uncapped (106,880 rows, ~99.7% cov) | 72.05 | 2.39 | 33.85 | 3424 |
+| **shipped (40,960 English ids)** | **41.85** | **1.41** | 34.05 | **5815** |
+
+- The central premise reproduces emphatically same-day: shipped on Han is **57% slower** with
+  1.41 tok/step, and the capped CJK head recovers to within **1.3%** of the full head at ~1/4
+  the rows.
+- The uncapped claim in Follow-up 2 stands (Oct 9: uncapped -1.4% vs full head, same as Oct 5's
+  -2.2%). A momentary reading of these rows as "the uncapped prediction refuted" was wrong --
+  today's rows *confirm* it.
+- The one number that moved between days: the capped arm's deficit vs full head was -5.8% on
+  Oct 5 and -1.3% on Oct 9, with each day's pair internally valid. Unexplained; the capped arm
+  is behind the full head on both days either way, and neither day's data puts it behind
+  shipped anywhere.
+
 ### Two measurement defects, and what they cost
 
 **Contaminated spec-decode counters.** Three of sixteen reps report `COUNTER-MISMATCH`:
