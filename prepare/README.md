@@ -56,7 +56,7 @@ list, and `--corpus` counts your own instead. It needs
 Two flags exist because that list is language-specific (gotcha 61): `--stats` prints its
 coverage per script against your checkpoint's tokenizer, and `--add-scripts` writes a
 *variant* list with whole-UTF-8 rows of the scripts you name, ranked by `--corpus` frequency and
-capped at `--script-budget` rows (default 16,384, +41.9 MB of head on this checkpoint). The shipped list and the default head are untouched; a variant is a second run with `--ids` over the
+capped at `--script-budget` rows (default 16,384, +41.9 MB of head on this checkpoint; 0 means uncapped: every eligible row, which for CJK is ~66k added rows and +169 MB, for a 107k-id variant list). The shipped list and the default head are untouched; a variant is a second run with `--ids` over the
 file it writes. Measurements and the reasoning behind the cap: gotcha 61, and the
 syv-ai/HyperQwen#196 thread.
 

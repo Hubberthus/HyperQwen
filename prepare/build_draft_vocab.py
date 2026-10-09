@@ -253,12 +253,13 @@ if add_scripts:
     cands = [i for i in range(len(kindset))
              if whole[i] and kindset[i] & want and i not in have]
     cands.sort(key=lambda i: (-seen.get(i, 0), i))
-    added = cands[:script_budget]
+    added = cands if script_budget == 0 else cands[:script_budget]
     added.sort()
     variants = base_ids + added
     report(whole, kindset, len(kindset), variants, nfrag)
     print(f"\nunion of {','.join(sorted(want))}: {len(added)} rows added "
-          f"(budget {script_budget}, {len(cands)} eligible)")
+          f"({'uncapped, all eligible' if script_budget == 0 else f'budget {script_budget}'}, "
+          f"{len(cands)} eligible)")
     if not out_file:
         sys.exit("--add-scripts needs --out <file.json>; the model dir is unchanged")
     with open(out_file + ".tmp", "w") as f:
