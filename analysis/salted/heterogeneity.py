@@ -94,7 +94,10 @@ def verify_pin(base, shard_file, num_bits):
     diff = np.abs(out - ref.numpy()).max()
     print(f"  PIN {base}: max|manual - compressed_tensors| = {diff.item():.3e}"
           f"  (|W|.sum={ref.abs().sum().item():.1f}, elems={out.size})")
-    return float(diff)
+    # persisted so the citation exists without a re-run (review Important #2)
+    return {"tensor": base, "shard": shard_file, "num_bits": num_bits,
+            "max_abs_diff": float(diff), "elems": int(out.size),
+            "ref_abs_sum": float(ref.abs().sum())}
 
 
 # ---------------------------------------------------------------- accumulator
@@ -195,10 +198,12 @@ def main():
         print("SYNTHETIC TESTS FAILED - aborting real run")
         sys.exit(1)
 
+    pin = None
     if not args.skip_pin:
         print("== Dequant pin check (manual tiled vs compressed-tensors library) ==")
-        if verify_pin("model.language_model.layers.0.mlp.gate_proj",
-                      "model-00001-of-00007.safetensors", 4) != 0.0:
+        pin = verify_pin("model.language_model.layers.0.mlp.gate_proj",
+                         "model-00001-of-00007.safetensors", 4)
+        if pin["max_abs_diff"] != 0.0:
             print("PIN FAILED - dequantization does not match library; aborting")
             sys.exit(1)
 
@@ -223,11 +228,22 @@ def main():
         results[tkey] = {"desc": base, "num_bits": bits,
                          "salt": {k: v["eta_squared"] for k, v in res.items()}}
         best = max(res.items(), key=lambda kv: kv[1]["eta_squared"])
+        # per-class mean/std table for the best salt per tensor (plan Produces
+        # item; review Important #1) — feeds Task 4's interpretation
+        results[tkey]["best"] = {
+            "salt": best[0],
+            "eta_squared": best[1]["eta_squared"],
+            "total_var": best[1]["total_var"],
+            "class_mean": best[1]["class_mean"],
+            "class_std": best[1]["class_std"],
+        }
         print(f"{tkey:50s} best={best[0]:9s} eta2={best[1]['eta_squared']:.5f}")
         for sd in SALT_DEFS:
             print(f"    {sd:8s}: " + " ".join(f"N{n}={results[tkey]['salt'][f'{sd}%{n}']:.4f}" for n in NS))
         sys.stdout.flush()
 
+    if pin is not None:
+        results["_pin"] = pin
     (SALTED / "heterogeneity.json").write_text(json.dumps(results, indent=1))
     print("\nWrote analysis/salted/heterogeneity.json")
 
