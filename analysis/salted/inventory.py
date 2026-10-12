@@ -142,10 +142,13 @@ def main() -> int:
     qkv_scale = [r for r in rows if ".in_proj_qkv.weight_scale" in r["name"]]
     if qkv and qkv_scale:
         p, s = qkv[0], qkv_scale[0]
-        print(f"  sample packed row {p['name'].split('.layers.')[-1]}: "
-              f"packed {p['shape']} ({p['elements']} elems), "
-              f"scale {s['shape']} — unpack ratio observed "
-              f"{s['elements'] * 16 / p['elements']:.2f}x (assumes gs=16)")
+        # in_proj_qkv: out=3*hs=15360, in=hs=5120 -> 78,643,200 unpacked
+        # elements; packed holds 6,553,600 I32 elems -> 12 int4 per int32
+        # (marlin-style repack; scale [10240,40] keeps rows, cols = packed/16).
+        unpacked = 3 * hs * hs
+        print(f"  sample packed row 0.linear_attn.in_proj_qkv: "
+              f"packed {p['shape']} ({p['elements']} elems), scale {s['shape']}; "
+              f"unpacked {unpacked} elems = packed * {unpacked / p['elements']:.1f}")
     # in_proj_qkv: one packed tensor per linear_attn layer holding q+k+v
     qkv = [r for r in int4_rows if ".in_proj_qkv.weight_packed" in r["name"]]
     # 48 linear_attn layers have in_proj_qkv (single packed tensor holding
