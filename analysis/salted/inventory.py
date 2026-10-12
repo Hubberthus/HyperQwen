@@ -139,7 +139,7 @@ def main() -> int:
     # ratio = (scale_cols * group_size) relative to packed geometry. Report
     # per-row samples rather than asserting a universal multiplier.
     qkv = [r for r in int4_rows if ".in_proj_qkv.weight_packed" in r["name"]]
-    qkv_scale = [r for r in int4_rows if ".in_proj_qkv.weight_scale" in r["name"]]
+    qkv_scale = [r for r in rows if ".in_proj_qkv.weight_scale" in r["name"]]
     if qkv and qkv_scale:
         p, s = qkv[0], qkv_scale[0]
         print(f"  sample packed row {p['name'].split('.layers.')[-1]}: "
