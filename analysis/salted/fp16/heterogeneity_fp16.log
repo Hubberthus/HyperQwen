@@ -1,0 +1,63 @@
+== Synthetic unit tests (real projection shapes) ==
+  row-structured 15360x5120: row%64 eta2=0.5675  col%64 eta2=0.0000  -> PASS
+  iid Gaussian   15360x5120: worst eta2 over all 20 defs = 0.00000 (row+col%64)  -> PASS
+  row-structured 17408x5120: row%64 eta2=0.5676  col%64 eta2=0.0000  -> PASS
+  iid Gaussian   17408x5120: worst eta2 over all 20 defs = 0.00000 (row%64)  -> PASS
+  row-structured 5120x17408: row%64 eta2=0.5676  col%64 eta2=0.0000  -> PASS
+  iid Gaussian   5120x17408: worst eta2 over all 20 defs = 0.00000 (row+col%64)  -> PASS
+
+== Load sanity + iid noise floor ==
+  load sanity model.language_model.layers.0.mlp.gate_proj: dtype=BF16 std=0.01017 p1=-0.0238 p50=0.0000 p99=0.0238 %pos=50.0
+  iid floor 15360x5120: worst eta2 = 7.251e-07 (row+col%64)
+  iid floor 17408x5120: worst eta2 = 9.675e-07 (row+col%64)
+  iid floor 5120x17408: worst eta2 = 7.919e-07 (row+col%64)
+
+== eta^2 on ORIGINAL weights, side-by-side vs dequant baseline ==
+tensor                                               best(orig)       eta2     best(base)       eta2
+layers.0.mlp.gate_proj                                linear%64   0.000042      linear%64   0.000041
+    linear  : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+    row     : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+    col     : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+    row+col : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+layers.0.mlp.down_proj                               row+col%64   0.000001     row+col%64   0.000001
+    linear  : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+    row     : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+    col     : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+    row+col : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+layers.27.self_attn.q_proj                            linear%64   0.000061      linear%64   0.000060
+    linear  : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0001
+    row     : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+    col     : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0001
+    row+col : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+layers.27.mlp.gate_proj                               linear%64   0.000092      linear%64   0.000091
+    linear  : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0001
+    row     : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+    col     : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0001
+    row+col : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+layers.27.mlp.down_proj                               linear%64   0.000001      linear%64   0.000001
+    linear  : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+    row     : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+    col     : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+    row+col : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+layers.63.self_attn.q_proj                            linear%64   0.000066      linear%64   0.000066
+    linear  : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0001
+    row     : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+    col     : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0001
+    row+col : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+layers.63.mlp.gate_proj                               linear%64   0.000153      linear%64   0.000151
+    linear  : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0001 N64=0.0002
+    row     : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+    col     : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0001 N64=0.0002
+    row+col : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+layers.63.mlp.down_proj                                  row%64   0.000001         row%64   0.000001
+    linear  : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+    row     : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+    col     : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+    row+col : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+lm_head                                               linear%64   0.000432      linear%64   0.000432
+    linear  : N4=0.0000 N8=0.0001 N16=0.0002 N32=0.0003 N64=0.0004
+    row     : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+    col     : N4=0.0000 N8=0.0001 N16=0.0002 N32=0.0003 N64=0.0004
+    row+col : N4=0.0000 N8=0.0000 N16=0.0000 N32=0.0000 N64=0.0000
+
+Wrote analysis/salted/fp16/heterogeneity.json

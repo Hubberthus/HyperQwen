@@ -1,0 +1,6 @@
+{
+  "skipped": true,
+  "reason": "plan gate failed: max eta^2 on originals = 1.00006x baseline (4.3182e-4 vs 4.3180e-4, lm_head linear%64); row%N above floor 0/9 tensors on both sources; r_s is determined by eta^2 (validated on the baseline), so the sweep would re-measure a determined quantity, not produce new evidence",
+  "gate": "max eta^2 > 10x baseline (> ~4.3e-3) OR any row%N cell above floor",
+  "decided": "2026-10-12"
+}

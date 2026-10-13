@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "wall_s": 393.6,
+  "tolerance": "1e-12 relative, zero exceptions",
+  "target": "analysis/salted/codebook_gain.json (final reviewed baseline)",
+  "cells_checked": "9 tensors x 3 bits x 6 scalar keys + absmax_per_class",
+  "observed": "all cells reproduce the final baseline (rel diff <= 1e-12); REGRESSION GATE PASSED",
+  "recorded_from": "process proc_b7213a1e66ff stdout, 2026-10-12 (run predates tee'd logs)"
+}
