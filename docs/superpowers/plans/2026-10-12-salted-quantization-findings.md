@@ -16,10 +16,11 @@ already absorb the position information** the salt would exploit.
 
 ## Baseline caveat (read before quoting these numbers)
 
-FP16 originals are not on disk. All measurements run on the **dequantized W4A16/INT8 weights** —
-exactly what the serving kernel reconstructs. Conclusions hold for "salted vs the weights this repo
-actually serves"; they do NOT measure salted quantization of the pre-quantization originals
-(see "What would revive the theory").
+Tasks 1–4 ran on the **dequantized W4A16/INT8 weights** — exactly what the serving kernel
+reconstructs. Conclusions hold for "salted vs the weights this repo actually serves". The pre-
+quantization BF16 originals are now on disk at `models-fp16/Qwen3.8-27B` (used by the 2026-10-13
+probe round below for layout plots); a full Tasks 2–3 re-run on the originals remains open (see
+"What would revive the theory", item 1).
 
 ## Measured evidence
 
@@ -98,6 +99,70 @@ AutoRound with symmetric per-group (128) scales: within each group the quantized
 uniform over the 16/256 code levels, so any positional structure left after scale absorption is
 ~0.04 % of variance at most. There is nothing for a salted codebook to compress.
 
+## Probe round — 2026-10-13 (`analysis/salted/weight_layout.py` + follow-ups)
+
+A layout/visualization pass over the same 9 tensors (original BF16 `models-fp16/Qwen3.8-27B` vs
+dequantized W4A16) produced 8 plots + a JSON (`weight_layout.json`, wall 323 s, 9 spawn workers),
+then three numeric follow-ups — `floor_layout.py`, `check_lmhist.py`, and scale-stats probes of the
+JSON — archived as `analysis/salted/noise_floor.txt`. Two early *visual* readings of the plots were
+wrong and are corrected here; the numeric probes replace them.
+
+### Noise floor of residue-class structure — quantization adds nothing
+
+`floor_layout.py` measures mean-|w|² deviation by residue class (col%128 / col%64) against an iid
+noise floor. Ratio over floor, original vs dequant (`analysis/salted/noise_floor.txt`):
+
+| tensor | r128 orig | r128 deq | r64 orig | r64 deq |
+|---|---|---|---|---|
+| L0.gate | 4.3 | 4.2 | 4.1 | 4.1 |
+| L0.down | 1.3 | 1.3 | 1.3 | 1.2 |
+| L27.q | 4.8 | 4.5 | 4.5 | 4.3 |
+| L27.gate | 7.3 | 7.4 | 6.0 | 6.0 |
+| L27.down | 5.4 | 5.3 | 4.4 | 4.3 |
+| L63.q | 20.0 | 19.3 | 13.7 | 13.2 |
+| L63.gate | 9.1 | 8.6 | 7.0 | 6.7 |
+| L63.down | 15.1 | 15.4 | 17.3 | 17.5 |
+| lm_head | 217.2 | 217.2 | 164.0 | 164.0 |
+
+Original and dequant land on the **same** ratio per tensor: quantization contributes zero
+positional structure. The 1.3–20× over-floor values are genuine weight structure (deeper layers
+more structured) — already shown in Tasks 2/3 to be absorbed by group scales + row conditioning.
+Caveats: the iid floor does not condition on group scale, so these ratios overstate residual class
+structure; orig≈dequant holds because quantization noise is small relative to the real structure
+(the equality is the informative fact). lm_head's 217× is its per-group scale spread (below), not
+a residue signal.
+
+### lm_head — two earlier visual readings, corrected
+
+An earlier vision analysis of `01_overall_value_dist.png` claimed the lm_head dequant curve was
+"drastically broader and flatter" with mass "smeared across the range" (i.e. lossy tails). Measured
+on the full tensor (`check_lmhist.py`, 155 M-element histogram):
+
+- Tail mass **identical** original vs dequant: |w|>0.1 = 1.60e-05 both, |w|>0.15 = 1.84e-06 both;
+  10 elements beyond 0.2 in each. No tail smearing.
+- Dequant peak density 95.2 at 0.0 vs original 34.8 at +0.0043 — the zero-code spike, as expected
+  for 8-bit symmetric quant (code spacing ≈ 3 histogram bins at scale p50 3.057e-4). The "broader"
+  look was the 256-level comb rendered dense at plot resolution.
+- corr(orig, dequant) = **1.0000**; code entropy 7.48 of 8.0 max bits. lm_head at INT8 is
+  essentially lossless at distribution level. The "particularly lossy" call is **retracted**.
+
+### Group-scale coupling — none on the 4-bit tensors
+
+`weight_layout.json` → `scale_stats`, corr(|scale|, group mean-|w|²) per tensor: L0.gate −0.0013,
+L0.down −0.0063, L27.q −0.0006, L27.gate −0.0022, L27.down −0.0008, L63.q −0.0143, L63.gate
+−0.0020, L63.down −0.0063, lm_head +0.6099. Scales do not couple to group energy anywhere on the
+INT4 side (lm_head's 0.61 is its 9× scale range: p50 3.057e-4, max 2.691e-3, all-positive scales).
+Code entropy 3.54–3.64 bits of 4.0 max on every INT4 tensor — near-uniform code usage, no code-map
+regularity to exploit. (The `06_group_structure.png` panels backing these numbers could not be
+vision-read twice — provider 503; the JSON numbers stand in for them.)
+
+### Probe-round conclusion
+
+No positional pattern survives measurement: the residue-class deviations are real weight structure
+already handled by group scales, quantization adds none, and both anomalies that motivated the pass
+(lm_head "smearing", group-scale coupling) were measurement artifacts or expected quantizer
+behavior. **NO-GO stands unchanged.**
+
 ## What would revive the theory (in order of value)
 
 1. **Test on FP16 originals** (the pre-quantization weights). Heterogeneity may exist before
@@ -116,6 +181,11 @@ uniform over the 16/256 code levels, so any positional structure left after scal
 - `analysis/salted/heterogeneity.py|json` — Task 2 (pin + synthetic gates abort on failure).
 - `analysis/salted/codebook_gain.py|json|log` (+ `codebook_gain.pre_fix.json` regression baseline)
   — Task 3, parallel sweep (9 workers, spawn context; regression check aborts on mismatch).
+- `analysis/salted/weight_layout.py|json` + `analysis/salted/plots/*.png` — probe-round layout
+  pass (wall 323 s; dequant pin + dequant-grid + BF16-dtype checks abort on failure).
+- `analysis/salted/noise_floor.txt` — probe-round residue-class iid-floor table (floor_layout.py).
+- `check_lmhist.py` / scale-stats probes — probe-round lm_head histogram and scale-coupling checks
+  (scratch scripts; the numbers in the probe-round section are their full output, not excerpts).
 - SDD ledger: `.superpowers/sdd/2026-10-12-salted-quantization-spike/progress.md`
 - Spec (the theory under test): extracted conversation at
   `C:\Users\hubbe\AppData\Local\hermes\cache\scratch\conv\extracted.md` §5–6.
