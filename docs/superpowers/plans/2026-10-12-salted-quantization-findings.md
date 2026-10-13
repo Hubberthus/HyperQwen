@@ -7,6 +7,10 @@ salted INT2/INT3 kernel effort?
 
 ## Verdict: NO-GO on this checkpoint's baseline
 
+(The one measured structure this test cannot see — outlier-dimension scale spread — has a
+different tool, Hadamard rotation; tracked separately in 2026-10-13-salted-quantization-
+rotation.md.)
+
 Salted quantization shows **no measurable gain** over a single global codebook at equal bits/weight
 on the dequantized weights of `models/Qwen3.8-27B-W4A16-AutoRound`. The best salted result anywhere
 is a 8.9 % MSE reduction (lm_head, 4-bit) — far below the spec's headline claim ("salted INT2
@@ -34,7 +38,9 @@ probe round below for layout plots); a full Tasks 2–3 re-run on the originals 
 | FP16-other | 576 | 7,478,512 |
 
 Zero stray packed rows outside INT4/INT8 groups. Checkpoint geometry: marlin-style repack
-(`in_proj_qkv.weight_packed` [10240, 640] I32 = 12 int4/int32, not a plain /4 layout).
+(`in_proj_qkv.weight_packed` [10240, 640] I32 = 8 int4/int32 → [10240, 5120], group-128 per
+scale [10240, 40]; 52,428,800 elems/layer — the earlier "12 int4/int32" reading was
+arithmetically impossible and is corrected 2026-10-13).
 
 ### Task 2 — position heterogeneity η² (commits `32b4e06`, `ac1cbf6`, `analysis/salted/heterogeneity.py`)
 
@@ -136,7 +142,9 @@ a residue signal.
 
 An earlier vision analysis of `01_overall_value_dist.png` claimed the lm_head dequant curve was
 "drastically broader and flatter" with mass "smeared across the range" (i.e. lossy tails). Measured
-on the full tensor (`check_lmhist.py`, 155 M-element histogram):
+with `check_lmhist.py` (155 M-element subsample; the full lm_head is 1,271,398,400 elements —
+the "full tensor" wording was wrong, corrected 2026-10-13; the scratch script is no longer on
+disk and the recorded numbers stand):
 
 - Tail mass **identical** original vs dequant: |w|>0.1 = 1.60e-05 both, |w|>0.15 = 1.84e-06 both;
   10 elements beyond 0.2 in each. No tail smearing.
@@ -165,8 +173,9 @@ behavior. **NO-GO stands unchanged.**
 
 ## What would revive the theory (in order of value)
 
-1. **Test on FP16 originals** (the pre-quantization weights). Heterogeneity may exist before
-   AutoRound's group scales absorb it. Requires the unquantized checkpoint (~54 GB download).
+1. **Test on BF16 originals — DONE 2026-10-13, FALSIFIED** (2026-10-12-salted-quantization-
+   fp16-findings.md): the null reproduces on the pre-quantization weights to 4 significant
+   figures (max η² 4.3182e-4 on both baselines). Path exhausted.
 2. **Coarse/no group scales**: salted may help where scale granularity is per-channel or per-tensor
    (INT2/3 without group-128), i.e. exactly the regime a salted kernel would target. Re-run
    Task 3's arms on group-1 (per-channel) or group-64 variants.
@@ -174,6 +183,12 @@ behavior. **NO-GO stands unchanged.**
    perplexity deltas for salted vs global at 2-bit on a small slice (needs GPU, unlike Tasks 1–4).
 4. **Structured-outlier pairing**: combine heavy-hitter outlier handling (Bonsai-2-style) with a
    salted residual — the spec's comparison target — rather than plain salted-everything.
+5. **Hadamard rotation fold (never tested by this spike)**: the measured outlier structure
+   (lm_head 217× over floor / 9× per-group scale spread; deep body layers 13–20×) is the class a
+   pre-quantization block-diagonal Hadamard rotation targets, not the class a positional codebook
+   targets. OPEN — tracked in 2026-10-13-salted-quantization-rotation.md (2026-10-13: rot-INT4
+   beats AutoRound-INT4 by 8.3% in weight MSE on down_proj L63; output-tied verification pending;
+   lm_head INT8→INT4 ruled out at ~250× MSE).
 
 ## Artifacts & reproduction
 

@@ -1,5 +1,9 @@
 # Salted Quantization Spike — Originals (FP16/BF16) Probe Plan
 
+> **Status (2026-10-13): COMPLETE — hypothesis FALSIFIED.** The null reproduces on the BF16
+> originals (max η² identical to 4 sig figs on both baselines); see
+> 2026-10-12-salted-quantization-fp16-findings.md. Revival path #1 exhausted.
+
 > **Project class: Spike (follow-up).** Output is an answer (numbers + recommendation), not shipped code.
 > Executes revival path #1 from the Task 4 findings: test on the pre-quantization weights.
 

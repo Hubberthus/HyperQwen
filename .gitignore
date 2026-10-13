@@ -4,6 +4,7 @@ bench/quality-data/
 bench/results/
 bench/results-prefill-ab/
 models/
+models-fp16/
 profiles/
 qwen.log
 venv/
