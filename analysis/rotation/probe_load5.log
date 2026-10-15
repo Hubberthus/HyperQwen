@@ -1,0 +1,12 @@
+cuda: True total_mem_GB: 25.77
+model_type: qwen3_5 arch: ['Qwen3_5ForConditionalGeneration']
+Traceback (most recent call last):
+  File "/home/hubbe/qwen-serving/analysis/rotation/probe_load.py", line 110, in <module>
+    main()
+  File "/home/hubbe/qwen-serving/analysis/rotation/probe_load.py", line 51, in main
+    qc = QuantizationConfig.from_pretrained(MODEL)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/compressed_tensors/quantization/quant_config.py", line 191, in from_pretrained
+    for name, submodule in model.named_modules():
+                           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'named_modules'

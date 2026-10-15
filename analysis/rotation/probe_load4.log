@@ -1,0 +1,56 @@
+cuda: True total_mem_GB: 25.77
+model_type: qwen3_5 arch: ['Qwen3_5ForConditionalGeneration']
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Could not match `re:.*lm_head$` in instance of Qwen3_5ForConditionalGeneration
+Could not match `re:^mtp\..*` in instance of Qwen3_5ForConditionalGeneration
+Compressing model:   0%|          | 0/402 [00:00<?, ?it/s]Compressing model:  22%|██▏       | 90/402 [00:00<00:00, 893.39it/s]Compressing model:  47%|████▋     | 190/402 [00:00<00:00, 950.33it/s]Compressing model:  71%|███████   | 286/402 [00:00<00:00, 923.08it/s]Compressing model:  97%|█████████▋| 388/402 [00:00<00:00, 960.25it/s]Compressing model: 100%|██████████| 402/402 [00:00<00:00, 949.55it/s]
+Loading weights:   0%|          | 0/1988 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1988 [00:01<51:46,  1.56s/it]Loading weights:   0%|          | 4/1988 [00:02<18:50,  1.76it/s]Loading weights:   1%|▏         | 27/1988 [00:02<02:02, 16.04it/s]Loading weights:   3%|▎         | 69/1988 [00:02<00:39, 49.11it/s]Loading weights:   5%|▍         | 91/1988 [00:02<00:28, 66.70it/s]Loading weights:   7%|▋         | 130/1988 [00:03<00:17, 107.25it/s]Loading weights:   9%|▉         | 176/1988 [00:03<00:11, 158.54it/s]Loading weights:  10%|█         | 207/1988 [00:03<00:09, 182.68it/s]Loading weights:  13%|█▎        | 249/1988 [00:03<00:07, 229.04it/s]Loading weights:  14%|█▍        | 283/1988 [00:03<00:06, 252.95it/s]Loading weights:  16%|█▌        | 317/1988 [00:03<00:07, 223.30it/s]Loading weights:  17%|█▋        | 346/1988 [00:03<00:07, 220.19it/s]Loading weights:  19%|█▉        | 373/1988 [00:03<00:07, 202.20it/s]Loading weights:  20%|██        | 398/1988 [00:04<00:07, 210.14it/s]Loading weights:  22%|██▏       | 435/1988 [00:04<00:06, 246.41it/s]Loading weights:  23%|██▎       | 463/1988 [00:04<00:06, 237.87it/s]Loading weights:  25%|██▍       | 489/1988 [00:04<00:06, 232.95it/s]Loading weights:  26%|██▌       | 514/1988 [00:04<00:06, 231.06it/s]Loading weights:  28%|██▊       | 551/1988 [00:04<00:05, 266.33it/s]Loading weights:  29%|██▉       | 579/1988 [00:04<00:05, 235.86it/s]Loading weights:  30%|███       | 604/1988 [00:04<00:07, 195.29it/s]Loading weights:  32%|███▏      | 632/1988 [00:05<00:06, 214.08it/s]Loading weights:  33%|███▎      | 656/1988 [00:05<00:06, 212.59it/s]Loading weights:  34%|███▍      | 679/1988 [00:05<00:06, 201.88it/s]Loading weights:  35%|███▌      | 701/1988 [00:05<00:06, 186.61it/s]Loading weights:  36%|███▋      | 721/1988 [00:05<00:07, 178.31it/s]Loading weights:  38%|███▊      | 748/1988 [00:05<00:06, 192.14it/s]Loading weights:  39%|███▊      | 770/1988 [00:05<00:06, 197.10it/s]Loading weights:  40%|███▉      | 794/1988 [00:05<00:06, 197.46it/s]Loading weights:  41%|████      | 815/1988 [00:06<00:07, 159.68it/s]Loading weights:  43%|████▎     | 847/1988 [00:06<00:06, 187.58it/s]Loading weights:  44%|████▎     | 867/1988 [00:06<00:06, 162.27it/s]Loading weights:  45%|████▍     | 885/1988 [00:06<00:07, 155.42it/s]Loading weights:  45%|████▌     | 902/1988 [00:06<00:07, 153.73it/s]Loading weights:  46%|████▌     | 918/1988 [00:06<00:08, 130.17it/s]Loading weights:  48%|████▊     | 946/1988 [00:06<00:06, 163.75it/s]Loading weights:  49%|████▊     | 965/1988 [00:07<00:06, 168.24it/s]Loading weights:  49%|████▉     | 984/1988 [00:07<00:07, 143.08it/s]Loading weights:  51%|█████     | 1005/1988 [00:07<00:06, 146.14it/s]Loading weights:  51%|█████▏    | 1021/1988 [00:07<00:08, 112.85it/s]Loading weights:  53%|█████▎    | 1051/1988 [00:07<00:06, 141.75it/s]Loading weights:  54%|█████▍    | 1073/1988 [00:07<00:05, 157.00it/s]Loading weights:  55%|█████▍    | 1092/1988 [00:07<00:05, 158.40it/s]Loading weights:  56%|█████▌    | 1111/1988 [00:08<00:05, 159.26it/s]Loading weights:  57%|█████▋    | 1128/1988 [00:08<00:05, 159.37it/s]Loading weights:  58%|█████▊    | 1154/1988 [00:08<00:04, 185.41it/s]Loading weights:  59%|█████▉    | 1180/1988 [00:08<00:04, 195.23it/s]Loading weights:  61%|██████    | 1206/1988 [00:08<00:03, 199.56it/s]Loading weights:  62%|██████▏   | 1227/1988 [00:08<00:04, 161.49it/s]Loading weights:  63%|██████▎   | 1253/1988 [00:08<00:04, 181.36it/s]Loading weights:  64%|██████▍   | 1273/1988 [00:08<00:03, 180.52it/s]Loading weights:  65%|██████▌   | 1293/1988 [00:09<00:04, 155.27it/s]Loading weights:  66%|██████▌   | 1312/1988 [00:09<00:04, 155.46it/s]Loading weights:  67%|██████▋   | 1329/1988 [00:09<00:04, 152.94it/s]Loading weights:  68%|██████▊   | 1360/1988 [00:09<00:03, 191.32it/s]Loading weights:  70%|██████▉   | 1385/1988 [00:09<00:02, 205.84it/s]Loading weights:  71%|███████   | 1407/1988 [00:09<00:03, 169.90it/s]Loading weights:  72%|███████▏  | 1426/1988 [00:09<00:04, 128.20it/s]Loading weights:  73%|███████▎  | 1443/1988 [00:10<00:04, 134.32it/s]Loading weights:  74%|███████▎  | 1462/1988 [00:10<00:03, 143.15it/s]Loading weights:  74%|███████▍  | 1478/1988 [00:10<00:04, 113.24it/s]Loading weights:  75%|███████▌  | 1495/1988 [00:10<00:03, 124.84it/s]Loading weights:  77%|███████▋  | 1521/1988 [00:10<00:03, 140.45it/s]Loading weights:  77%|███████▋  | 1537/1988 [00:10<00:03, 130.71it/s]Loading weights:  78%|███████▊  | 1556/1988 [00:10<00:03, 139.35it/s]Loading weights:  79%|███████▉  | 1571/1988 [00:11<00:03, 132.87it/s]Loading weights:  80%|████████  | 1600/1988 [00:11<00:02, 165.47it/s]Loading weights:  82%|████████▏ | 1624/1988 [00:11<00:02, 170.83it/s]Loading weights:  83%|████████▎ | 1642/1988 [00:11<00:02, 156.20it/s]Loading weights:  84%|████████▎ | 1663/1988 [00:11<00:02, 158.60it/s]Loading weights:  85%|████████▍ | 1680/1988 [00:11<00:02, 147.82it/s]Loading weights:  85%|████████▌ | 1696/1988 [00:11<00:01, 150.27it/s]Loading weights:  86%|████████▌ | 1712/1988 [00:11<00:02, 130.30it/s]Loading weights:  87%|████████▋ | 1726/1988 [00:12<00:01, 132.16it/s]Loading weights:  88%|████████▊ | 1740/1988 [00:12<00:01, 133.51it/s]Loading weights:  88%|████████▊ | 1754/1988 [00:12<00:01, 131.12it/s]Loading weights:  89%|████████▉ | 1768/1988 [00:12<00:01, 123.46it/s]Loading weights:  90%|████████▉ | 1781/1988 [00:12<00:01, 115.09it/s]Loading weights:  90%|█████████ | 1793/1988 [00:12<00:01, 114.89it/s]Loading weights:  91%|█████████ | 1805/1988 [00:12<00:01, 116.01it/s]Loading weights:  91%|█████████▏| 1817/1988 [00:12<00:01, 116.50it/s]Loading weights:  92%|█████████▏| 1829/1988 [00:12<00:01, 117.25it/s]Loading weights:  93%|█████████▎| 1841/1988 [00:13<00:01, 116.41it/s]Loading weights:  93%|█████████▎| 1853/1988 [00:13<00:01, 117.26it/s]Loading weights:  94%|█████████▍| 1865/1988 [00:13<00:01, 117.20it/s]Loading weights:  95%|█████████▍| 1879/1988 [00:13<00:00, 122.30it/s]Loading weights:  96%|█████████▌| 1901/1988 [00:13<00:00, 143.29it/s]Loading weights:  96%|█████████▋| 1916/1988 [00:13<00:00, 141.45it/s]Loading weights:  97%|█████████▋| 1935/1988 [00:13<00:00, 146.23it/s]Loading weights:  98%|█████████▊| 1950/1988 [00:13<00:00, 134.67it/s]Loading weights:  99%|█████████▉| 1964/1988 [00:13<00:00, 126.20it/s]Loading weights:  99%|█████████▉| 1977/1988 [00:14<00:00, 124.49it/s]Loading weights: 100%|██████████| 1988/1988 [00:14<00:00, 137.71it/s]
+LOADED via AutoModelForImageTextToText in 16.4s  GPU_mem_GB=16.10
+target: Linear in_features= 5120 out_features= 10240
+Decompressing model: 0it [00:00, ?it/s]Decompressing model: 0it [00:00, ?it/s]
+forward failed: AttributeError 'Embedding' object has no attribute 'weight'
+Traceback (most recent call last):
+  File "/home/hubbe/qwen-serving/analysis/rotation/probe_load.py", line 97, in <module>
+    main()
+  File "/home/hubbe/qwen-serving/analysis/rotation/probe_load.py", line 84, in main
+    out = model(input_ids=ids)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1884, in _call_impl
+    return inner()
+           ^^^^^^^
+  File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1832, in inner
+    result = forward_call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 939, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py", line 1855, in forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 939, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py", line 1613, in forward
+    inputs_embeds = self.get_input_embeddings()(input_ids)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/compressed_tensors/quantization/lifecycle/forward.py", line 272, in quantized_forward
+    weight = self.weight  # onload once
+             ^^^^^^^^^^^
+  File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1967, in __getattr__
+    raise AttributeError(
+AttributeError: 'Embedding' object has no attribute 'weight'

@@ -1,0 +1,13 @@
+survey scope: 400 INT4 linear tensors
+  50/400 tensors  (31s)
+  100/400 tensors  (40s)
+  150/400 tensors  (48s)
+  200/400 tensors  (60s)
+  250/400 tensors  (70s)
+  300/400 tensors  (74s)
+  350/400 tensors  (80s)
+  400/400 tensors  (83s)
+surveyed 400 tensors, 24.327 B elements, wall 83s
+wrote /home/hubbe/qwen-serving/analysis/rotation/survey.json  (wall 83s)
+selected layers: [0, 27, 38, 45, 56, 58, 60, 63]
+top10: [(60, 11.37), (56, 8.9), (58, 8.32), (57, 8.02), (52, 7.73), (55, 7.45), (59, 7.37), (23, 7.08), (2, 6.89), (45, 6.14)]

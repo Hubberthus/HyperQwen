@@ -1,0 +1,862 @@
+{
+ "t_def": "t = 0.1 * median(per-row 128-group absmax of the BF16 ORIGINAL); same t for all 3 series per tensor",
+ "band_def": "band_mass = sum(|w| for |w| <= t); retention = band_mass / band_mass[orig]",
+ "tensors": {
+  "model.language_model.layers.0.linear_attn.in_proj_qkv": {
+   "t": 0.0042236328125,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 24764.58203125
+   },
+   "current": {
+    "zeros": 7146627,
+    "band_mass": 8634.87109375,
+    "retention": 0.34867824875274717
+   },
+   "rot": {
+    "zeros": 7346489,
+    "band_mass": 6864.7421875,
+    "retention": 0.2772000019559183
+   }
+  },
+  "model.language_model.layers.0.linear_attn.in_proj_z": {
+   "t": 0.0045166015625,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 16086.0703125
+   },
+   "current": {
+    "zeros": 4327137,
+    "band_mass": 3635.62158203125,
+    "retention": 0.22601054896584147
+   },
+   "rot": {
+    "zeros": 4405199,
+    "band_mass": 2608.16796875,
+    "retention": 0.16213829220448397
+   }
+  },
+  "model.language_model.layers.0.linear_attn.out_proj": {
+   "t": 0.004150390625,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 15089.162109375
+   },
+   "current": {
+    "zeros": 4440037,
+    "band_mass": 4237.705078125,
+    "retention": 0.2808442938983394
+   },
+   "rot": {
+    "zeros": 4421437,
+    "band_mass": 2868.136962890625,
+    "retention": 0.19007927293117435
+   }
+  },
+  "model.language_model.layers.0.mlp.down_proj": {
+   "t": 0.00294189453125,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 28895.8515625
+   },
+   "current": {
+    "zeros": 11725123,
+    "band_mass": 6207.6640625,
+    "retention": 0.21482890196446344
+   },
+   "rot": {
+    "zeros": 12484051,
+    "band_mass": 2478.1953125,
+    "retention": 0.08576301366788971
+   }
+  },
+  "model.language_model.layers.0.mlp.gate_proj": {
+   "t": 0.00281982421875,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 27508.16796875
+   },
+   "current": {
+    "zeros": 12177136,
+    "band_mass": 4869.07275390625,
+    "retention": 0.17700461766256642
+   },
+   "rot": {
+    "zeros": 12481834,
+    "band_mass": 3041.7021484375,
+    "retention": 0.11057450833850344
+   }
+  },
+  "model.language_model.layers.0.mlp.up_proj": {
+   "t": 0.0027343750000000003,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 26830.6796875
+   },
+   "current": {
+    "zeros": 12143131,
+    "band_mass": 4217.716796875,
+    "retention": 0.15719753826586694
+   },
+   "rot": {
+    "zeros": 12486621,
+    "band_mass": 2573.72607421875,
+    "retention": 0.09592474377075916
+   }
+  },
+  "model.language_model.layers.27.mlp.down_proj": {
+   "t": 0.0032470703125,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 33447.5859375
+   },
+   "current": {
+    "zeros": 11928750,
+    "band_mass": 10946.17578125,
+    "retention": 0.32726355204539936
+   },
+   "rot": {
+    "zeros": 12475184,
+    "band_mass": 8232.6982421875,
+    "retention": 0.24613729246622104
+   }
+  },
+  "model.language_model.layers.27.mlp.gate_proj": {
+   "t": 0.003173828125,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 31686.3515625
+   },
+   "current": {
+    "zeros": 11907252,
+    "band_mass": 7372.3076171875,
+    "retention": 0.23266508302938987
+   },
+   "rot": {
+    "zeros": 12480832,
+    "band_mass": 4280.24755859375,
+    "retention": 0.13508174174458493
+   }
+  },
+  "model.language_model.layers.27.mlp.up_proj": {
+   "t": 0.003271484375,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 33030.86328125
+   },
+   "current": {
+    "zeros": 12113337,
+    "band_mass": 7259.494140625,
+    "retention": 0.219779122295779
+   },
+   "rot": {
+    "zeros": 12478338,
+    "band_mass": 4100.6708984375,
+    "retention": 0.12414664622965667
+   }
+  },
+  "model.language_model.layers.27.self_attn.k_proj": {
+   "t": 0.0047363281250000005,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 3260.2431640625
+   },
+   "current": {
+    "zeros": 861015,
+    "band_mass": 1202.985595703125,
+    "retention": 0.36898646363669313
+   },
+   "rot": {
+    "zeros": 728146,
+    "band_mass": 1292.2852783203125,
+    "retention": 0.3963769612540284
+   }
+  },
+  "model.language_model.layers.27.self_attn.o_proj": {
+   "t": 0.00439453125,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 16345.52734375
+   },
+   "current": {
+    "zeros": 4240210,
+    "band_mass": 6464.97119140625,
+    "retention": 0.3955192790936932
+   },
+   "rot": {
+    "zeros": 4403171,
+    "band_mass": 4971.2353515625,
+    "retention": 0.3041342898896033
+   }
+  },
+  "model.language_model.layers.27.self_attn.q_proj": {
+   "t": 0.004443359375,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 32581.07421875
+   },
+   "current": {
+    "zeros": 8969533,
+    "band_mass": 11396.19140625,
+    "retention": 0.3497794863894216
+   },
+   "rot": {
+    "zeros": 8807092,
+    "band_mass": 9744.16015625,
+    "retention": 0.299074244477868
+   }
+  },
+  "model.language_model.layers.27.self_attn.v_proj": {
+   "t": 0.00478515625,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 3159.83447265625
+   },
+   "current": {
+    "zeros": 802503,
+    "band_mass": 1156.5771484375,
+    "retention": 0.3660245998472341
+   },
+   "rot": {
+    "zeros": 732718,
+    "band_mass": 1093.391845703125,
+    "retention": 0.34602820342800666
+   }
+  },
+  "model.language_model.layers.38.linear_attn.in_proj_qkv": {
+   "t": 0.0044921875000000005,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 26735.494140625
+   },
+   "current": {
+    "zeros": 7321056,
+    "band_mass": 5012.30517578125,
+    "retention": 0.1874775588368488
+   },
+   "rot": {
+    "zeros": 7339916,
+    "band_mass": 3417.9404296875,
+    "retention": 0.1278427999763014
+   }
+  },
+  "model.language_model.layers.38.linear_attn.in_proj_z": {
+   "t": 0.004443359375,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 15708.66796875
+   },
+   "current": {
+    "zeros": 4262269,
+    "band_mass": 4553.4150390625,
+    "retention": 0.2898664003924983
+   },
+   "rot": {
+    "zeros": 4404161,
+    "band_mass": 3242.45263671875,
+    "retention": 0.20641168577559313
+   }
+  },
+  "model.language_model.layers.38.linear_attn.out_proj": {
+   "t": 0.0043701171875000005,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 15665.5478515625
+   },
+   "current": {
+    "zeros": 4213868,
+    "band_mass": 3969.9267578125,
+    "retention": 0.2534176777875365
+   },
+   "rot": {
+    "zeros": 4407067,
+    "band_mass": 2096.213623046875,
+    "retention": 0.13381042545778546
+   }
+  },
+  "model.language_model.layers.38.mlp.down_proj": {
+   "t": 0.00311279296875,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 31710.068359375
+   },
+   "current": {
+    "zeros": 11877856,
+    "band_mass": 8213.091796875,
+    "retention": 0.25900580546830704
+   },
+   "rot": {
+    "zeros": 12469723,
+    "band_mass": 5363.2099609375,
+    "retention": 0.16913271520437706
+   }
+  },
+  "model.language_model.layers.38.mlp.gate_proj": {
+   "t": 0.003271484375,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 32397.65625
+   },
+   "current": {
+    "zeros": 11992003,
+    "band_mass": 9720.916015625,
+    "retention": 0.30004997709132125
+   },
+   "rot": {
+    "zeros": 12480774,
+    "band_mass": 6005.5693359375,
+    "retention": 0.18537048759314187
+   }
+  },
+  "model.language_model.layers.38.mlp.up_proj": {
+   "t": 0.00311279296875,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 31362.7890625
+   },
+   "current": {
+    "zeros": 12036187,
+    "band_mass": 6480.19140625,
+    "retention": 0.20662038039206992
+   },
+   "rot": {
+    "zeros": 12483663,
+    "band_mass": 3413.41650390625,
+    "retention": 0.1088365099514577
+   }
+  },
+  "model.language_model.layers.45.linear_attn.in_proj_qkv": {
+   "t": 0.004541015625,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 27323.837890625
+   },
+   "current": {
+    "zeros": 7413570,
+    "band_mass": 6115.74853515625,
+    "retention": 0.22382465302411292
+   },
+   "rot": {
+    "zeros": 7332904,
+    "band_mass": 4364.3876953125,
+    "retention": 0.1597282092209291
+   }
+  },
+  "model.language_model.layers.45.linear_attn.in_proj_z": {
+   "t": 0.0040771484375,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 14476.568359375
+   },
+   "current": {
+    "zeros": 4320194,
+    "band_mass": 3542.88916015625,
+    "retention": 0.24473266538073446
+   },
+   "rot": {
+    "zeros": 4403339,
+    "band_mass": 2503.642578125,
+    "retention": 0.17294447938027008
+   }
+  },
+  "model.language_model.layers.45.linear_attn.out_proj": {
+   "t": 0.00439453125,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 16123.46875
+   },
+   "current": {
+    "zeros": 4199564,
+    "band_mass": 6018.29052734375,
+    "retention": 0.3732627650203217
+   },
+   "rot": {
+    "zeros": 4409899,
+    "band_mass": 4192.29736328125,
+    "retention": 0.2600121244556169
+   }
+  },
+  "model.language_model.layers.45.mlp.down_proj": {
+   "t": 0.003271484375,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 33575.015625
+   },
+   "current": {
+    "zeros": 11904780,
+    "band_mass": 10886.046875,
+    "retention": 0.32423058254347425
+   },
+   "rot": {
+    "zeros": 12476044,
+    "band_mass": 7581.00146484375,
+    "retention": 0.22579293929498356
+   }
+  },
+  "model.language_model.layers.45.mlp.gate_proj": {
+   "t": 0.00311279296875,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 31391.171875
+   },
+   "current": {
+    "zeros": 12023804,
+    "band_mass": 8391.85546875,
+    "retention": 0.26733170402705775
+   },
+   "rot": {
+    "zeros": 12479299,
+    "band_mass": 5153.806640625,
+    "retention": 0.16418012876828925
+   }
+  },
+  "model.language_model.layers.45.mlp.up_proj": {
+   "t": 0.0033203125000000003,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 33547.6171875
+   },
+   "current": {
+    "zeros": 12094297,
+    "band_mass": 7915.9619140625,
+    "retention": 0.23596197219670267
+   },
+   "rot": {
+    "zeros": 12474762,
+    "band_mass": 4503.25048828125,
+    "retention": 0.1342345855180195
+   }
+  },
+  "model.language_model.layers.56.linear_attn.in_proj_qkv": {
+   "t": 0.00478515625,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 28214.341796875
+   },
+   "current": {
+    "zeros": 7370770,
+    "band_mass": 6461.5732421875,
+    "retention": 0.22901733057275073
+   },
+   "rot": {
+    "zeros": 7336425,
+    "band_mass": 4755.64013671875,
+    "retention": 0.16855399891857414
+   }
+  },
+  "model.language_model.layers.56.linear_attn.in_proj_z": {
+   "t": 0.0044189453125,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 15721.244140625
+   },
+   "current": {
+    "zeros": 4273951,
+    "band_mass": 5185.572265625,
+    "retention": 0.3298449040826897
+   },
+   "rot": {
+    "zeros": 4406692,
+    "band_mass": 3724.57568359375,
+    "retention": 0.23691354515442817
+   }
+  },
+  "model.language_model.layers.56.linear_attn.out_proj": {
+   "t": 0.0044189453125,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 15852.453125
+   },
+   "current": {
+    "zeros": 4188751,
+    "band_mass": 4700.35498046875,
+    "retention": 0.29650647400786745
+   },
+   "rot": {
+    "zeros": 4404370,
+    "band_mass": 2371.725341796875,
+    "retention": 0.14961251253009936
+   }
+  },
+  "model.language_model.layers.56.mlp.down_proj": {
+   "t": 0.0033447265625000003,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 33918.1640625
+   },
+   "current": {
+    "zeros": 11562537,
+    "band_mass": 10511.8359375,
+    "retention": 0.30991759807901603
+   },
+   "rot": {
+    "zeros": 12483048,
+    "band_mass": 6517.78125,
+    "retention": 0.1921619707360893
+   }
+  },
+  "model.language_model.layers.56.mlp.gate_proj": {
+   "t": 0.003515625,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 34880.0390625
+   },
+   "current": {
+    "zeros": 11908723,
+    "band_mass": 9292.908203125,
+    "retention": 0.26642482213031493
+   },
+   "rot": {
+    "zeros": 12485379,
+    "band_mass": 5578.35546875,
+    "retention": 0.15992973685477793
+   }
+  },
+  "model.language_model.layers.56.mlp.up_proj": {
+   "t": 0.0033447265625000003,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 33241.18359375
+   },
+   "current": {
+    "zeros": 11966157,
+    "band_mass": 6648.51171875,
+    "retention": 0.20000827287028528
+   },
+   "rot": {
+    "zeros": 12484893,
+    "band_mass": 3806.049560546875,
+    "retention": 0.11449801568625516
+   }
+  },
+  "model.language_model.layers.58.linear_attn.in_proj_qkv": {
+   "t": 0.0047119140625,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 27693.248046875
+   },
+   "current": {
+    "zeros": 7402876,
+    "band_mass": 4927.55078125,
+    "retention": 0.1779332916424024
+   },
+   "rot": {
+    "zeros": 7336537,
+    "band_mass": 3573.5126953125,
+    "retention": 0.1290391321835485
+   }
+  },
+  "model.language_model.layers.58.linear_attn.in_proj_z": {
+   "t": 0.00458984375,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 16389.06640625
+   },
+   "current": {
+    "zeros": 4309106,
+    "band_mass": 4325.1943359375,
+    "retention": 0.2639073043409037
+   },
+   "rot": {
+    "zeros": 4405190,
+    "band_mass": 3314.68212890625,
+    "retention": 0.20224960023605676
+   }
+  },
+  "model.language_model.layers.58.linear_attn.out_proj": {
+   "t": 0.0044677734375,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 15972.3369140625
+   },
+   "current": {
+    "zeros": 4243447,
+    "band_mass": 3983.00146484375,
+    "retention": 0.24936873585085736
+   },
+   "rot": {
+    "zeros": 4399270,
+    "band_mass": 2457.71484375,
+    "retention": 0.15387321573377016
+   }
+  },
+  "model.language_model.layers.58.mlp.down_proj": {
+   "t": 0.0034667968750000003,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 35430.640625
+   },
+   "current": {
+    "zeros": 11512965,
+    "band_mass": 12394.337890625,
+    "retention": 0.34981975126578735
+   },
+   "rot": {
+    "zeros": 12480187,
+    "band_mass": 7830.3583984375,
+    "retention": 0.22100527284602267
+   }
+  },
+  "model.language_model.layers.58.mlp.gate_proj": {
+   "t": 0.003662109375,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 36447.5546875
+   },
+   "current": {
+    "zeros": 11939013,
+    "band_mass": 9084.21484375,
+    "retention": 0.24924072195344038
+   },
+   "rot": {
+    "zeros": 12475044,
+    "band_mass": 5534.5908203125,
+    "retention": 0.1518508132511462
+   }
+  },
+  "model.language_model.layers.58.mlp.up_proj": {
+   "t": 0.0034667968750000003,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 34656.15625
+   },
+   "current": {
+    "zeros": 12018399,
+    "band_mass": 7288.9599609375,
+    "retention": 0.21032222697626773
+   },
+   "rot": {
+    "zeros": 12477833,
+    "band_mass": 4375.8544921875,
+    "retention": 0.12626485351177685
+   }
+  },
+  "model.language_model.layers.60.linear_attn.in_proj_qkv": {
+   "t": 0.004809570312500001,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 28494.595703125
+   },
+   "current": {
+    "zeros": 7547343,
+    "band_mass": 6367.59765625,
+    "retention": 0.2234668539463315
+   },
+   "rot": {
+    "zeros": 7328764,
+    "band_mass": 5000.39111328125,
+    "retention": 0.17548559612421022
+   }
+  },
+  "model.language_model.layers.60.linear_attn.in_proj_z": {
+   "t": 0.0044921875000000005,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 16497.921875
+   },
+   "current": {
+    "zeros": 4376218,
+    "band_mass": 5422.216796875,
+    "retention": 0.32866059361643085
+   },
+   "rot": {
+    "zeros": 4403653,
+    "band_mass": 4778.9873046875,
+    "retention": 0.2896720775438573
+   }
+  },
+  "model.language_model.layers.60.linear_attn.out_proj": {
+   "t": 0.0044921875000000005,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 16263.427734375
+   },
+   "current": {
+    "zeros": 4155791,
+    "band_mass": 5353.38671875,
+    "retention": 0.3291671845680402
+   },
+   "rot": {
+    "zeros": 4398781,
+    "band_mass": 2527.8896484375,
+    "retention": 0.15543400135104707
+   }
+  },
+  "model.language_model.layers.60.mlp.down_proj": {
+   "t": 0.0034912109375,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 35339.20703125
+   },
+   "current": {
+    "zeros": 11556935,
+    "band_mass": 11822.392578125,
+    "retention": 0.3345404034581368
+   },
+   "rot": {
+    "zeros": 12483226,
+    "band_mass": 7133.63720703125,
+    "retention": 0.2018618357996281
+   }
+  },
+  "model.language_model.layers.60.mlp.gate_proj": {
+   "t": 0.0036376953125,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 36543.296875
+   },
+   "current": {
+    "zeros": 12163518,
+    "band_mass": 10064.8125,
+    "retention": 0.2754215782562722
+   },
+   "rot": {
+    "zeros": 12473096,
+    "band_mass": 6839.2744140625,
+    "retention": 0.18715537455355827
+   }
+  },
+  "model.language_model.layers.60.mlp.up_proj": {
+   "t": 0.003515625,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 35094.8046875
+   },
+   "current": {
+    "zeros": 12092964,
+    "band_mass": 7632.43994140625,
+    "retention": 0.21748062168656998
+   },
+   "rot": {
+    "zeros": 12476111,
+    "band_mass": 4935.3994140625,
+    "retention": 0.14063048528149755
+   }
+  },
+  "model.language_model.layers.63.mlp.down_proj": {
+   "t": 0.0034423828125000003,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 37758.1875
+   },
+   "current": {
+    "zeros": 13068977,
+    "band_mass": 12089.2587890625,
+    "retention": 0.32017582382794463
+   },
+   "rot": {
+    "zeros": 12451114,
+    "band_mass": 8640.2177734375,
+    "retention": 0.2288303106031639
+   }
+  },
+  "model.language_model.layers.63.mlp.gate_proj": {
+   "t": 0.0038330078125000003,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 39290.85546875
+   },
+   "current": {
+    "zeros": 12604635,
+    "band_mass": 12935.107421875,
+    "retention": 0.3292141967273516
+   },
+   "rot": {
+    "zeros": 12469238,
+    "band_mass": 11244.990234375,
+    "retention": 0.28619866124622073
+   }
+  },
+  "model.language_model.layers.63.mlp.up_proj": {
+   "t": 0.0036376953125,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 36440.796875
+   },
+   "current": {
+    "zeros": 12384612,
+    "band_mass": 9253.6279296875,
+    "retention": 0.25393593782895285
+   },
+   "rot": {
+    "zeros": 12480104,
+    "band_mass": 7521.580078125,
+    "retention": 0.20640547746323124
+   }
+  },
+  "model.language_model.layers.63.self_attn.k_proj": {
+   "t": 0.004687500000000001,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 3894.1259765625
+   },
+   "current": {
+    "zeros": 1102711,
+    "band_mass": 1722.3330078125,
+    "retention": 0.442290007611123
+   },
+   "rot": {
+    "zeros": 721417,
+    "band_mass": 2615.84423828125,
+    "retention": 0.6717410412568008
+   }
+  },
+  "model.language_model.layers.63.self_attn.o_proj": {
+   "t": 0.0054687500000000005,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 23109.787109375
+   },
+   "current": {
+    "zeros": 5377175,
+    "band_mass": 7838.5380859375,
+    "retention": 0.33918694485755874
+   },
+   "rot": {
+    "zeros": 4386320,
+    "band_mass": 10944.2958984375,
+    "retention": 0.4735783954495064
+   }
+  },
+  "model.language_model.layers.63.self_attn.q_proj": {
+   "t": 0.004052734375,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 30022.49609375
+   },
+   "current": {
+    "zeros": 9402720,
+    "band_mass": 9729.615234375,
+    "retention": 0.3240774918911717
+   },
+   "rot": {
+    "zeros": 8794826,
+    "band_mass": 9494.287109375,
+    "retention": 0.3162390988320087
+   }
+  },
+  "model.language_model.layers.63.self_attn.v_proj": {
+   "t": 0.0076660156250000005,
+   "orig": {
+    "zeros": 0,
+    "band_mass": 5335.33642578125
+   },
+   "current": {
+    "zeros": 929498,
+    "band_mass": 2624.801513671875,
+    "retention": 0.4919655114883457
+   },
+   "rot": {
+    "zeros": 726086,
+    "band_mass": 2844.03369140625,
+    "retention": 0.5330561120126178
+   }
+  }
+ },
+ "summary": {
+  "n_tensors": 50,
+  "rot_beats_current_on_zeros": 14,
+  "rot_beats_current_on_band_retention": 4,
+  "floor_satisfied_no_regression_both": 4
+ }
+}

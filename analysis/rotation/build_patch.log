@@ -1,0 +1,957 @@
+H128 built; orthonormal (max|H H^T - I| = 1.110e-16)
+selected layers: [0, 27, 38, 45, 56, 58, 60, 63]
+patch set: 50 INT4 base tensors
+
+=== STEP 0: round-trip pin (unpatched INT4) ===
+  L1.mlp.down_proj: byte-identical=True  manual-vs-ct=0.000e+00  shape=(5120, 17408)  -> PASS
+  L5.mlp.down_proj: byte-identical=True  manual-vs-ct=0.000e+00  shape=(5120, 17408)  -> PASS
+  L10.mlp.down_proj: byte-identical=True  manual-vs-ct=0.000e+00  shape=(5120, 17408)  -> PASS
+round-trip pin: PASS (all 3)
+
+=== STEP 1: copy source -> patch dir ===
+copied 27 files; source total 23132037266 bytes, patch total 23132037266 bytes -> MATCH
+offset-math self-check: PASS (16-byte probe at header offset matches safe_open)
+
+=== STEP 2: rotate + quantize + in-place byte overwrite ===
+  [000] L0.linear_attn.in_proj_qkv                                 shape=(10240, 5120)  (3.5s)
+  [000] L0.linear_attn.in_proj_z                                   shape=(6144, 5120)  (0.6s)
+  [000] L0.linear_attn.out_proj                                    shape=(5120, 6144)  (0.7s)
+  [000] L0.mlp.down_proj                                           shape=(5120, 17408)  (1.4s)
+  [000] L0.mlp.gate_proj                                           shape=(17408, 5120)  (1.8s)
+  [000] L0.mlp.up_proj                                             shape=(17408, 5120)  (1.7s)
+  [000] L27.mlp.down_proj                                          shape=(5120, 17408)  (1.4s)
+  [000] L27.mlp.gate_proj                                          shape=(17408, 5120)  (1.7s)
+  [000] L27.mlp.up_proj                                            shape=(17408, 5120)  (1.8s)
+  [000] L27.self_attn.k_proj                                       shape=(1024, 5120)  (0.1s)
+  [000] L27.self_attn.o_proj                                       shape=(5120, 6144)  (0.5s)
+  [000] L27.self_attn.q_proj                                       shape=(12288, 5120)  (1.6s)
+  [000] L27.self_attn.v_proj                                       shape=(1024, 5120)  (0.1s)
+  [000] L38.linear_attn.in_proj_qkv                                shape=(10240, 5120)  (0.9s)
+  [000] L38.linear_attn.in_proj_z                                  shape=(6144, 5120)  (0.6s)
+  [000] L38.linear_attn.out_proj                                   shape=(5120, 6144)  (0.6s)
+  [000] L38.mlp.down_proj                                          shape=(5120, 17408)  (1.5s)
+  [000] L38.mlp.gate_proj                                          shape=(17408, 5120)  (7.2s)
+  [000] L38.mlp.up_proj                                            shape=(17408, 5120)  (2.0s)
+  [000] L45.linear_attn.in_proj_qkv                                shape=(10240, 5120)  (0.9s)
+  [000] L45.linear_attn.in_proj_z                                  shape=(6144, 5120)  (0.5s)
+  [000] L45.linear_attn.out_proj                                   shape=(5120, 6144)  (0.5s)
+  [000] L45.mlp.down_proj                                          shape=(5120, 17408)  (3.5s)
+  [000] L45.mlp.gate_proj                                          shape=(17408, 5120)  (4.0s)
+  [000] L45.mlp.up_proj                                            shape=(17408, 5120)  (1.6s)
+  [000] L56.linear_attn.in_proj_qkv                                shape=(10240, 5120)  (0.9s)
+  [000] L56.linear_attn.in_proj_z                                  shape=(6144, 5120)  (0.5s)
+  [000] L56.linear_attn.out_proj                                   shape=(5120, 6144)  (0.5s)
+  [000] L56.mlp.down_proj                                          shape=(5120, 17408)  (1.4s)
+  [000] L56.mlp.gate_proj                                          shape=(17408, 5120)  (1.6s)
+  [000] L56.mlp.up_proj                                            shape=(17408, 5120)  (1.8s)
+  [000] L58.linear_attn.in_proj_qkv                                shape=(10240, 5120)  (1.0s)
+  [000] L58.linear_attn.in_proj_z                                  shape=(6144, 5120)  (0.7s)
+  [000] L58.linear_attn.out_proj                                   shape=(5120, 6144)  (0.6s)
+  [000] L58.mlp.down_proj                                          shape=(5120, 17408)  (1.4s)
+  [000] L58.mlp.gate_proj                                          shape=(17408, 5120)  (1.6s)
+  [000] L58.mlp.up_proj                                            shape=(17408, 5120)  (1.9s)
+  [000] L60.linear_attn.in_proj_qkv                                shape=(10240, 5120)  (1.0s)
+  [000] L60.linear_attn.in_proj_z                                  shape=(6144, 5120)  (0.6s)
+  [000] L60.linear_attn.out_proj                                   shape=(5120, 6144)  (0.5s)
+  [000] L60.mlp.down_proj                                          shape=(5120, 17408)  (1.4s)
+  [000] L60.mlp.gate_proj                                          shape=(17408, 5120)  (1.6s)
+  [000] L60.mlp.up_proj                                            shape=(17408, 5120)  (1.6s)
+  [000] L63.mlp.down_proj                                          shape=(5120, 17408)  (1.3s)
+  [000] L63.mlp.gate_proj                                          shape=(17408, 5120)  (0.8s)
+  [000] L63.mlp.up_proj                                            shape=(17408, 5120)  (1.8s)
+  [000] L63.self_attn.k_proj                                       shape=(1024, 5120)  (0.1s)
+  [000] L63.self_attn.o_proj                                       shape=(5120, 6144)  (0.6s)
+  [000] L63.self_attn.q_proj                                       shape=(12288, 5120)  (1.2s)
+  [000] L63.self_attn.v_proj                                       shape=(1024, 5120)  (0.1s)
+patched 50 tensors across 4 shards
+
+=== STEP 3: dequant pin (new packed+scale read back from patch file) ===
+  L0.linear_attn.in_proj_qkv                                 max|manual - ct| = 0.000e+00  PASS
+  L0.linear_attn.in_proj_z                                   max|manual - ct| = 0.000e+00  PASS
+  L0.linear_attn.out_proj                                    max|manual - ct| = 0.000e+00  PASS
+  L0.mlp.down_proj                                           max|manual - ct| = 0.000e+00  PASS
+  L0.mlp.gate_proj                                           max|manual - ct| = 0.000e+00  PASS
+  L0.mlp.up_proj                                             max|manual - ct| = 0.000e+00  PASS
+  L27.mlp.down_proj                                          max|manual - ct| = 0.000e+00  PASS
+  L27.mlp.gate_proj                                          max|manual - ct| = 0.000e+00  PASS
+  L27.mlp.up_proj                                            max|manual - ct| = 0.000e+00  PASS
+  L27.self_attn.k_proj                                       max|manual - ct| = 0.000e+00  PASS
+  L27.self_attn.o_proj                                       max|manual - ct| = 0.000e+00  PASS
+  L27.self_attn.q_proj                                       max|manual - ct| = 0.000e+00  PASS
+  L27.self_attn.v_proj                                       max|manual - ct| = 0.000e+00  PASS
+  L38.linear_attn.in_proj_qkv                                max|manual - ct| = 0.000e+00  PASS
+  L38.linear_attn.in_proj_z                                  max|manual - ct| = 0.000e+00  PASS
+  L38.linear_attn.out_proj                                   max|manual - ct| = 0.000e+00  PASS
+  L38.mlp.down_proj                                          max|manual - ct| = 0.000e+00  PASS
+  L38.mlp.gate_proj                                          max|manual - ct| = 0.000e+00  PASS
+  L38.mlp.up_proj                                            max|manual - ct| = 0.000e+00  PASS
+  L45.linear_attn.in_proj_qkv                                max|manual - ct| = 0.000e+00  PASS
+  L45.linear_attn.in_proj_z                                  max|manual - ct| = 0.000e+00  PASS
+  L45.linear_attn.out_proj                                   max|manual - ct| = 0.000e+00  PASS
+  L45.mlp.down_proj                                          max|manual - ct| = 0.000e+00  PASS
+  L45.mlp.gate_proj                                          max|manual - ct| = 0.000e+00  PASS
+  L45.mlp.up_proj                                            max|manual - ct| = 0.000e+00  PASS
+  L56.linear_attn.in_proj_qkv                                max|manual - ct| = 0.000e+00  PASS
+  L56.linear_attn.in_proj_z                                  max|manual - ct| = 0.000e+00  PASS
+  L56.linear_attn.out_proj                                   max|manual - ct| = 0.000e+00  PASS
+  L56.mlp.down_proj                                          max|manual - ct| = 0.000e+00  PASS
+  L56.mlp.gate_proj                                          max|manual - ct| = 0.000e+00  PASS
+  L56.mlp.up_proj                                            max|manual - ct| = 0.000e+00  PASS
+  L58.linear_attn.in_proj_qkv                                max|manual - ct| = 0.000e+00  PASS
+  L58.linear_attn.in_proj_z                                  max|manual - ct| = 0.000e+00  PASS
+  L58.linear_attn.out_proj                                   max|manual - ct| = 0.000e+00  PASS
+  L58.mlp.down_proj                                          max|manual - ct| = 0.000e+00  PASS
+  L58.mlp.gate_proj                                          max|manual - ct| = 0.000e+00  PASS
+  L58.mlp.up_proj                                            max|manual - ct| = 0.000e+00  PASS
+  L60.linear_attn.in_proj_qkv                                max|manual - ct| = 0.000e+00  PASS
+  L60.linear_attn.in_proj_z                                  max|manual - ct| = 0.000e+00  PASS
+  L60.linear_attn.out_proj                                   max|manual - ct| = 0.000e+00  PASS
+  L60.mlp.down_proj                                          max|manual - ct| = 0.000e+00  PASS
+  L60.mlp.gate_proj                                          max|manual - ct| = 0.000e+00  PASS
+  L60.mlp.up_proj                                            max|manual - ct| = 0.000e+00  PASS
+  L63.mlp.down_proj                                          max|manual - ct| = 0.000e+00  PASS
+  L63.mlp.gate_proj                                          max|manual - ct| = 0.000e+00  PASS
+  L63.mlp.up_proj                                            max|manual - ct| = 0.000e+00  PASS
+  L63.self_attn.k_proj                                       max|manual - ct| = 0.000e+00  PASS
+  L63.self_attn.o_proj                                       max|manual - ct| = 0.000e+00  PASS
+  L63.self_attn.q_proj                                       max|manual - ct| = 0.000e+00  PASS
+  L63.self_attn.v_proj                                       max|manual - ct| = 0.000e+00  PASS
+dequant pin: PASS (all 0.0) (50 tensors)
+
+=== STEP 4: tail fidelity (zeros + low-band mass retention) ===
+  L0.linear_attn.in_proj_qkv                                 t=0.0042236  zeros o/c/r=0/7146627/7346489  retain c/r=0.3487/0.2772
+  L0.linear_attn.in_proj_z                                   t=0.0045166  zeros o/c/r=0/4327137/4405199  retain c/r=0.2260/0.1621
+  L0.linear_attn.out_proj                                    t=0.0041504  zeros o/c/r=0/4440037/4421437  retain c/r=0.2808/0.1901
+  L0.mlp.down_proj                                           t=0.0029419  zeros o/c/r=0/11725123/12484051  retain c/r=0.2148/0.0858
+  L0.mlp.gate_proj                                           t=0.0028198  zeros o/c/r=0/12177136/12481834  retain c/r=0.1770/0.1106
+  L0.mlp.up_proj                                             t=0.0027344  zeros o/c/r=0/12143131/12486621  retain c/r=0.1572/0.0959
+  L27.mlp.down_proj                                          t=0.0032471  zeros o/c/r=0/11928750/12475184  retain c/r=0.3273/0.2461
+  L27.mlp.gate_proj                                          t=0.0031738  zeros o/c/r=0/11907252/12480832  retain c/r=0.2327/0.1351
+  L27.mlp.up_proj                                            t=0.0032715  zeros o/c/r=0/12113337/12478338  retain c/r=0.2198/0.1241
+  L27.self_attn.k_proj                                       t=0.0047363  zeros o/c/r=0/861015/728146  retain c/r=0.3690/0.3964
+  L27.self_attn.o_proj                                       t=0.0043945  zeros o/c/r=0/4240210/4403171  retain c/r=0.3955/0.3041
+  L27.self_attn.q_proj                                       t=0.0044434  zeros o/c/r=0/8969533/8807092  retain c/r=0.3498/0.2991
+  L27.self_attn.v_proj                                       t=0.0047852  zeros o/c/r=0/802503/732718  retain c/r=0.3660/0.3460
+  L38.linear_attn.in_proj_qkv                                t=0.0044922  zeros o/c/r=0/7321056/7339916  retain c/r=0.1875/0.1278
+  L38.linear_attn.in_proj_z                                  t=0.0044434  zeros o/c/r=0/4262269/4404161  retain c/r=0.2899/0.2064
+  L38.linear_attn.out_proj                                   t=0.0043701  zeros o/c/r=0/4213868/4407067  retain c/r=0.2534/0.1338
+  L38.mlp.down_proj                                          t=0.0031128  zeros o/c/r=0/11877856/12469723  retain c/r=0.2590/0.1691
+  L38.mlp.gate_proj                                          t=0.0032715  zeros o/c/r=0/11992003/12480774  retain c/r=0.3000/0.1854
+  L38.mlp.up_proj                                            t=0.0031128  zeros o/c/r=0/12036187/12483663  retain c/r=0.2066/0.1088
+  L45.linear_attn.in_proj_qkv                                t=0.004541  zeros o/c/r=0/7413570/7332904  retain c/r=0.2238/0.1597
+  L45.linear_attn.in_proj_z                                  t=0.0040771  zeros o/c/r=0/4320194/4403339  retain c/r=0.2447/0.1729
+  L45.linear_attn.out_proj                                   t=0.0043945  zeros o/c/r=0/4199564/4409899  retain c/r=0.3733/0.2600
+  L45.mlp.down_proj                                          t=0.0032715  zeros o/c/r=0/11904780/12476044  retain c/r=0.3242/0.2258
+  L45.mlp.gate_proj                                          t=0.0031128  zeros o/c/r=0/12023804/12479299  retain c/r=0.2673/0.1642
+  L45.mlp.up_proj                                            t=0.0033203  zeros o/c/r=0/12094297/12474762  retain c/r=0.2360/0.1342
+  L56.linear_attn.in_proj_qkv                                t=0.0047852  zeros o/c/r=0/7370770/7336425  retain c/r=0.2290/0.1686
+  L56.linear_attn.in_proj_z                                  t=0.0044189  zeros o/c/r=0/4273951/4406692  retain c/r=0.3298/0.2369
+  L56.linear_attn.out_proj                                   t=0.0044189  zeros o/c/r=0/4188751/4404370  retain c/r=0.2965/0.1496
+  L56.mlp.down_proj                                          t=0.0033447  zeros o/c/r=0/11562537/12483048  retain c/r=0.3099/0.1922
+  L56.mlp.gate_proj                                          t=0.0035156  zeros o/c/r=0/11908723/12485379  retain c/r=0.2664/0.1599
+  L56.mlp.up_proj                                            t=0.0033447  zeros o/c/r=0/11966157/12484893  retain c/r=0.2000/0.1145
+  L58.linear_attn.in_proj_qkv                                t=0.0047119  zeros o/c/r=0/7402876/7336537  retain c/r=0.1779/0.1290
+  L58.linear_attn.in_proj_z                                  t=0.0045898  zeros o/c/r=0/4309106/4405190  retain c/r=0.2639/0.2022
+  L58.linear_attn.out_proj                                   t=0.0044678  zeros o/c/r=0/4243447/4399270  retain c/r=0.2494/0.1539
+  L58.mlp.down_proj                                          t=0.0034668  zeros o/c/r=0/11512965/12480187  retain c/r=0.3498/0.2210
+  L58.mlp.gate_proj                                          t=0.0036621  zeros o/c/r=0/11939013/12475044  retain c/r=0.2492/0.1519
+  L58.mlp.up_proj                                            t=0.0034668  zeros o/c/r=0/12018399/12477833  retain c/r=0.2103/0.1263
+  L60.linear_attn.in_proj_qkv                                t=0.0048096  zeros o/c/r=0/7547343/7328764  retain c/r=0.2235/0.1755
+  L60.linear_attn.in_proj_z                                  t=0.0044922  zeros o/c/r=0/4376218/4403653  retain c/r=0.3287/0.2897
+  L60.linear_attn.out_proj                                   t=0.0044922  zeros o/c/r=0/4155791/4398781  retain c/r=0.3292/0.1554
+  L60.mlp.down_proj                                          t=0.0034912  zeros o/c/r=0/11556935/12483226  retain c/r=0.3345/0.2019
+  L60.mlp.gate_proj                                          t=0.0036377  zeros o/c/r=0/12163518/12473096  retain c/r=0.2754/0.1872
+  L60.mlp.up_proj                                            t=0.0035156  zeros o/c/r=0/12092964/12476111  retain c/r=0.2175/0.1406
+  L63.mlp.down_proj                                          t=0.0034424  zeros o/c/r=0/13068977/12451114  retain c/r=0.3202/0.2288
+  L63.mlp.gate_proj                                          t=0.003833  zeros o/c/r=0/12604635/12469238  retain c/r=0.3292/0.2862
+  L63.mlp.up_proj                                            t=0.0036377  zeros o/c/r=0/12384612/12480104  retain c/r=0.2539/0.2064
+  L63.self_attn.k_proj                                       t=0.0046875  zeros o/c/r=0/1102711/721417  retain c/r=0.4423/0.6717
+  L63.self_attn.o_proj                                       t=0.0054688  zeros o/c/r=0/5377175/4386320  retain c/r=0.3392/0.4736
+  L63.self_attn.q_proj                                       t=0.0040527  zeros o/c/r=0/9402720/8794826  retain c/r=0.3241/0.3162
+  L63.self_attn.v_proj                                       t=0.007666  zeros o/c/r=0/929498/726086  retain c/r=0.4920/0.5331
+tail_fidelity.json written: 50 tensors; beats zeros=14, beats band=4, floor(both)=4
+
+=== STEP 5: byte-identity (sha256) ===
+  .gitattributes                                identical
+  README.md                                     identical
+  chat_template.jinja                           identical
+  config.json                                   identical
+  config.json.bak-mtp                           identical
+  config.json.bak-quant                         identical
+  generation_config.json                        identical
+  model-00001-of-00007.safetensors              REWRITTEN (expected diff)
+  model-00002-of-00007.safetensors              REWRITTEN (expected diff)
+  model-00003-of-00007.safetensors              REWRITTEN (expected diff)
+  model-00004-of-00007.safetensors              REWRITTEN (expected diff)
+  model-00005-of-00007.safetensors              identical
+  model-00006-of-00007.safetensors              identical
+  model-00006-of-00007.safetensors.bak_embed    identical
+  model-00007-of-00007.safetensors              identical
+  model-00007-of-00007.safetensors.bak          identical
+  model.safetensors.index.json                  identical
+  model.safetensors.index.json.bak-mtp          identical
+  model.safetensors.index.json.bak-quant        identical
+  model_extra_tensors.safetensors               identical
+  model_extra_tensors.safetensors.bak-draft     identical
+  model_extra_tensors.safetensors.bak-mtp       identical
+  mtp_draft_vocab_ids.pt                        identical
+  processor_config.json                         identical
+  quantization_config.json                      identical
+  tokenizer.json                                identical
+  tokenizer_config.json                         identical
+byte-identity: 23 non-rewritten files checked, 0 mismatches; 4 rewritten shards (allowed to differ)
+
+=== STEP 6: header/config validity ===
+quantization_config.json unchanged: True
+  model-00001-of-00007.safetensors: keys_same=True dtype_shape_same=True header_bytes_identical=True
+  model-00002-of-00007.safetensors: keys_same=True dtype_shape_same=True header_bytes_identical=True
+  model-00003-of-00007.safetensors: keys_same=True dtype_shape_same=True header_bytes_identical=True
+  model-00004-of-00007.safetensors: keys_same=True dtype_shape_same=True header_bytes_identical=True
+
+=== DONE in 329.1s ===
+
+FINAL_JSON:
+{
+ "patch_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+ "total_size_bytes": 23132037266,
+ "source_total_bytes": 23132037266,
+ "size_match": true,
+ "n_tensors": 50,
+ "selected_layers": [
+  0,
+  27,
+  38,
+  45,
+  56,
+  58,
+  60,
+  63
+ ],
+ "per_layer": {
+  "0": [
+   "in_proj_qkv",
+   "in_proj_z",
+   "out_proj",
+   "down_proj",
+   "gate_proj",
+   "up_proj"
+  ],
+  "27": [
+   "down_proj",
+   "gate_proj",
+   "up_proj",
+   "k_proj",
+   "o_proj",
+   "q_proj",
+   "v_proj"
+  ],
+  "38": [
+   "in_proj_qkv",
+   "in_proj_z",
+   "out_proj",
+   "down_proj",
+   "gate_proj",
+   "up_proj"
+  ],
+  "45": [
+   "in_proj_qkv",
+   "in_proj_z",
+   "out_proj",
+   "down_proj",
+   "gate_proj",
+   "up_proj"
+  ],
+  "56": [
+   "in_proj_qkv",
+   "in_proj_z",
+   "out_proj",
+   "down_proj",
+   "gate_proj",
+   "up_proj"
+  ],
+  "58": [
+   "in_proj_qkv",
+   "in_proj_z",
+   "out_proj",
+   "down_proj",
+   "gate_proj",
+   "up_proj"
+  ],
+  "60": [
+   "in_proj_qkv",
+   "in_proj_z",
+   "out_proj",
+   "down_proj",
+   "gate_proj",
+   "up_proj"
+  ],
+  "63": [
+   "down_proj",
+   "gate_proj",
+   "up_proj",
+   "k_proj",
+   "o_proj",
+   "q_proj",
+   "v_proj"
+  ]
+ },
+ "roundtrip_pin": {
+  "ok": true,
+  "per_tensor": {
+   "model.language_model.layers.1.mlp.down_proj": {
+    "byte_identical": true,
+    "manual_vs_ct_max_diff": 0.0,
+    "shape": [
+     5120,
+     17408
+    ]
+   },
+   "model.language_model.layers.5.mlp.down_proj": {
+    "byte_identical": true,
+    "manual_vs_ct_max_diff": 0.0,
+    "shape": [
+     5120,
+     17408
+    ]
+   },
+   "model.language_model.layers.10.mlp.down_proj": {
+    "byte_identical": true,
+    "manual_vs_ct_max_diff": 0.0,
+    "shape": [
+     5120,
+     17408
+    ]
+   }
+  }
+ },
+ "dequant_pin": {
+  "all_zero": true,
+  "per_tensor_max_diff": {
+   "model.language_model.layers.0.linear_attn.in_proj_qkv": 0.0,
+   "model.language_model.layers.0.linear_attn.in_proj_z": 0.0,
+   "model.language_model.layers.0.linear_attn.out_proj": 0.0,
+   "model.language_model.layers.0.mlp.down_proj": 0.0,
+   "model.language_model.layers.0.mlp.gate_proj": 0.0,
+   "model.language_model.layers.0.mlp.up_proj": 0.0,
+   "model.language_model.layers.27.mlp.down_proj": 0.0,
+   "model.language_model.layers.27.mlp.gate_proj": 0.0,
+   "model.language_model.layers.27.mlp.up_proj": 0.0,
+   "model.language_model.layers.27.self_attn.k_proj": 0.0,
+   "model.language_model.layers.27.self_attn.o_proj": 0.0,
+   "model.language_model.layers.27.self_attn.q_proj": 0.0,
+   "model.language_model.layers.27.self_attn.v_proj": 0.0,
+   "model.language_model.layers.38.linear_attn.in_proj_qkv": 0.0,
+   "model.language_model.layers.38.linear_attn.in_proj_z": 0.0,
+   "model.language_model.layers.38.linear_attn.out_proj": 0.0,
+   "model.language_model.layers.38.mlp.down_proj": 0.0,
+   "model.language_model.layers.38.mlp.gate_proj": 0.0,
+   "model.language_model.layers.38.mlp.up_proj": 0.0,
+   "model.language_model.layers.45.linear_attn.in_proj_qkv": 0.0,
+   "model.language_model.layers.45.linear_attn.in_proj_z": 0.0,
+   "model.language_model.layers.45.linear_attn.out_proj": 0.0,
+   "model.language_model.layers.45.mlp.down_proj": 0.0,
+   "model.language_model.layers.45.mlp.gate_proj": 0.0,
+   "model.language_model.layers.45.mlp.up_proj": 0.0,
+   "model.language_model.layers.56.linear_attn.in_proj_qkv": 0.0,
+   "model.language_model.layers.56.linear_attn.in_proj_z": 0.0,
+   "model.language_model.layers.56.linear_attn.out_proj": 0.0,
+   "model.language_model.layers.56.mlp.down_proj": 0.0,
+   "model.language_model.layers.56.mlp.gate_proj": 0.0,
+   "model.language_model.layers.56.mlp.up_proj": 0.0,
+   "model.language_model.layers.58.linear_attn.in_proj_qkv": 0.0,
+   "model.language_model.layers.58.linear_attn.in_proj_z": 0.0,
+   "model.language_model.layers.58.linear_attn.out_proj": 0.0,
+   "model.language_model.layers.58.mlp.down_proj": 0.0,
+   "model.language_model.layers.58.mlp.gate_proj": 0.0,
+   "model.language_model.layers.58.mlp.up_proj": 0.0,
+   "model.language_model.layers.60.linear_attn.in_proj_qkv": 0.0,
+   "model.language_model.layers.60.linear_attn.in_proj_z": 0.0,
+   "model.language_model.layers.60.linear_attn.out_proj": 0.0,
+   "model.language_model.layers.60.mlp.down_proj": 0.0,
+   "model.language_model.layers.60.mlp.gate_proj": 0.0,
+   "model.language_model.layers.60.mlp.up_proj": 0.0,
+   "model.language_model.layers.63.mlp.down_proj": 0.0,
+   "model.language_model.layers.63.mlp.gate_proj": 0.0,
+   "model.language_model.layers.63.mlp.up_proj": 0.0,
+   "model.language_model.layers.63.self_attn.k_proj": 0.0,
+   "model.language_model.layers.63.self_attn.o_proj": 0.0,
+   "model.language_model.layers.63.self_attn.q_proj": 0.0,
+   "model.language_model.layers.63.self_attn.v_proj": 0.0
+  }
+ },
+ "byte_identity": {
+  "checked": 23,
+  "mismatches": 0,
+  "mismatch_list": [],
+  "rewritten_shards": [
+   "model-00001-of-00007.safetensors",
+   "model-00002-of-00007.safetensors",
+   "model-00003-of-00007.safetensors",
+   "model-00004-of-00007.safetensors"
+  ],
+  "skip_hash": false
+ },
+ "header_config": {
+  "quant_config_unchanged": true,
+  "headers_consistent": true
+ },
+ "tail_fidelity_summary": {
+  "n_tensors": 50,
+  "rot_beats_current_on_zeros": 14,
+  "rot_beats_current_on_band_retention": 4,
+  "floor_satisfied_no_regression_both": 4
+ },
+ "tail_fidelity_table": {
+  "model.language_model.layers.0.linear_attn.in_proj_qkv": {
+   "t": 0.0042236328125,
+   "zeros": {
+    "current": 7146627,
+    "rot": 7346489
+   },
+   "band_retention": {
+    "current": 0.34867824875274717,
+    "rot": 0.2772000019559183
+   }
+  },
+  "model.language_model.layers.0.linear_attn.in_proj_z": {
+   "t": 0.0045166015625,
+   "zeros": {
+    "current": 4327137,
+    "rot": 4405199
+   },
+   "band_retention": {
+    "current": 0.22601054896584147,
+    "rot": 0.16213829220448397
+   }
+  },
+  "model.language_model.layers.0.linear_attn.out_proj": {
+   "t": 0.004150390625,
+   "zeros": {
+    "current": 4440037,
+    "rot": 4421437
+   },
+   "band_retention": {
+    "current": 0.2808442938983394,
+    "rot": 0.19007927293117435
+   }
+  },
+  "model.language_model.layers.0.mlp.down_proj": {
+   "t": 0.00294189453125,
+   "zeros": {
+    "current": 11725123,
+    "rot": 12484051
+   },
+   "band_retention": {
+    "current": 0.21482890196446344,
+    "rot": 0.08576301366788971
+   }
+  },
+  "model.language_model.layers.0.mlp.gate_proj": {
+   "t": 0.00281982421875,
+   "zeros": {
+    "current": 12177136,
+    "rot": 12481834
+   },
+   "band_retention": {
+    "current": 0.17700461766256642,
+    "rot": 0.11057450833850344
+   }
+  },
+  "model.language_model.layers.0.mlp.up_proj": {
+   "t": 0.0027343750000000003,
+   "zeros": {
+    "current": 12143131,
+    "rot": 12486621
+   },
+   "band_retention": {
+    "current": 0.15719753826586694,
+    "rot": 0.09592474377075916
+   }
+  },
+  "model.language_model.layers.27.mlp.down_proj": {
+   "t": 0.0032470703125,
+   "zeros": {
+    "current": 11928750,
+    "rot": 12475184
+   },
+   "band_retention": {
+    "current": 0.32726355204539936,
+    "rot": 0.24613729246622104
+   }
+  },
+  "model.language_model.layers.27.mlp.gate_proj": {
+   "t": 0.003173828125,
+   "zeros": {
+    "current": 11907252,
+    "rot": 12480832
+   },
+   "band_retention": {
+    "current": 0.23266508302938987,
+    "rot": 0.13508174174458493
+   }
+  },
+  "model.language_model.layers.27.mlp.up_proj": {
+   "t": 0.003271484375,
+   "zeros": {
+    "current": 12113337,
+    "rot": 12478338
+   },
+   "band_retention": {
+    "current": 0.219779122295779,
+    "rot": 0.12414664622965667
+   }
+  },
+  "model.language_model.layers.27.self_attn.k_proj": {
+   "t": 0.0047363281250000005,
+   "zeros": {
+    "current": 861015,
+    "rot": 728146
+   },
+   "band_retention": {
+    "current": 0.36898646363669313,
+    "rot": 0.3963769612540284
+   }
+  },
+  "model.language_model.layers.27.self_attn.o_proj": {
+   "t": 0.00439453125,
+   "zeros": {
+    "current": 4240210,
+    "rot": 4403171
+   },
+   "band_retention": {
+    "current": 0.3955192790936932,
+    "rot": 0.3041342898896033
+   }
+  },
+  "model.language_model.layers.27.self_attn.q_proj": {
+   "t": 0.004443359375,
+   "zeros": {
+    "current": 8969533,
+    "rot": 8807092
+   },
+   "band_retention": {
+    "current": 0.3497794863894216,
+    "rot": 0.299074244477868
+   }
+  },
+  "model.language_model.layers.27.self_attn.v_proj": {
+   "t": 0.00478515625,
+   "zeros": {
+    "current": 802503,
+    "rot": 732718
+   },
+   "band_retention": {
+    "current": 0.3660245998472341,
+    "rot": 0.34602820342800666
+   }
+  },
+  "model.language_model.layers.38.linear_attn.in_proj_qkv": {
+   "t": 0.0044921875000000005,
+   "zeros": {
+    "current": 7321056,
+    "rot": 7339916
+   },
+   "band_retention": {
+    "current": 0.1874775588368488,
+    "rot": 0.1278427999763014
+   }
+  },
+  "model.language_model.layers.38.linear_attn.in_proj_z": {
+   "t": 0.004443359375,
+   "zeros": {
+    "current": 4262269,
+    "rot": 4404161
+   },
+   "band_retention": {
+    "current": 0.2898664003924983,
+    "rot": 0.20641168577559313
+   }
+  },
+  "model.language_model.layers.38.linear_attn.out_proj": {
+   "t": 0.0043701171875000005,
+   "zeros": {
+    "current": 4213868,
+    "rot": 4407067
+   },
+   "band_retention": {
+    "current": 0.2534176777875365,
+    "rot": 0.13381042545778546
+   }
+  },
+  "model.language_model.layers.38.mlp.down_proj": {
+   "t": 0.00311279296875,
+   "zeros": {
+    "current": 11877856,
+    "rot": 12469723
+   },
+   "band_retention": {
+    "current": 0.25900580546830704,
+    "rot": 0.16913271520437706
+   }
+  },
+  "model.language_model.layers.38.mlp.gate_proj": {
+   "t": 0.003271484375,
+   "zeros": {
+    "current": 11992003,
+    "rot": 12480774
+   },
+   "band_retention": {
+    "current": 0.30004997709132125,
+    "rot": 0.18537048759314187
+   }
+  },
+  "model.language_model.layers.38.mlp.up_proj": {
+   "t": 0.00311279296875,
+   "zeros": {
+    "current": 12036187,
+    "rot": 12483663
+   },
+   "band_retention": {
+    "current": 0.20662038039206992,
+    "rot": 0.1088365099514577
+   }
+  },
+  "model.language_model.layers.45.linear_attn.in_proj_qkv": {
+   "t": 0.004541015625,
+   "zeros": {
+    "current": 7413570,
+    "rot": 7332904
+   },
+   "band_retention": {
+    "current": 0.22382465302411292,
+    "rot": 0.1597282092209291
+   }
+  },
+  "model.language_model.layers.45.linear_attn.in_proj_z": {
+   "t": 0.0040771484375,
+   "zeros": {
+    "current": 4320194,
+    "rot": 4403339
+   },
+   "band_retention": {
+    "current": 0.24473266538073446,
+    "rot": 0.17294447938027008
+   }
+  },
+  "model.language_model.layers.45.linear_attn.out_proj": {
+   "t": 0.00439453125,
+   "zeros": {
+    "current": 4199564,
+    "rot": 4409899
+   },
+   "band_retention": {
+    "current": 0.3732627650203217,
+    "rot": 0.2600121244556169
+   }
+  },
+  "model.language_model.layers.45.mlp.down_proj": {
+   "t": 0.003271484375,
+   "zeros": {
+    "current": 11904780,
+    "rot": 12476044
+   },
+   "band_retention": {
+    "current": 0.32423058254347425,
+    "rot": 0.22579293929498356
+   }
+  },
+  "model.language_model.layers.45.mlp.gate_proj": {
+   "t": 0.00311279296875,
+   "zeros": {
+    "current": 12023804,
+    "rot": 12479299
+   },
+   "band_retention": {
+    "current": 0.26733170402705775,
+    "rot": 0.16418012876828925
+   }
+  },
+  "model.language_model.layers.45.mlp.up_proj": {
+   "t": 0.0033203125000000003,
+   "zeros": {
+    "current": 12094297,
+    "rot": 12474762
+   },
+   "band_retention": {
+    "current": 0.23596197219670267,
+    "rot": 0.1342345855180195
+   }
+  },
+  "model.language_model.layers.56.linear_attn.in_proj_qkv": {
+   "t": 0.00478515625,
+   "zeros": {
+    "current": 7370770,
+    "rot": 7336425
+   },
+   "band_retention": {
+    "current": 0.22901733057275073,
+    "rot": 0.16855399891857414
+   }
+  },
+  "model.language_model.layers.56.linear_attn.in_proj_z": {
+   "t": 0.0044189453125,
+   "zeros": {
+    "current": 4273951,
+    "rot": 4406692
+   },
+   "band_retention": {
+    "current": 0.3298449040826897,
+    "rot": 0.23691354515442817
+   }
+  },
+  "model.language_model.layers.56.linear_attn.out_proj": {
+   "t": 0.0044189453125,
+   "zeros": {
+    "current": 4188751,
+    "rot": 4404370
+   },
+   "band_retention": {
+    "current": 0.29650647400786745,
+    "rot": 0.14961251253009936
+   }
+  },
+  "model.language_model.layers.56.mlp.down_proj": {
+   "t": 0.0033447265625000003,
+   "zeros": {
+    "current": 11562537,
+    "rot": 12483048
+   },
+   "band_retention": {
+    "current": 0.30991759807901603,
+    "rot": 0.1921619707360893
+   }
+  },
+  "model.language_model.layers.56.mlp.gate_proj": {
+   "t": 0.003515625,
+   "zeros": {
+    "current": 11908723,
+    "rot": 12485379
+   },
+   "band_retention": {
+    "current": 0.26642482213031493,
+    "rot": 0.15992973685477793
+   }
+  },
+  "model.language_model.layers.56.mlp.up_proj": {
+   "t": 0.0033447265625000003,
+   "zeros": {
+    "current": 11966157,
+    "rot": 12484893
+   },
+   "band_retention": {
+    "current": 0.20000827287028528,
+    "rot": 0.11449801568625516
+   }
+  },
+  "model.language_model.layers.58.linear_attn.in_proj_qkv": {
+   "t": 0.0047119140625,
+   "zeros": {
+    "current": 7402876,
+    "rot": 7336537
+   },
+   "band_retention": {
+    "current": 0.1779332916424024,
+    "rot": 0.1290391321835485
+   }
+  },
+  "model.language_model.layers.58.linear_attn.in_proj_z": {
+   "t": 0.00458984375,
+   "zeros": {
+    "current": 4309106,
+    "rot": 4405190
+   },
+   "band_retention": {
+    "current": 0.2639073043409037,
+    "rot": 0.20224960023605676
+   }
+  },
+  "model.language_model.layers.58.linear_attn.out_proj": {
+   "t": 0.0044677734375,
+   "zeros": {
+    "current": 4243447,
+    "rot": 4399270
+   },
+   "band_retention": {
+    "current": 0.24936873585085736,
+    "rot": 0.15387321573377016
+   }
+  },
+  "model.language_model.layers.58.mlp.down_proj": {
+   "t": 0.0034667968750000003,
+   "zeros": {
+    "current": 11512965,
+    "rot": 12480187
+   },
+   "band_retention": {
+    "current": 0.34981975126578735,
+    "rot": 0.22100527284602267
+   }
+  },
+  "model.language_model.layers.58.mlp.gate_proj": {
+   "t": 0.003662109375,
+   "zeros": {
+    "current": 11939013,
+    "rot": 12475044
+   },
+   "band_retention": {
+    "current": 0.24924072195344038,
+    "rot": 0.1518508132511462
+   }
+  },
+  "model.language_model.layers.58.mlp.up_proj": {
+   "t": 0.0034667968750000003,
+   "zeros": {
+    "current": 12018399,
+    "rot": 12477833
+   },
+   "band_retention": {
+    "current": 0.21032222697626773,
+    "rot": 0.12626485351177685
+   }
+  },
+  "model.language_model.layers.60.linear_attn.in_proj_qkv": {
+   "t": 0.004809570312500001,
+   "zeros": {
+    "current": 7547343,
+    "rot": 7328764
+   },
+   "band_retention": {
+    "current": 0.2234668539463315,
+    "rot": 0.17548559612421022
+   }
+  },
+  "model.language_model.layers.60.linear_attn.in_proj_z": {
+   "t": 0.0044921875000000005,
+   "zeros": {
+    "current": 4376218,
+    "rot": 4403653
+   },
+   "band_retention": {
+    "current": 0.32866059361643085,
+    "rot": 0.2896720775438573
+   }
+  },
+  "model.language_model.layers.60.linear_attn.out_proj": {
+   "t": 0.0044921875000000005,
+   "zeros": {
+    "current": 4155791,
+    "rot": 4398781
+   },
+   "band_retention": {
+    "current": 0.3291671845680402,
+    "rot": 0.15543400135104707
+   }
+  },
+  "model.language_model.layers.60.mlp.down_proj": {
+   "t": 0.0034912109375,
+   "zeros": {
+    "current": 11556935,
+    "rot": 12483226
+   },
+   "band_retention": {
+    "current": 0.3345404034581368,
+    "rot": 0.2018618357996281
+   }
+  },
+  "model.language_model.layers.60.mlp.gate_proj": {
+   "t": 0.0036376953125,
+   "zeros": {
+    "current": 12163518,
+    "rot": 12473096
+   },
+   "band_retention": {
+    "current": 0.2754215782562722,
+    "rot": 0.18715537455355827
+   }
+  },
+  "model.language_model.layers.60.mlp.up_proj": {
+   "t": 0.003515625,
+   "zeros": {
+    "current": 12092964,
+    "rot": 12476111
+   },
+   "band_retention": {
+    "current": 0.21748062168656998,
+    "rot": 0.14063048528149755
+   }
+  },
+  "model.language_model.layers.63.mlp.down_proj": {
+   "t": 0.0034423828125000003,
+   "zeros": {
+    "current": 13068977,
+    "rot": 12451114
+   },
+   "band_retention": {
+    "current": 0.32017582382794463,
+    "rot": 0.2288303106031639
+   }
+  },
+  "model.language_model.layers.63.mlp.gate_proj": {
+   "t": 0.0038330078125000003,
+   "zeros": {
+    "current": 12604635,
+    "rot": 12469238
+   },
+   "band_retention": {
+    "current": 0.3292141967273516,
+    "rot": 0.28619866124622073
+   }
+  },
+  "model.language_model.layers.63.mlp.up_proj": {
+   "t": 0.0036376953125,
+   "zeros": {
+    "current": 12384612,
+    "rot": 12480104
+   },
+   "band_retention": {
+    "current": 0.25393593782895285,
+    "rot": 0.20640547746323124
+   }
+  },
+  "model.language_model.layers.63.self_attn.k_proj": {
+   "t": 0.004687500000000001,
+   "zeros": {
+    "current": 1102711,
+    "rot": 721417
+   },
+   "band_retention": {
+    "current": 0.442290007611123,
+    "rot": 0.6717410412568008
+   }
+  },
+  "model.language_model.layers.63.self_attn.o_proj": {
+   "t": 0.0054687500000000005,
+   "zeros": {
+    "current": 5377175,
+    "rot": 4386320
+   },
+   "band_retention": {
+    "current": 0.33918694485755874,
+    "rot": 0.4735783954495064
+   }
+  },
+  "model.language_model.layers.63.self_attn.q_proj": {
+   "t": 0.004052734375,
+   "zeros": {
+    "current": 9402720,
+    "rot": 8794826
+   },
+   "band_retention": {
+    "current": 0.3240774918911717,
+    "rot": 0.3162390988320087
+   }
+  },
+  "model.language_model.layers.63.self_attn.v_proj": {
+   "t": 0.0076660156250000005,
+   "zeros": {
+    "current": 929498,
+    "rot": 726086
+   },
+   "band_retention": {
+    "current": 0.4919655114883457,
+    "rot": 0.5330561120126178
+   }
+  }
+ },
+ "runtime_s": 329.1
+}

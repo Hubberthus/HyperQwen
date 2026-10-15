@@ -1,0 +1,113 @@
+(MainProcess pid=162924) INFO 10-14 14:12:40 [api_utils.py:286] non-default args: {'dtype': 'bfloat16', 'max_model_len': 64, 'enable_prefix_caching': False, 'gpu_memory_utilization': 0.85, 'disable_log_stats': True, 'enforce_eager': True, 'model': 'models/Qwen3.8-27B-W4A16-rot-patch-AR'}
+(MainProcess pid=162924) WARNING 10-14 14:12:40 [arg_utils.py:1910] The global random seed is set to 0. Since VLLM_ENABLE_V1_MULTIPROCESSING is set to False, this may affect the random state of the Python process that launched vLLM.
+(MainProcess pid=162924) INFO 10-14 14:12:40 [model.py:699] Resolved architecture: Qwen3_5ForConditionalGeneration
+(MainProcess pid=162924) INFO 10-14 14:12:40 [model.py:2109] Using max model len 64
+(MainProcess pid=162924) WARNING 10-14 14:12:40 [model.py:1069] Model does not support mm_device_do_normalize, forcing mm_device_do_normalize = False.
+(MainProcess pid=162924) INFO 10-14 14:12:42 [scheduler.py:308] Chunked prefill is enabled with max_num_batched_tokens=8192.
+(MainProcess pid=162924) WARNING 10-14 14:12:42 [vllm.py:1706] Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+(MainProcess pid=162924) WARNING 10-14 14:12:42 [vllm.py:1750] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(MainProcess pid=162924) INFO 10-14 14:12:42 [kernel.py:408] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(MainProcess pid=162924) INFO 10-14 14:12:42 [vllm.py:1968] Cudagraph is disabled under eager mode
+(MainProcess pid=162924) INFO 10-14 14:12:42 [compilation.py:331] Enabled custom fusions: norm_quant, act_quant
+(MainProcess pid=162924) INFO 10-14 14:12:50 [core.py:191] Initializing a V1 LLM engine (v0.31.0) with config: model='models/Qwen3.8-27B-W4A16-rot-patch-AR', speculative_config=None, tokenizer='models/Qwen3.8-27B-W4A16-rot-patch-AR', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=64, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=compressed-tensors, quantization_config=None, enforce_eager=True, aux_output_config=AuxOutputConfig(enable_return_routed_experts=False, max_bytes=None), kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=models/Qwen3.8-27B-W4A16-rot-patch-AR, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_jit_warmup=False, moe_backend='auto', sparse_indexer_topk_backend='auto', linear_backend='auto', linear_backend_per_quant=None)
+(MainProcess pid=162924) INFO 10-14 14:12:50 [parallel_state.py:1825] world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_e015820d562e4f9ca7e2f7b0c38625cd backend=nccl
+(MainProcess pid=162924) INFO 10-14 14:12:50 [parallel_state.py:2269] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, ETP rank 0, EP rank N/A, EPLB rank N/A
+(MainProcess pid=162924) INFO 10-14 14:12:50 [gpu_worker.py:479] Using V2 Model Runner
+(MainProcess pid=162924) WARNING 10-14 14:12:50 [buffer_utils.py:47] Pinned memory is not available on this platform; falling back to device memory for UVA buffers.
+(MainProcess pid=162924) INFO 10-14 14:12:51 [model_runner.py:378] Loading model from scratch...
+(MainProcess pid=162924) INFO 10-14 14:12:51 [cuda.py:651] Using backend AttentionBackendEnum.FLASH_ATTN for vit attention
+(MainProcess pid=162924) INFO 10-14 14:12:51 [mm_encoder_attention.py:372] Using AttentionBackendEnum.FLASH_ATTN for MMEncoderAttention.
+(MainProcess pid=162924) INFO 10-14 14:12:51 [__init__.py:870] Using MarlinLinearKernel for mixed-precision linear
+(MainProcess pid=162924) INFO 10-14 14:12:51 [compressed_tensors_wNa16.py:138] Using MarlinLinearKernel for CompressedTensorsWNA16
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/hubbe/qwen-serving/analysis/rotation/pin_test.py", line 11, in <module>
+[rank0]:     llm = LLM(model="models/Qwen3.8-27B-W4A16-rot-patch-AR", dtype="bfloat16", max_model_len=64,
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/entrypoints/llm.py", line 344, in __init__
+[rank0]:     self.llm_engine = LLMEngine.from_engine_args(
+[rank0]:                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py", line 185, in from_engine_args
+[rank0]:     return cls(
+[rank0]:            ^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py", line 111, in __init__
+[rank0]:     self.engine_core = EngineCoreClient.make_client(
+[rank0]:                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 133, in make_client
+[rank0]:     return InprocClient(vllm_config, executor_class, log_stats)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 363, in __init__
+[rank0]:     self.engine_core = EngineCore(
+[rank0]:                        ^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 202, in __init__
+[rank0]:     self.model_executor = executor_class(vllm_config)
+[rank0]:                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 175, in sync_wrapper
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/v1/executor/abstract.py", line 113, in __init__
+[rank0]:     self._init_executor()
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/v1/executor/uniproc_executor.py", line 74, in _init_executor
+[rank0]:     self.driver_worker.load_model()
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 545, in load_model
+[rank0]:     self.model_runner.load_model(load_dummy_weights=load_dummy_weights)
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/v1/worker/gpu/model_runner.py", line 382, in load_model
+[rank0]:     self.model = model_loader.load_model(
+[rank0]:                  ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 175, in sync_wrapper
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/model_executor/model_loader/base_loader.py", line 68, in load_model
+[rank0]:     model = self.create_model(
+[rank0]:             ^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/model_executor/model_loader/base_loader.py", line 46, in create_model
+[rank0]:     model = initialize_model(
+[rank0]:             ^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 175, in sync_wrapper
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/model_executor/model_loader/utils.py", line 95, in initialize_model
+[rank0]:     model = model_class(vllm_config=vllm_config, prefix=prefix)
+[rank0]:             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/model_executor/models/qwen3_5.py", line 559, in __init__
+[rank0]:     self.language_model = Qwen3_5ForCausalLM(
+[rank0]:                           ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/model_executor/models/qwen3_5.py", line 379, in __init__
+[rank0]:     self.model = Qwen3_5Model(
+[rank0]:                  ^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/compilation/decorators.py", line 383, in __init__
+[rank0]:     old_init(self, *args, **kwargs)
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/model_executor/models/qwen3_5.py", line 291, in __init__
+[rank0]:     self.start_layer, self.end_layer, self.layers = make_layers(
+[rank0]:                                                     ^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 890, in make_layers
+[rank0]:     + get_offloader().wrap_modules(
+[rank0]:       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/model_executor/offloader/base.py", line 120, in wrap_modules
+[rank0]:     return list(modules_generator)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/model_executor/models/utils.py", line 891, in <genexpr>
+[rank0]:     layer_fn(prefix=f"{prefix}.{idx}") for idx in range(start_layer, end_layer)
+[rank0]:     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/model_executor/models/qwen3_5.py", line 285, in get_layer
+[rank0]:     return Qwen3_5DecoderLayer(
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/model_executor/models/qwen3_5.py", line 177, in __init__
+[rank0]:     self.linear_attn = QwenGatedDeltaNetAttention(
+[rank0]:                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py", line 434, in __init__
+[rank0]:     self.in_proj_qkvz = self.create_qkvz_proj(
+[rank0]:                         ^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py", line 582, in create_qkvz_proj
+[rank0]:     return MergedColumnParallelLinear(
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/model_executor/layers/linear.py", line 719, in __init__
+[rank0]:     super().__init__(
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/model_executor/layers/linear.py", line 519, in __init__
+[rank0]:     self.quant_method.create_weights(
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/model_executor/layers/quantization/compressed_tensors/transform/linear.py", line 106, in create_weights
+[rank0]:     self._validate_tfm_schemes(num_partitions)
+[rank0]:   File "/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/vllm/model_executor/layers/quantization/compressed_tensors/transform/linear.py", line 178, in _validate_tfm_schemes
+[rank0]:     if self.input_tfms[part_index] != self.input_tfms[0]:
+[rank0]:        ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+[rank0]: KeyError: 2
+[rank0]:[W1014 14:12:52.695837401 ProcessGroupNCCL.cpp:1624] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())

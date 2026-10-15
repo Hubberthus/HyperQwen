@@ -1,0 +1,125 @@
+  roundtrip mlp.down_proj: byte-identical=True manual-vs-ct=0.000e+00 -> PASS
+  roundtrip mlp.down_proj: byte-identical=True manual-vs-ct=0.000e+00 -> PASS
+  roundtrip mlp.down_proj: byte-identical=True manual-vs-ct=0.000e+00 -> PASS
+round-trip pin: PASS (3/3)
+
+layers to process: [0, 27, 38, 45, 56, 58, 60, 63] (iters=200 batch_seqs=4 gpumem=0.85)
+calibration: 296960 rows -> 145 seqs of 2048
+model object: Qwen3_5ForConditionalGeneration (1201 submodules)
+L0: capture modules: {'linear_attn.in_proj_qkvz': 'language_model.model.layers.0.linear_attn.in_proj_qkvz', 'linear_attn.out_proj': 'language_model.model.layers.0.linear_attn.out_proj', 'mlp.gate_up_proj': 'language_model.model.layers.0.mlp.gate_up_proj', 'mlp.down_proj': 'language_model.model.layers.0.mlp.down_proj'}
+L0: captured in 348.4s; rows/module: {'linear_attn.in_proj_qkvz': 296960, 'linear_attn.out_proj': 296960, 'mlp.gate_up_proj': 296960, 'mlp.down_proj': 296960}; shapes: {'linear_attn.in_proj_qkvz': {8192: 5120, 2048: 5120}, 'linear_attn.out_proj': {8192: 6144, 2048: 6144}, 'mlp.gate_up_proj': {8192: 5120, 2048: 5120}, 'mlp.down_proj': {8192: 17408, 2048: 17408}}
+  L0 linear_attn.in_proj_qkv        [10240x5120] loss0=0.0143301 best_batch=0.00492029 moved=2890541 | eval 0.0143301 -> 0.00581158 (+59.44%) (18.0s)
+  L0 linear_attn.in_proj_z          [6144x5120] loss0=0.0149771 best_batch=0.00528011 moved=1733104 | eval 0.0149771 -> 0.00596183 (+60.19%) (10.8s)
+  L0 linear_attn.out_proj           [5120x6144] loss0=5.36797e-05 best_batch=2.40502e-06 moved=1379553 | eval 5.36797e-05 -> 3.09437e-06 (+94.24%) (15.3s)
+  L0 mlp.gate_proj                  [17408x5120] loss0=6.21848e-05 best_batch=1.97488e-05 moved=5390629 | eval 6.21848e-05 -> 2.49937e-05 (+59.81%) (57.3s)
+  L0 mlp.up_proj                    [17408x5120] loss0=5.79288e-05 best_batch=1.91742e-05 moved=5388224 | eval 5.79288e-05 -> 2.30716e-05 (+60.17%) (57.0s)
+  L0 mlp.down_proj                  [5120x17408] loss0=1.90671e-06 best_batch=5.08136e-07 moved=5884282 | eval 1.90671e-06 -> 8.32499e-07 (+56.34%) (46.8s)
+L0: done (6 tensors, 556.2s)
+
+L27: capture modules: {'self_attn.qkv_proj': 'language_model.model.layers.27.self_attn.qkv_proj', 'self_attn.o_proj': 'language_model.model.layers.27.self_attn.o_proj', 'mlp.gate_up_proj': 'language_model.model.layers.27.mlp.gate_up_proj', 'mlp.down_proj': 'language_model.model.layers.27.mlp.down_proj'}
+L27: captured in 351.7s; rows/module: {'self_attn.qkv_proj': 296960, 'self_attn.o_proj': 296960, 'mlp.gate_up_proj': 296960, 'mlp.down_proj': 296960}; shapes: {'self_attn.qkv_proj': {8192: 5120, 2048: 5120}, 'self_attn.o_proj': {8192: 6144, 2048: 6144}, 'mlp.gate_up_proj': {8192: 5120, 2048: 5120}, 'mlp.down_proj': {8192: 17408, 2048: 17408}}
+  L27 self_attn.q_proj               [12288x5120] loss0=0.0108366 best_batch=0.00224703 moved=3501326 | eval 0.0108366 -> 0.00247015 (+77.21%) (29.4s)
+  L27 self_attn.k_proj               [1024x5120] loss0=0.0106454 best_batch=0.00225536 moved=291163 | eval 0.0106454 -> 0.00252451 (+76.29%) (5.2s)
+  L27 self_attn.v_proj               [1024x5120] loss0=0.0114638 best_batch=0.00231562 moved=291238 | eval 0.0114638 -> 0.00274122 (+76.09%) (4.9s)
+  L27 self_attn.o_proj               [5120x6144] loss0=0.000431542 best_batch=0.00018055 moved=1508730 | eval 0.000431542 -> 0.000179311 (+58.45%) (11.1s)
+  L27 mlp.gate_proj                  [17408x5120] loss0=0.00279395 best_batch=0.00114988 moved=5926413 | eval 0.00279395 -> 0.00139491 (+50.07%) (51.6s)
+  L27 mlp.up_proj                    [17408x5120] loss0=0.00286041 best_batch=0.00130935 moved=5869303 | eval 0.00286041 -> 0.00145468 (+49.14%) (56.6s)
+  L27 mlp.down_proj                  [5120x17408] loss0=0.000347602 best_batch=0.000227384 moved=6295468 | eval 0.000347602 -> 0.000261492 (+24.77%) (39.8s)
+L27: done (7 tensors, 551.5s)
+
+L38: capture modules: {'linear_attn.in_proj_qkvz': 'language_model.model.layers.38.linear_attn.in_proj_qkvz', 'linear_attn.out_proj': 'language_model.model.layers.38.linear_attn.out_proj', 'mlp.gate_up_proj': 'language_model.model.layers.38.mlp.gate_up_proj', 'mlp.down_proj': 'language_model.model.layers.38.mlp.down_proj'}
+L38: captured in 350.5s; rows/module: {'linear_attn.in_proj_qkvz': 296960, 'linear_attn.out_proj': 296960, 'mlp.gate_up_proj': 296960, 'mlp.down_proj': 296960}; shapes: {'linear_attn.in_proj_qkvz': {8192: 5120, 2048: 5120}, 'linear_attn.out_proj': {8192: 6144, 2048: 6144}, 'mlp.gate_up_proj': {8192: 5120, 2048: 5120}, 'mlp.down_proj': {8192: 17408, 2048: 17408}}
+  L38 linear_attn.in_proj_qkv        [10240x5120] loss0=0.0136995 best_batch=0.00438567 moved=3078386 | eval 0.0136995 -> 0.00523251 (+61.81%) (17.2s)
+  L38 linear_attn.in_proj_z          [6144x5120] loss0=0.01375 best_batch=0.00446795 moved=1845997 | eval 0.01375 -> 0.00512411 (+62.73%) (10.3s)
+  L38 linear_attn.out_proj           [5120x6144] loss0=0.000205388 best_batch=9.30367e-05 moved=2380124 | eval 0.000205388 -> 0.000131819 (+35.82%) (11.3s)
+  L38 mlp.gate_proj                  [17408x5120] loss0=0.00481129 best_batch=0.00208917 moved=5747640 | eval 0.00481129 -> 0.00245695 (+48.93%) (51.2s)
+  L38 mlp.up_proj                    [17408x5120] loss0=0.00407865 best_batch=0.00171011 moved=5669277 | eval 0.00407865 -> 0.00189743 (+53.48%) (57.0s)
+  L38 mlp.down_proj                  [5120x17408] loss0=0.000571269 best_batch=0.000311724 moved=6200565 | eval 0.000571269 -> 0.000419184 (+26.62%) (34.3s)
+L38: done (6 tensors, 533.1s)
+
+L45: capture modules: {'linear_attn.in_proj_qkvz': 'language_model.model.layers.45.linear_attn.in_proj_qkvz', 'linear_attn.out_proj': 'language_model.model.layers.45.linear_attn.out_proj', 'mlp.gate_up_proj': 'language_model.model.layers.45.mlp.gate_up_proj', 'mlp.down_proj': 'language_model.model.layers.45.mlp.down_proj'}
+L45: captured in 348.9s; rows/module: {'linear_attn.in_proj_qkvz': 296960, 'linear_attn.out_proj': 296960, 'mlp.gate_up_proj': 296960, 'mlp.down_proj': 296960}; shapes: {'linear_attn.in_proj_qkvz': {8192: 5120, 2048: 5120}, 'linear_attn.out_proj': {8192: 6144, 2048: 6144}, 'mlp.gate_up_proj': {8192: 5120, 2048: 5120}, 'mlp.down_proj': {8192: 17408, 2048: 17408}}
+  L45 linear_attn.in_proj_qkv        [10240x5120] loss0=0.012131 best_batch=0.00328974 moved=3049528 | eval 0.012131 -> 0.00356968 (+70.57%) (16.4s)
+  L45 linear_attn.in_proj_z          [6144x5120] loss0=0.0102676 best_batch=0.00276142 moved=1799540 | eval 0.0102676 -> 0.00322389 (+68.60%) (10.6s)
+  L45 linear_attn.out_proj           [5120x6144] loss0=0.0002995 best_batch=0.000173342 moved=2031541 | eval 0.0002995 -> 0.000192272 (+35.80%) (11.8s)
+  L45 mlp.gate_proj                  [17408x5120] loss0=0.00353138 best_batch=0.0013835 moved=5721466 | eval 0.00353138 -> 0.00155149 (+56.07%) (51.5s)
+  L45 mlp.up_proj                    [17408x5120] loss0=0.00390182 best_batch=0.00168551 moved=5538917 | eval 0.00390182 -> 0.00230514 (+40.92%) (98.4s)
+  L45 mlp.down_proj                  [5120x17408] loss0=0.00058519 best_batch=0.000347073 moved=5958675 | eval 0.00058519 -> 0.000442373 (+24.41%) (63.3s)
+L45: done (6 tensors, 602.3s)
+
+L56: capture modules: {'linear_attn.in_proj_qkvz': 'language_model.model.layers.56.linear_attn.in_proj_qkvz', 'linear_attn.out_proj': 'language_model.model.layers.56.linear_attn.out_proj', 'mlp.gate_up_proj': 'language_model.model.layers.56.mlp.gate_up_proj', 'mlp.down_proj': 'language_model.model.layers.56.mlp.down_proj'}
+L56: captured in 351.4s; rows/module: {'linear_attn.in_proj_qkvz': 296960, 'linear_attn.out_proj': 296960, 'mlp.gate_up_proj': 296960, 'mlp.down_proj': 296960}; shapes: {'linear_attn.in_proj_qkvz': {8192: 5120, 2048: 5120}, 'linear_attn.out_proj': {8192: 6144, 2048: 6144}, 'mlp.gate_up_proj': {8192: 5120, 2048: 5120}, 'mlp.down_proj': {8192: 17408, 2048: 17408}}
+  L56 linear_attn.in_proj_qkv        [10240x5120] loss0=0.0202995 best_batch=0.0086036 moved=3010208 | eval 0.0202995 -> 0.00983827 (+51.53%) (24.4s)
+  L56 linear_attn.in_proj_z          [6144x5120] loss0=0.0171256 best_batch=0.00687009 moved=1827931 | eval 0.0171256 -> 0.0081101 (+52.64%) (10.4s)
+  L56 linear_attn.out_proj           [5120x6144] loss0=0.00303302 best_batch=0.000748296 moved=1870287 | eval 0.00303302 -> 0.00113828 (+62.47%) (12.2s)
+  L56 mlp.gate_proj                  [17408x5120] loss0=0.0106178 best_batch=0.00490144 moved=5307547 | eval 0.0106178 -> 0.00551549 (+48.05%) (60.2s)
+  L56 mlp.up_proj                    [17408x5120] loss0=0.0094184 best_batch=0.00445515 moved=5266908 | eval 0.0094184 -> 0.00496544 (+47.28%) (66.9s)
+  L56 mlp.down_proj                  [5120x17408] loss0=0.00507275 best_batch=0.00212023 moved=5162297 | eval 0.00507275 -> 0.00292529 (+42.33%) (66.8s)
+L56: done (6 tensors, 593.7s)
+
+L58: capture modules: {'linear_attn.in_proj_qkvz': 'language_model.model.layers.58.linear_attn.in_proj_qkvz', 'linear_attn.out_proj': 'language_model.model.layers.58.linear_attn.out_proj', 'mlp.gate_up_proj': 'language_model.model.layers.58.mlp.gate_up_proj', 'mlp.down_proj': 'language_model.model.layers.58.mlp.down_proj'}
+L58: captured in 361.8s; rows/module: {'linear_attn.in_proj_qkvz': 296960, 'linear_attn.out_proj': 296960, 'mlp.gate_up_proj': 296960, 'mlp.down_proj': 296960}; shapes: {'linear_attn.in_proj_qkvz': {8192: 5120, 2048: 5120}, 'linear_attn.out_proj': {8192: 6144, 2048: 6144}, 'mlp.gate_up_proj': {8192: 5120, 2048: 5120}, 'mlp.down_proj': {8192: 17408, 2048: 17408}}
+  L58 linear_attn.in_proj_qkv        [10240x5120] loss0=0.0201776 best_batch=0.00938369 moved=3076432 | eval 0.0201776 -> 0.010641 (+47.26%) (26.7s)
+  L58 linear_attn.in_proj_z          [6144x5120] loss0=0.0189254 best_batch=0.00832172 moved=1843868 | eval 0.0189254 -> 0.00861742 (+54.47%) (9.5s)
+  L58 linear_attn.out_proj           [5120x6144] loss0=0.00192113 best_batch=0.000658878 moved=2100971 | eval 0.00192113 -> 0.000862905 (+55.08%) (12.2s)
+  L58 mlp.gate_proj                  [17408x5120] loss0=0.0140931 best_batch=0.00651801 moved=5419643 | eval 0.0140931 -> 0.00793374 (+43.70%) (52.1s)
+  L58 mlp.up_proj                    [17408x5120] loss0=0.0122763 best_batch=0.00588693 moved=5387006 | eval 0.0122763 -> 0.00667885 (+45.60%) (61.3s)
+  L58 mlp.down_proj                  [5120x17408] loss0=0.00698001 best_batch=0.00311773 moved=5103980 | eval 0.00698001 -> 0.00362886 (+48.01%) (40.8s)
+L58: done (6 tensors, 565.9s)
+
+L60: capture modules: {'linear_attn.in_proj_qkvz': 'language_model.model.layers.60.linear_attn.in_proj_qkvz', 'linear_attn.out_proj': 'language_model.model.layers.60.linear_attn.out_proj', 'mlp.gate_up_proj': 'language_model.model.layers.60.mlp.gate_up_proj', 'mlp.down_proj': 'language_model.model.layers.60.mlp.down_proj'}
+L60: captured in 360.4s; rows/module: {'linear_attn.in_proj_qkvz': 296960, 'linear_attn.out_proj': 296960, 'mlp.gate_up_proj': 296960, 'mlp.down_proj': 296960}; shapes: {'linear_attn.in_proj_qkvz': {8192: 5120, 2048: 5120}, 'linear_attn.out_proj': {8192: 6144, 2048: 6144}, 'mlp.gate_up_proj': {8192: 5120, 2048: 5120}, 'mlp.down_proj': {8192: 17408, 2048: 17408}}
+  L60 linear_attn.in_proj_qkv        [10240x5120] loss0=0.0249618 best_batch=0.0101022 moved=2944126 | eval 0.0249618 -> 0.0119468 (+52.14%) (22.1s)
+  L60 linear_attn.in_proj_z          [6144x5120] loss0=0.0204363 best_batch=0.00886686 moved=1773156 | eval 0.0204363 -> 0.0104131 (+49.05%) (10.4s)
+  L60 linear_attn.out_proj           [5120x6144] loss0=0.00574851 best_batch=0.0016516 moved=1804819 | eval 0.00574851 -> 0.00184583 (+67.89%) (11.6s)
+  L60 mlp.gate_proj                  [17408x5120] loss0=0.0142648 best_batch=0.00706658 moved=5214863 | eval 0.0142648 -> 0.00759061 (+46.79%) (52.4s)
+  L60 mlp.up_proj                    [17408x5120] loss0=0.0131727 best_batch=0.00659604 moved=5198336 | eval 0.0131727 -> 0.00725063 (+44.96%) (69.4s)
+  L60 mlp.down_proj                  [5120x17408] loss0=0.00985409 best_batch=0.00398788 moved=4775984 | eval 0.00985409 -> 0.00586131 (+40.52%) (66.2s)
+L60: done (6 tensors, 594.1s)
+
+L63: capture modules: {'self_attn.qkv_proj': 'language_model.model.layers.63.self_attn.qkv_proj', 'self_attn.o_proj': 'language_model.model.layers.63.self_attn.o_proj', 'mlp.gate_up_proj': 'language_model.model.layers.63.mlp.gate_up_proj', 'mlp.down_proj': 'language_model.model.layers.63.mlp.down_proj'}
+L63: captured in 353.8s; rows/module: {'self_attn.qkv_proj': 296960, 'self_attn.o_proj': 296960, 'mlp.gate_up_proj': 296960, 'mlp.down_proj': 296960}; shapes: {'self_attn.qkv_proj': {8192: 5120, 2048: 5120}, 'self_attn.o_proj': {8192: 6144, 2048: 6144}, 'mlp.gate_up_proj': {8192: 5120, 2048: 5120}, 'mlp.down_proj': {8192: 17408, 2048: 17408}}
+  L63 self_attn.q_proj               [12288x5120] loss0=0.0153129 best_batch=0.00599788 moved=3298338 | eval 0.0153129 -> 0.00707096 (+53.82%) (27.0s)
+  L63 self_attn.k_proj               [1024x5120] loss0=0.0136829 best_batch=0.00570159 moved=276445 | eval 0.0136829 -> 0.00624926 (+54.33%) (4.1s)
+  L63 self_attn.v_proj               [1024x5120] loss0=0.0527522 best_batch=0.0202444 moved=276536 | eval 0.0527522 -> 0.0230967 (+56.22%) (5.2s)
+  L63 self_attn.o_proj               [5120x6144] loss0=0.0192236 best_batch=0.00474067 moved=1203525 | eval 0.0192236 -> 0.00557481 (+71.00%) (12.6s)
+  L63 mlp.gate_proj                  [17408x5120] loss0=0.0142404 best_batch=0.00541995 moved=4339087 | eval 0.0142404 -> 0.00630222 (+55.74%) (48.4s)
+  L63 mlp.up_proj                    [17408x5120] loss0=0.013138 best_batch=0.00511805 moved=4398349 | eval 0.013138 -> 0.00583304 (+55.60%) (55.1s)
+  L63 mlp.down_proj                  [5120x17408] loss0=0.0682899 best_batch=0.0101239 moved=2820517 | eval 0.0682899 -> 0.0129404 (+81.05%) (33.8s)
+L63: done (7 tensors, 541.6s)
+
+ALL LAYERS DONE in 77.1 min
+RUN_EXIT=0
+loaded 50 optimization results
+copied 27 files, 23132037266 bytes
+spliced 50 tensors (packed+scale) in 4 shards
+transform_config added (50 targets) to quantization_config.json + config.json
+dequant pin: PASS (max diff over 50 = 0.000e+00)
+byte-identity: all 21 unpatched files identical (patched: ['config.json', 'model-00001-of-00007.safetensors', 'model-00002-of-00007.safetensors', 'model-00003-of-00007.safetensors', 'model-00004-of-00007.safetensors', 'quantization_config.json'])
+total size: 23132044478 (expected 23132037266) -> MISMATCH
+Traceback (most recent call last):
+  File "/home/hubbe/qwen-serving/analysis/rotation/build_patch_ar.py", line 538, in <module>
+    stage_export()
+  File "/home/hubbe/qwen-serving/analysis/rotation/build_patch_ar.py", line 523, in stage_export
+    assert final_total == expected, "size mismatch"
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: size mismatch
+EXPORT_EXIT=0
+loaded 50 optimization results
+copied 27 files, 23132037266 bytes
+spliced 50 tensors (packed+scale) in 4 shards
+transform_config added (50 targets) to quantization_config.json + config.json
+dequant pin: PASS (max diff over 50 = 0.000e+00)
+byte-identity: all 21 unpatched files identical (patched: ['config.json', 'model-00001-of-00007.safetensors', 'model-00002-of-00007.safetensors', 'model-00003-of-00007.safetensors', 'model-00004-of-00007.safetensors', 'quantization_config.json'])
+total size: 23132042754 (expected baseline 23132037266 + config growth 5488 = 23132042754) -> MATCH
+per-file sizes: {'config.json': '17060 -> 19858 (+2798)', 'model-00001-of-00007.safetensors': 3211003472, 'model-00002-of-00007.safetensors': 3195027104, 'model-00003-of-00007.safetensors': 3195027104, 'model-00004-of-00007.safetensors': 3217442568, 'quantization_config.json': '11112 -> 13802 (+2690)'}
+export DONE in 191.4s
+EXPORT_EXIT=0
+Traceback (most recent call last):
+  File "/home/hubbe/qwen-serving/analysis/rotation/verify_export_ar.py", line 83, in <module>
+    main()
+  File "/home/hubbe/qwen-serving/analysis/rotation/verify_export_ar.py", line 60, in main
+    assert n_targets == 50 and "transform_config" in cj["quantization_config"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+VERIFY_EXIT=0

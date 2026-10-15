@@ -1,0 +1,35 @@
+{
+ "tensor": "model.language_model.layers.63.mlp.down_proj.weight",
+ "shape": [
+  5120,
+  17408
+ ],
+ "hand_rolled": "block-128 orthonormal Sylvester Hadamard on the input dim (float64) + symmetric group-128 absmax INT4 round-to-nearest, dequant (rotation_sim.py machinery: sylvester/block_apply/quant_group128)",
+ "library_api": {
+  "package": "compressed_tensors 0.17.0",
+  "imports": "from compressed_tensors.transform import (TransformConfig, TransformScheme, TransformArgs, apply_transform_config)",
+  "call": "lin = torch.nn.Linear(17408, 5120, bias=False, dtype=torch.float64); model = torch.nn.Module(); model.add_module('lin', lin); cfg = TransformConfig(config_groups={'h': TransformScheme(type='hadamard', apply=[TransformArgs(targets=['lin'], location='weight_input')], head_dim=128, randomize=False, requires_grad=False)}); apply_transform_config(model, cfg)",
+  "notes": "location='weight_input' = offline pre-quant fusion into the weight; head_dim=128 sets the block size. Offline fusion is always computed in float64 (transform_scheme.py) and written back in the module dtype; a float64 module therefore avoids any intermediate rounding. The knob that matches the hand-rolled fold: module dtype float64 (same working precision)."
+ },
+ "rotation_identity": {
+  "hadamard_sign_pattern_identical": true,
+  "normalization": "library: divide by sqrt(128) in forward; hand-rolled: sylvester(128) pre-normalized -> same orthonormal H128",
+  "fused_vs_handrolled_max_abs": 1.1102230246251565e-16,
+  "fused_vs_handrolled_max_rel": 6.885659849254696e-16
+ },
+ "dequant_comparison": {
+  "max_abs_diff": 0.00605869376713804,
+  "n_elements_differing": 59514535,
+  "threshold_one_step_finer_grid": 0.020154622957909523,
+  "groups_with_differing_scales": 549325,
+  "n_groups": 696320,
+  "max_rel_scale_diff": 1.7763568394002505e-15
+ },
+ "bf16_fusion_variant_informational": {
+  "max_abs_diff": 0.01765605213398222,
+  "note": "with a BF16 module (serving dtype) the library rounds the rotated weight back to BF16 before quantization; this measures the extra error of that intermediate rounding, not a rotation mismatch"
+ },
+ "verdict": "PASS",
+ "reason": "PASS: the library's offline hadamard fusion is the same rotation - deterministic Sylvester H128 with identical +/-1 pattern, normalized by 1/sqrt(128) (orthonormal), block-diagonal over the 128-wide input dim, computed in float64. With a float64 module the fused weight matches the hand-rolled float64 rotation to float64-ulp level (max |dW| = 1.110e-16, rel 6.9e-16), and the two dequantized INT4 results differ by max 6.058694e-03 (59514535 elements; residual is float64-ulp scale noise flipping individual roundings, max group-scale rel diff 1.8e-15) = 0.30x one INT4 step of the finer grid (2.015462e-02) -> parity confirmed.",
+ "runtime_s": 41.3
+}

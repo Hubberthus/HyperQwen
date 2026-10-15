@@ -1,0 +1,77 @@
+plain 0.linear_attn.in_proj_qkv                          cur=2.5912e-06 naive=4.9125e-04 ar=3.1681e-06 optA_vs_B +22.3%
+plain 0.linear_attn.in_proj_z                            cur=2.7813e-06 naive=5.1966e-04 ar=3.4410e-06 optA_vs_B +23.7%
+rot   0.linear_attn.out_proj                             cur=4.9305e-04 naive=3.0837e-06 ar=3.3022e-06 ar_vs_naive  -7.09%
+rot   0.mlp.down_proj                                    cur=2.2529e-04 naive=1.2578e-06 ar=1.3565e-06 ar_vs_naive  -7.84%
+rot   0.mlp.gate_proj                                    cur=2.0677e-04 naive=1.1496e-06 ar=1.2413e-06 ar_vs_naive  -7.98%
+rot   0.mlp.up_proj                                      cur=1.9279e-04 naive=1.0721e-06 ar=1.1578e-06 ar_vs_naive  -8.00%
+rot   27.mlp.down_proj                                   cur=2.5901e-04 naive=1.4422e-06 ar=1.5570e-06 ar_vs_naive  -7.96%
+rot   27.mlp.gate_proj                                   cur=2.5542e-04 naive=1.4217e-06 ar=1.5295e-06 ar_vs_naive  -7.58%
+rot   27.mlp.up_proj                                     cur=2.6688e-04 naive=1.4852e-06 ar=1.5957e-06 ar_vs_naive  -7.44%
+rot   27.self_attn.k_proj                                cur=4.8506e-04 naive=2.6707e-06 ar=2.8294e-06 ar_vs_naive  -5.95%
+rot   27.self_attn.o_proj                                cur=4.8463e-04 naive=2.6973e-06 ar=2.8160e-06 ar_vs_naive  -4.40%
+rot   27.self_attn.q_proj                                cur=4.9246e-04 naive=2.7348e-06 ar=2.8968e-06 ar_vs_naive  -5.92%
+rot   27.self_attn.v_proj                                cur=5.2504e-04 naive=2.9128e-06 ar=3.0867e-06 ar_vs_naive  -5.97%
+plain 38.linear_attn.in_proj_qkv                         cur=2.8136e-06 naive=5.0507e-04 ar=3.3052e-06 optA_vs_B +17.5%
+plain 38.linear_attn.in_proj_z                           cur=2.7031e-06 naive=5.0036e-04 ar=3.1563e-06 optA_vs_B +16.8%
+rot   38.linear_attn.out_proj                            cur=4.7818e-04 naive=2.6748e-06 ar=2.9436e-06 ar_vs_naive -10.05%
+rot   38.mlp.down_proj                                   cur=2.4025e-04 naive=1.3378e-06 ar=1.4420e-06 ar_vs_naive  -7.79%
+rot   38.mlp.gate_proj                                   cur=2.8447e-04 naive=1.5840e-06 ar=1.6978e-06 ar_vs_naive  -7.19%
+rot   38.mlp.up_proj                                     cur=2.4273e-04 naive=1.3529e-06 ar=1.4474e-06 ar_vs_naive  -6.98%
+plain 45.linear_attn.in_proj_qkv                         cur=2.8682e-06 naive=5.0788e-04 ar=3.2209e-06 optA_vs_B +12.3%
+plain 45.linear_attn.in_proj_z                           cur=2.3143e-06 naive=4.2010e-04 ar=2.7313e-06 optA_vs_B +18.0%
+rot   45.linear_attn.out_proj                            cur=4.8587e-04 naive=2.7127e-06 ar=2.9614e-06 ar_vs_naive  -9.16%
+rot   45.mlp.down_proj                                   cur=2.6355e-04 naive=1.4689e-06 ar=1.5849e-06 ar_vs_naive  -7.89%
+rot   45.mlp.gate_proj                                   cur=2.4504e-04 naive=1.3638e-06 ar=1.4680e-06 ar_vs_naive  -7.64%
+rot   45.mlp.up_proj                                     cur=2.7364e-04 naive=1.5240e-06 ar=1.6335e-06 ar_vs_naive  -7.18%
+plain 56.linear_attn.in_proj_qkv                         cur=3.2923e-06 naive=5.8009e-04 ar=3.8592e-06 optA_vs_B +17.2%
+plain 56.linear_attn.in_proj_z                           cur=2.7055e-06 naive=4.9193e-04 ar=3.1516e-06 optA_vs_B +16.5%
+rot   56.linear_attn.out_proj                            cur=4.8380e-04 naive=2.6990e-06 ar=2.8763e-06 ar_vs_naive  -6.57%
+rot   56.mlp.down_proj                                   cur=2.7934e-04 naive=1.5602e-06 ar=1.6483e-06 ar_vs_naive  -5.65%
+rot   56.mlp.gate_proj                                   cur=3.1619e-04 naive=1.7599e-06 ar=1.8692e-06 ar_vs_naive  -6.21%
+rot   56.mlp.up_proj                                     cur=2.8423e-04 naive=1.5835e-06 ar=1.6804e-06 ar_vs_naive  -6.12%
+plain 58.linear_attn.in_proj_qkv                         cur=3.2708e-06 naive=5.6827e-04 ar=3.7759e-06 optA_vs_B +15.4%
+plain 58.linear_attn.in_proj_z                           cur=2.8982e-06 naive=5.2619e-04 ar=3.3330e-06 optA_vs_B +15.0%
+rot   58.linear_attn.out_proj                            cur=4.9839e-04 naive=2.7732e-06 ar=2.9954e-06 ar_vs_naive  -8.01%
+rot   58.mlp.down_proj                                   cur=2.9838e-04 naive=1.6664e-06 ar=1.7611e-06 ar_vs_naive  -5.68%
+rot   58.mlp.gate_proj                                   cur=3.4303e-04 naive=1.9086e-06 ar=2.0307e-06 ar_vs_naive  -6.40%
+rot   58.mlp.up_proj                                     cur=3.0257e-04 naive=1.6844e-06 ar=1.7913e-06 ar_vs_naive  -6.35%
+plain 60.linear_attn.in_proj_qkv                         cur=3.5984e-06 naive=6.0879e-04 ar=4.1794e-06 optA_vs_B +16.1%
+plain 60.linear_attn.in_proj_z                           cur=2.8371e-06 naive=4.9682e-04 ar=3.2496e-06 optA_vs_B +14.5%
+rot   60.linear_attn.out_proj                            cur=4.9832e-04 naive=2.7849e-06 ar=2.9661e-06 ar_vs_naive  -6.51%
+rot   60.mlp.down_proj                                   cur=3.0326e-04 naive=1.6940e-06 ar=1.7863e-06 ar_vs_naive  -5.45%
+rot   60.mlp.gate_proj                                   cur=3.3396e-04 naive=1.8566e-06 ar=1.9677e-06 ar_vs_naive  -5.99%
+rot   60.mlp.up_proj                                     cur=3.1178e-04 naive=1.7355e-06 ar=1.8391e-06 ar_vs_naive  -5.97%
+rot   63.mlp.down_proj                                   cur=2.6943e-04 naive=1.4990e-06 ar=1.5335e-06 ar_vs_naive  -2.30%
+rot   63.mlp.gate_proj                                   cur=3.7261e-04 naive=2.0676e-06 ar=2.1621e-06 ar_vs_naive  -4.57%
+rot   63.mlp.up_proj                                     cur=3.4499e-04 naive=1.9197e-06 ar=2.0102e-06 ar_vs_naive  -4.71%
+rot   63.self_attn.k_proj                                cur=3.7686e-04 naive=2.0326e-06 ar=2.1411e-06 ar_vs_naive  -5.34%
+rot   63.self_attn.o_proj                                cur=6.4290e-04 naive=3.5396e-06 ar=3.6637e-06 ar_vs_naive  -3.50%
+rot   63.self_attn.q_proj                                cur=4.0728e-04 naive=2.2567e-06 ar=2.3742e-06 ar_vs_naive  -5.21%
+rot   63.self_attn.v_proj                                cur=1.3972e-03 naive=7.6202e-06 ar=8.0220e-06 ar_vs_naive  -5.27%
+
+SUMMARY: {
+ "n_tensors": 50,
+ "n_rotated": 38,
+ "n_plain": 12,
+ "metric_rotated": "deq vs W@H folded target (effective-weight; H orthonormal preserves Frobenius norm)",
+ "metric_plain": "deq vs W (both options reported)",
+ "rotated_macro": {
+  "current_mse": 0.0003143323542191854,
+  "naive-rot_mse": 1.7533989451839833e-06,
+  "rot-AR_mse": 1.8655545874196916e-06
+ },
+ "plain_optionA_macro": {
+  "rot-AR_mse": 3.4319129391075386e-06
+ },
+ "plain_optionB_macro": {
+  "current_mse": 2.935236669128465e-06
+ },
+ "rotated_ar_vs_naive_pct": -6.396,
+ "rotated_ar_vs_current_equiv_pct": 99.407,
+ "plain_optionA_vs_optionB_pct": 16.92,
+ "n_plain_optionA_regressed": 12,
+ "n_rotated_ar_better_than_naive": 0,
+ "n_rotated_ar_worse_than_naive": 38
+}
+mse_table_ar.json (v2) written (129.4s)
+MSE2_EXIT=0

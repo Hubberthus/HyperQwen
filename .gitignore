@@ -16,3 +16,5 @@ venv
 models
 api_key.txt
 bench/results/
+analysis/rotation/opt_results/
+

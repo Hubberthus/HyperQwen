@@ -1,0 +1,124 @@
+cuda: True total_mem_GB: 25.77
+model_type: qwen3_5 arch: ['Qwen3_5ForConditionalGeneration']
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Could not match `re:^mtp\..*` in instance of Qwen3_5ForConditionalGeneration
+Could not match `re:.*lm_head$` in instance of Qwen3_5ForConditionalGeneration
+Compressing model:   0%|          | 0/402 [00:00<?, ?it/s]Compressing model:  24%|██▍       | 96/402 [00:00<00:00, 959.22it/s]Compressing model:  48%|████▊     | 194/402 [00:00<00:00, 967.73it/s]Compressing model:  72%|███████▏  | 291/402 [00:00<00:00, 957.67it/s]Compressing model:  96%|█████████▋| 387/402 [00:00<00:00, 957.18it/s]Compressing model: 100%|██████████| 402/402 [00:00<00:00, 958.04it/s]
+Loading weights:   0%|          | 0/1988 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1988 [00:08<4:40:43,  8.48s/it]Loading weights:   0%|          | 4/1988 [00:09<1:02:42,  1.90s/it]Loading weights:   1%|          | 23/1988 [00:09<07:37,  4.30it/s] Loading weights:   2%|▏         | 39/1988 [00:09<03:46,  8.59it/s]Loading weights:   3%|▎         | 52/1988 [00:09<02:26, 13.18it/s]Loading weights:   4%|▍         | 75/1988 [00:10<01:20, 23.89it/s]Loading weights:   4%|▍         | 89/1988 [00:10<01:02, 30.51it/s]Loading weights:   6%|▌         | 114/1988 [00:10<00:38, 48.34it/s]Loading weights:   6%|▋         | 129/1988 [00:10<00:31, 58.61it/s]Loading weights:   8%|▊         | 150/1988 [00:10<00:24, 75.34it/s]Loading weights:   8%|▊         | 168/1988 [00:10<00:20, 90.77it/s]Loading weights:   9%|▉         | 184/1988 [00:10<00:18, 96.10it/s]Loading weights:  10%|█         | 199/1988 [00:10<00:17, 102.52it/s]Loading weights:  11%|█▏        | 226/1988 [00:10<00:12, 137.09it/s]Loading weights:  12%|█▏        | 244/1988 [00:11<00:12, 140.06it/s]Loading weights:  13%|█▎        | 261/1988 [00:11<00:13, 126.19it/s]Loading weights:  14%|█▍        | 284/1988 [00:11<00:12, 139.08it/s]Loading weights:  15%|█▌        | 300/1988 [00:11<00:13, 128.11it/s]Loading weights:  17%|█▋        | 329/1988 [00:11<00:10, 163.15it/s]Loading weights:  18%|█▊        | 348/1988 [00:11<00:10, 153.68it/s]Loading weights:  18%|█▊        | 365/1988 [00:11<00:11, 143.39it/s]Loading weights:  19%|█▉        | 387/1988 [00:12<00:10, 150.49it/s]Loading weights:  20%|██        | 403/1988 [00:12<00:11, 135.21it/s]Loading weights:  22%|██▏       | 429/1988 [00:12<00:09, 163.14it/s]Loading weights:  22%|██▏       | 447/1988 [00:12<00:09, 159.83it/s]Loading weights:  23%|██▎       | 464/1988 [00:12<00:10, 148.51it/s]Loading weights:  24%|██▍       | 487/1988 [00:12<00:09, 156.66it/s]Loading weights:  25%|██▌       | 504/1988 [00:12<00:11, 130.06it/s]Loading weights:  27%|██▋       | 535/1988 [00:13<00:08, 168.20it/s]Loading weights:  28%|██▊       | 554/1988 [00:13<00:09, 154.91it/s]Loading weights:  29%|██▊       | 571/1988 [00:13<00:10, 129.08it/s]Loading weights:  30%|██▉       | 590/1988 [00:13<00:10, 135.03it/s]Loading weights:  30%|███       | 605/1988 [00:13<00:11, 122.47it/s]Loading weights:  32%|███▏      | 629/1988 [00:13<00:09, 144.62it/s]Loading weights:  32%|███▏      | 645/1988 [00:13<00:10, 133.54it/s]Loading weights:  34%|███▎      | 670/1988 [00:14<00:08, 149.73it/s]Loading weights:  35%|███▍      | 693/1988 [00:14<00:08, 157.26it/s]Loading weights:  36%|███▌      | 710/1988 [00:14<00:10, 121.07it/s]Loading weights:  37%|███▋      | 735/1988 [00:14<00:08, 143.81it/s]Loading weights:  38%|███▊      | 752/1988 [00:14<00:08, 140.19it/s]Loading weights:  39%|███▉      | 773/1988 [00:14<00:08, 145.89it/s]Loading weights:  40%|███▉      | 794/1988 [00:14<00:07, 150.04it/s]Loading weights:  41%|████      | 810/1988 [00:15<00:08, 135.32it/s]Loading weights:  42%|████▏     | 837/1988 [00:15<00:07, 161.96it/s]Loading weights:  43%|████▎     | 855/1988 [00:15<00:07, 144.67it/s]Loading weights:  44%|████▍     | 873/1988 [00:15<00:07, 145.05it/s]Loading weights:  45%|████▍     | 889/1988 [00:15<00:07, 142.82it/s]Loading weights:  45%|████▌     | 904/1988 [00:15<00:07, 142.14it/s]Loading weights:  46%|████▌     | 919/1988 [00:15<00:08, 125.48it/s]Loading weights:  48%|████▊     | 950/1988 [00:15<00:06, 157.96it/s]Loading weights:  49%|████▊     | 967/1988 [00:16<00:06, 158.86it/s]Loading weights:  49%|████▉     | 984/1988 [00:16<00:06, 146.10it/s]Loading weights:  51%|█████     | 1005/1988 [00:16<00:06, 148.92it/s]Loading weights:  51%|█████▏    | 1021/1988 [00:16<00:07, 125.49it/s]Loading weights:  53%|█████▎    | 1053/1988 [00:16<00:05, 156.44it/s]Loading weights:  54%|█████▍    | 1070/1988 [00:16<00:05, 159.08it/s]Loading weights:  55%|█████▍    | 1087/1988 [00:16<00:06, 147.40it/s]Loading weights:  56%|█████▌    | 1108/1988 [00:17<00:05, 151.82it/s]Loading weights:  57%|█████▋    | 1124/1988 [00:17<00:06, 131.57it/s]Loading weights:  58%|█████▊    | 1153/1988 [00:17<00:05, 163.75it/s]Loading weights:  59%|█████▉    | 1171/1988 [00:17<00:05, 160.73it/s]Loading weights:  60%|█████▉    | 1188/1988 [00:17<00:05, 142.27it/s]Loading weights:  61%|██████    | 1211/1988 [00:17<00:05, 154.17it/s]Loading weights:  62%|██████▏   | 1228/1988 [00:17<00:05, 138.29it/s]Loading weights:  63%|██████▎   | 1259/1988 [00:18<00:04, 164.47it/s]Loading weights:  64%|██████▍   | 1276/1988 [00:18<00:04, 164.99it/s]Loading weights:  65%|██████▌   | 1293/1988 [00:18<00:04, 150.46it/s]Loading weights:  66%|██████▌   | 1314/1988 [00:18<00:04, 153.88it/s]Loading weights:  67%|██████▋   | 1330/1988 [00:18<00:04, 136.64it/s]Loading weights:  68%|██████▊   | 1359/1988 [00:18<00:03, 169.74it/s]Loading weights:  69%|██████▉   | 1377/1988 [00:18<00:03, 156.09it/s]Loading weights:  70%|███████   | 1394/1988 [00:18<00:04, 146.26it/s]Loading weights:  71%|███████▏  | 1417/1988 [00:19<00:03, 156.65it/s]Loading weights:  72%|███████▏  | 1434/1988 [00:19<00:03, 141.93it/s]Loading weights:  74%|███████▎  | 1463/1988 [00:19<00:03, 163.64it/s]Loading weights:  74%|███████▍  | 1480/1988 [00:19<00:03, 162.65it/s]Loading weights:  75%|███████▌  | 1497/1988 [00:19<00:03, 141.29it/s]Loading weights:  76%|███████▋  | 1517/1988 [00:19<00:03, 145.18it/s]Loading weights:  77%|███████▋  | 1532/1988 [00:20<00:04, 103.90it/s]Loading weights:  78%|███████▊  | 1558/1988 [00:20<00:03, 132.13it/s]Loading weights:  79%|███████▉  | 1574/1988 [00:20<00:03, 114.25it/s]Loading weights:  80%|████████  | 1597/1988 [00:20<00:03, 127.13it/s]Loading weights:  81%|████████  | 1613/1988 [00:20<00:02, 132.76it/s]Loading weights:  82%|████████▏ | 1628/1988 [00:20<00:03, 119.77it/s]Loading weights:  83%|████████▎ | 1641/1988 [00:20<00:03, 110.01it/s]Loading weights:  84%|████████▍ | 1673/1988 [00:21<00:02, 154.78it/s]Loading weights:  86%|████████▌ | 1709/1988 [00:21<00:01, 202.81it/s]Loading weights:  88%|████████▊ | 1744/1988 [00:21<00:01, 237.23it/s]Loading weights:  90%|████████▉ | 1781/1988 [00:21<00:00, 267.34it/s]Loading weights:  91%|█████████▏| 1817/1988 [00:21<00:00, 285.44it/s]Loading weights:  93%|█████████▎| 1847/1988 [00:21<00:00, 260.03it/s]Loading weights:  95%|█████████▍| 1885/1988 [00:21<00:00, 291.15it/s]Loading weights:  97%|█████████▋| 1925/1988 [00:21<00:00, 314.38it/s]Loading weights:  99%|█████████▊| 1962/1988 [00:21<00:00, 325.79it/s]Loading weights: 100%|██████████| 1988/1988 [00:22<00:00, 90.27it/s] 
+[transformers] [1mQwen3_5ForConditionalGeneration LOAD REPORT[0m from: /home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-AutoRound
+Key                                          | Status     |  | 
+---------------------------------------------+------------+--+-
+mtp.layers.0.self_attn.o_proj.weight_packed  | UNEXPECTED |  | 
+mtp.layers.0.self_attn.q_proj.weight_scale   | UNEXPECTED |  | 
+mtp.layers.0.self_attn.v_proj.weight_packed  | UNEXPECTED |  | 
+mtp.norm.weight                              | UNEXPECTED |  | 
+mtp.fc.weight_shape                          | UNEXPECTED |  | 
+mtp.draft_lm_head.weight_scale               | UNEXPECTED |  | 
+mtp.layers.0.mlp.down_proj.weight_shape      | UNEXPECTED |  | 
+mtp.layers.0.mlp.up_proj.weight_packed       | UNEXPECTED |  | 
+mtp.layers.0.self_attn.q_norm.weight         | UNEXPECTED |  | 
+mtp.layers.0.self_attn.k_proj.weight_packed  | UNEXPECTED |  | 
+mtp.layers.0.mlp.up_proj.weight_scale        | UNEXPECTED |  | 
+mtp.layers.0.mlp.gate_proj.weight_packed     | UNEXPECTED |  | 
+mtp.layers.0.self_attn.k_norm.weight         | UNEXPECTED |  | 
+mtp.pre_fc_norm_hidden.weight                | UNEXPECTED |  | 
+mtp.fc.weight_scale                          | UNEXPECTED |  | 
+mtp.layers.0.self_attn.o_proj.weight_scale   | UNEXPECTED |  | 
+mtp.draft_lm_head.weight_packed              | UNEXPECTED |  | 
+mtp.layers.0.self_attn.o_proj.weight_shape   | UNEXPECTED |  | 
+mtp.layers.0.mlp.down_proj.weight_packed     | UNEXPECTED |  | 
+mtp.layers.0.self_attn.v_proj.weight_shape   | UNEXPECTED |  | 
+mtp.pre_fc_norm_embedding.weight             | UNEXPECTED |  | 
+mtp.layers.0.self_attn.k_proj.weight_scale   | UNEXPECTED |  | 
+mtp.layers.0.mlp.gate_proj.weight_shape      | UNEXPECTED |  | 
+mtp.layers.0.post_attention_layernorm.weight | UNEXPECTED |  | 
+mtp.layers.0.mlp.gate_proj.weight_scale      | UNEXPECTED |  | 
+mtp.layers.0.mlp.down_proj.weight_scale      | UNEXPECTED |  | 
+mtp.layers.0.mlp.up_proj.weight_shape        | UNEXPECTED |  | 
+mtp.draft_lm_head.weight_shape               | UNEXPECTED |  | 
+mtp.layers.0.self_attn.q_proj.weight_shape   | UNEXPECTED |  | 
+mtp.layers.0.self_attn.q_proj.weight_packed  | UNEXPECTED |  | 
+mtp.layers.0.self_attn.v_proj.weight_scale   | UNEXPECTED |  | 
+mtp.layers.0.self_attn.k_proj.weight_shape   | UNEXPECTED |  | 
+mtp.fc.weight_packed                         | UNEXPECTED |  | 
+mtp.layers.0.input_layernorm.weight          | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+FAILED AutoModelForImageTextToText: AttributeError: 'Embedding' object has no attribute 'weight'
+Could not match `re:^mtp\..*` in instance of Qwen3_5ForCausalLM
+Could not match `re:.*lm_head$` in instance of Qwen3_5ForCausalLM
+Compressing model:   0%|          | 0/498 [00:00<?, ?it/s]Compressing model:  20%|██        | 102/498 [00:00<00:00, 1011.55it/s]Compressing model:  41%|████      | 204/498 [00:00<00:00, 1011.40it/s]Compressing model:  61%|██████▏   | 306/498 [00:00<00:00, 1010.94it/s]Compressing model:  82%|████████▏ | 408/498 [00:00<00:00, 1007.39it/s]Compressing model: 100%|██████████| 498/498 [00:00<00:00, 1007.28it/s]
+Loading weights:   0%|          | 0/1559 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1559 [00:00<06:20,  4.10it/s]Loading weights:   0%|          | 4/1559 [00:00<02:14, 11.60it/s]Loading weights:   5%|▌         | 81/1559 [00:00<00:06, 241.58it/s]Loading weights:  11%|█         | 171/1559 [00:00<00:03, 434.47it/s]Loading weights:  16%|█▌        | 253/1559 [00:00<00:02, 545.14it/s]Loading weights:  21%|██▏       | 333/1559 [00:00<00:01, 618.41it/s]Loading weights:  26%|██▌       | 409/1559 [00:00<00:01, 656.69it/s]Loading weights:  31%|███       | 480/1559 [00:01<00:01, 670.24it/s]Loading weights:  36%|███▌      | 560/1559 [00:01<00:01, 708.67it/s]Loading weights:  41%|████      | 641/1559 [00:01<00:01, 734.34it/s]Loading weights:  46%|████▋     | 724/1559 [00:01<00:01, 757.34it/s]Loading weights:  52%|█████▏    | 807/1559 [00:01<00:00, 778.12it/s]Loading weights:  57%|█████▋    | 895/1559 [00:01<00:00, 802.02it/s]Loading weights:  63%|██████▎   | 985/1559 [00:01<00:00, 829.71it/s]Loading weights:  69%|██████▊   | 1069/1559 [00:01<00:00, 830.58it/s]Loading weights:  74%|███████▍  | 1153/1559 [00:01<00:00, 828.49it/s]Loading weights:  80%|███████▉  | 1244/1559 [00:01<00:00, 846.93it/s]Loading weights:  86%|████████▌ | 1334/1559 [00:02<00:00, 857.67it/s]Loading weights:  91%|█████████▏| 1426/1559 [00:02<00:00, 869.88it/s]Loading weights:  97%|█████████▋| 1517/1559 [00:02<00:00, 880.77it/s]Loading weights: 100%|██████████| 1559/1559 [00:02<00:00, 684.09it/s]
+[transformers] [1mQwen3_5ForCausalLM LOAD REPORT[0m from: /home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-AutoRound
+Key                                                       | Status     | 
+----------------------------------------------------------+------------+-
+model.layers.{0...62}.linear_attn.in_proj_b.weight        | UNEXPECTED | 
+model.visual.blocks.{0...26}.mlp.linear_fc1.bias          | UNEXPECTED | 
+model.visual.blocks.{0...26}.attn.qkv.bias                | UNEXPECTED | 
+model.visual.blocks.{0...26}.norm2.weight                 | UNEXPECTED | 
+model.visual.blocks.{0...26}.norm2.bias                   | UNEXPECTED | 
+model.layers.{0...62}.linear_attn.in_proj_a.weight        | UNEXPECTED | 
+model.visual.blocks.{0...26}.attn.proj.bias               | UNEXPECTED | 
+model.visual.blocks.{0...26}.norm1.weight                 | UNEXPECTED | 
+model.visual.blocks.{0...26}.mlp.linear_fc2.weight        | UNEXPECTED | 
+mtp.layers.0.mlp.down_proj.weight_packed                  | UNEXPECTED | 
+model.visual.blocks.{0...26}.attn.proj.weight             | UNEXPECTED | 
+mtp.layers.0.mlp.gate_proj.weight_shape                   | UNEXPECTED | 
+model.visual.patch_embed.proj.weight                      | UNEXPECTED | 
+model.visual.blocks.{0...26}.mlp.linear_fc1.weight        | UNEXPECTED | 
+model.visual.blocks.{0...26}.norm1.bias                   | UNEXPECTED | 
+mtp.fc.weight_shape                                       | UNEXPECTED | 
+model.visual.blocks.{0...26}.attn.qkv.weight              | UNEXPECTED | 
+model.visual.merger.linear_fc1.bias                       | UNEXPECTED | 
+model.visual.merger.norm.weight                           | UNEXPECTED | 
+mtp.layers.0.mlp.down_proj.weight_shape                   | UNEXPECTED | 
+mtp.layers.0.mlp.up_proj.weight_scale                     | UNEXPECTED | 
+model.visual.blocks.{0...26}.mlp.linear_fc2.bias          | UNEXPECTED | 
+model.visual.merger.linear_fc2.weight                     | UNEXPECTED | 
+mtp.fc.weight_packed                                      | UNEXPECTED | 
+mtp.pre_fc_norm_hidden.weight                             | UNEXPECTED | 
+mtp.layers.0.self_attn.k_proj.weight_scale                | UNEXPECTED | 
+mtp.layers.0.mlp.gate_proj.weight_scale                   | UNEXPECTED | 
+mtp.layers.0.self_attn.q_proj.weight_shape                | UNEXPECTED | 
+mtp.layers.0.input_layernorm.weight                       | UNEXPECTED | 
+mtp.layers.0.mlp.gate_proj.weight_packed                  | UNEXPECTED | 
+mtp.layers.0.self_attn.o_proj.weight_scale                | UNEXPECTED | 
+mtp.pre_fc_norm_embedding.weight                          | UNEXPECTED | 
+model.visual.patch_embed.proj.bias                        | UNEXPECTED | 
+mtp.layers.0.post_attention_layernorm.weight              | UNEXPECTED | 
+mtp.layers.0.self_attn.v_proj.weight_scale                | UNEXPECTED | 
+mtp.layers.0.self_attn.o_proj.weight_packed               | UNEXPECTED | 
+mtp.layers.0.self_attn.v_proj.weight_packed               | UNEXPECTED | 
+mtp.layers.0.self_attn.q_norm.weight                      | UNEXPECTED | 
+mtp.fc.weight_scale                                       | UNEXPECTED | 
+model.visual.merger.linear_fc2.bias                       | UNEXPECTED | 
+mtp.layers.0.self_attn.v_proj.weight_shape                | UNEXPECTED | 
+mtp.layers.0.self_attn.q_proj.weight_packed               | UNEXPECTED | 
+model.visual.merger.linear_fc1.weight                     | UNEXPECTED | 
+mtp.layers.0.self_attn.k_norm.weight                      | UNEXPECTED | 
+mtp.draft_lm_head.weight_shape                            | UNEXPECTED | 
+mtp.layers.0.mlp.up_proj.weight_shape                     | UNEXPECTED | 
+mtp.layers.0.self_attn.q_proj.weight_scale                | UNEXPECTED | 
+mtp.layers.0.self_attn.k_proj.weight_packed               | UNEXPECTED | 
+mtp.layers.0.mlp.down_proj.weight_scale                   | UNEXPECTED | 
+mtp.layers.0.mlp.up_proj.weight_packed                    | UNEXPECTED | 
+mtp.layers.0.self_attn.k_proj.weight_shape                | UNEXPECTED | 
+model.visual.merger.norm.bias                             | UNEXPECTED | 
+mtp.draft_lm_head.weight_scale                            | UNEXPECTED | 
+mtp.draft_lm_head.weight_packed                           | UNEXPECTED | 
+mtp.layers.0.self_attn.o_proj.weight_shape                | UNEXPECTED | 
+mtp.norm.weight                                           | UNEXPECTED | 
+model.visual.pos_embed.weight                             | UNEXPECTED | 
+model.layers.{0...62}.linear_attn.in_proj_a.weight_shape  | MISSING    | 
+model.layers.{0...62}.linear_attn.in_proj_b.weight_packed | MISSING    | 
+model.layers.{0...62}.linear_attn.in_proj_a.weight_packed | MISSING    | 
+model.layers.{0...62}.linear_attn.in_proj_b.weight_shape  | MISSING    | 
+model.layers.{0...62}.linear_attn.in_proj_a.weight_scale  | MISSING    | 
+model.layers.{0...62}.linear_attn.in_proj_b.weight_scale  | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+FAILED AutoModelForCausalLM: AttributeError: 'Embedding' object has no attribute 'weight'
+ALL LOAD ATTEMPTS FAILED

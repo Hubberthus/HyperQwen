@@ -1,0 +1,66 @@
+0.linear_attn.in_proj_qkv                               cur=2.5912e-06 naive=4.9125e-04 ar=3.1681e-06 | ar_vs_naive  +99.36% (1.8s)
+0.linear_attn.in_proj_z                                 cur=2.7813e-06 naive=5.1966e-04 ar=3.4410e-06 | ar_vs_naive  +99.34% (3.1s)
+0.linear_attn.out_proj                                  cur=2.8917e-06 naive=4.9305e-04 ar=4.9341e-04 | ar_vs_naive   -0.07% (4.2s)
+0.mlp.down_proj                                         cur=1.3805e-06 naive=2.2613e-04 ar=2.2630e-04 | ar_vs_naive   -0.07% (7.3s)
+0.mlp.gate_proj                                         cur=1.1042e-06 naive=2.0674e-04 ar=2.0691e-04 | ar_vs_naive   -0.08% (10.6s)
+0.mlp.up_proj                                           cur=1.0176e-06 naive=1.9276e-04 ar=1.9292e-04 | ar_vs_naive   -0.08% (13.5s)
+27.mlp.down_proj                                        cur=1.4089e-06 naive=2.5946e-04 ar=2.5963e-04 | ar_vs_naive   -0.07% (16.9s)
+27.mlp.gate_proj                                        cur=1.3572e-06 naive=2.5572e-04 ar=2.5587e-04 | ar_vs_naive   -0.06% (20.3s)
+27.mlp.up_proj                                          cur=1.4371e-06 naive=2.6721e-04 ar=2.6735e-04 | ar_vs_naive   -0.05% (23.9s)
+27.self_attn.k_proj                                     cur=3.5901e-06 naive=4.8455e-04 ar=4.8496e-04 | ar_vs_naive   -0.09% (24.3s)
+27.self_attn.o_proj                                     cur=2.6137e-06 naive=4.8549e-04 ar=4.8560e-04 | ar_vs_naive   -0.02% (25.4s)
+27.self_attn.q_proj                                     cur=2.8296e-06 naive=4.9229e-04 ar=4.9255e-04 | ar_vs_naive   -0.05% (28.2s)
+27.self_attn.v_proj                                     cur=3.2042e-06 naive=5.2561e-04 ar=5.2602e-04 | ar_vs_naive   -0.08% (28.7s)
+38.linear_attn.in_proj_qkv                              cur=2.8136e-06 naive=5.0507e-04 ar=3.3052e-06 | ar_vs_naive  +99.35% (30.8s)
+38.linear_attn.in_proj_z                                cur=2.7031e-06 naive=5.0036e-04 ar=3.1563e-06 | ar_vs_naive  +99.37% (32.1s)
+38.linear_attn.out_proj                                 cur=2.6470e-06 naive=4.7954e-04 ar=4.7982e-04 | ar_vs_naive   -0.06% (33.4s)
+38.mlp.down_proj                                        cur=1.3286e-06 naive=2.4082e-04 ar=2.4095e-04 | ar_vs_naive   -0.05% (37.1s)
+38.mlp.gate_proj                                        cur=1.5621e-06 naive=2.8482e-04 ar=2.8495e-04 | ar_vs_naive   -0.05% (41.0s)
+38.mlp.up_proj                                          cur=1.3110e-06 naive=2.4310e-04 ar=2.4319e-04 | ar_vs_naive   -0.04% (44.6s)
+45.linear_attn.in_proj_qkv                              cur=2.8682e-06 naive=5.0788e-04 ar=3.2209e-06 | ar_vs_naive  +99.37% (46.7s)
+45.linear_attn.in_proj_z                                cur=2.3143e-06 naive=4.2010e-04 ar=2.7313e-06 | ar_vs_naive  +99.35% (47.7s)
+45.linear_attn.out_proj                                 cur=2.6799e-06 naive=4.8713e-04 ar=4.8740e-04 | ar_vs_naive   -0.06% (49.3s)
+45.mlp.down_proj                                        cur=1.4531e-06 naive=2.6421e-04 ar=2.6434e-04 | ar_vs_naive   -0.05% (52.3s)
+45.mlp.gate_proj                                        cur=1.3401e-06 naive=2.4544e-04 ar=2.4556e-04 | ar_vs_naive   -0.05% (55.5s)
+45.mlp.up_proj                                          cur=1.4903e-06 naive=2.7411e-04 ar=2.7423e-04 | ar_vs_naive   -0.04% (58.9s)
+56.linear_attn.in_proj_qkv                              cur=3.2923e-06 naive=5.8009e-04 ar=3.8592e-06 | ar_vs_naive  +99.33% (60.7s)
+56.linear_attn.in_proj_z                                cur=2.7055e-06 naive=4.9193e-04 ar=3.1516e-06 | ar_vs_naive  +99.36% (61.8s)
+56.linear_attn.out_proj                                 cur=2.7995e-06 naive=4.8636e-04 ar=4.8653e-04 | ar_vs_naive   -0.04% (63.3s)
+56.mlp.down_proj                                        cur=1.4952e-06 naive=2.8041e-04 ar=2.8050e-04 | ar_vs_naive   -0.03% (66.9s)
+56.mlp.gate_proj                                        cur=1.7150e-06 naive=3.1660e-04 ar=3.1672e-04 | ar_vs_naive   -0.04% (70.1s)
+56.mlp.up_proj                                          cur=1.5205e-06 naive=2.8449e-04 ar=2.8458e-04 | ar_vs_naive   -0.03% (73.9s)
+58.linear_attn.in_proj_qkv                              cur=3.2708e-06 naive=5.6827e-04 ar=3.7759e-06 | ar_vs_naive  +99.34% (75.8s)
+58.linear_attn.in_proj_z                                cur=2.8982e-06 naive=5.2619e-04 ar=3.3330e-06 | ar_vs_naive  +99.37% (77.2s)
+58.linear_attn.out_proj                                 cur=2.7695e-06 naive=4.9976e-04 ar=4.9997e-04 | ar_vs_naive   -0.04% (78.2s)
+58.mlp.down_proj                                        cur=1.6173e-06 naive=2.9972e-04 ar=2.9980e-04 | ar_vs_naive   -0.03% (84.0s)
+58.mlp.gate_proj                                        cur=1.8643e-06 naive=3.4348e-04 ar=3.4361e-04 | ar_vs_naive   -0.04% (88.4s)
+58.mlp.up_proj                                          cur=1.6247e-06 naive=3.0285e-04 ar=3.0295e-04 | ar_vs_naive   -0.03% (92.7s)
+60.linear_attn.in_proj_qkv                              cur=3.5984e-06 naive=6.0879e-04 ar=4.1794e-06 | ar_vs_naive  +99.31% (94.6s)
+60.linear_attn.in_proj_z                                cur=2.8371e-06 naive=4.9682e-04 ar=3.2496e-06 | ar_vs_naive  +99.35% (95.7s)
+60.linear_attn.out_proj                                 cur=2.9808e-06 naive=5.0175e-04 ar=5.0191e-04 | ar_vs_naive   -0.03% (96.9s)
+60.mlp.down_proj                                        cur=1.6541e-06 naive=3.0471e-04 ar=3.0479e-04 | ar_vs_naive   -0.03% (100.2s)
+60.mlp.gate_proj                                        cur=1.8721e-06 naive=3.3424e-04 ar=3.3437e-04 | ar_vs_naive   -0.04% (103.4s)
+60.mlp.up_proj                                          cur=1.6889e-06 naive=3.1189e-04 ar=3.1200e-04 | ar_vs_naive   -0.03% (107.2s)
+63.mlp.down_proj                                        cur=1.7232e-06 naive=2.7063e-04 ar=2.7067e-04 | ar_vs_naive   -0.01% (110.3s)
+63.mlp.gate_proj                                        cur=2.1518e-06 naive=3.7244e-04 ar=3.7256e-04 | ar_vs_naive   -0.03% (114.0s)
+63.mlp.up_proj                                          cur=1.8837e-06 naive=3.4471e-04 ar=3.4483e-04 | ar_vs_naive   -0.04% (118.0s)
+63.self_attn.k_proj                                     cur=4.0762e-06 naive=3.7541e-04 ar=3.7564e-04 | ar_vs_naive   -0.06% (118.4s)
+63.self_attn.o_proj                                     cur=4.4761e-06 naive=6.4173e-04 ar=6.4183e-04 | ar_vs_naive   -0.02% (119.4s)
+63.self_attn.q_proj                                     cur=2.5182e-06 naive=4.0668e-04 ar=4.0683e-04 | ar_vs_naive   -0.04% (122.2s)
+63.self_attn.v_proj                                     cur=1.2045e-05 naive=1.3959e-03 ar=1.3968e-03 | ar_vs_naive   -0.06% (122.6s)
+
+SUMMARY: {
+ "n_tensors": 50,
+ "macro_avg_mse": {
+  "current": 1.9673192205577115e-06,
+  "naive-rot": 0.0003495097241412466,
+  "rot-AR": 0.00026339141309315796
+ },
+ "ar_vs_naive_pct": 24.64,
+ "ar_vs_current_pct": -13288.341,
+ "naive_vs_current_pct": -17665.786,
+ "n_ar_worse_than_naive": 38,
+ "n_ar_worse_than_current": 50
+}
+mse_table_ar.json written (122.8s)
+MSE_EXIT=0

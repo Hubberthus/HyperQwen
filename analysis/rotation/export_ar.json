@@ -1,0 +1,25 @@
+{
+ "patch_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch-AR",
+ "n_tensors": 50,
+ "baseline_total": 23132037266,
+ "total_size": 23132042754,
+ "expected_size": 23132042754,
+ "config_file_deltas": {
+  "config.json": 2798,
+  "quantization_config.json": 2690
+ },
+ "dequant_pin_all_zero": true,
+ "dequant_max_diff": 0.0,
+ "byte_identity_mismatches": [],
+ "patched_files": [
+  "model-00001-of-00007.safetensors",
+  "model-00002-of-00007.safetensors",
+  "model-00003-of-00007.safetensors",
+  "model-00004-of-00007.safetensors",
+  "config.json",
+  "quantization_config.json"
+ ],
+ "verification": "per-file corrected (baseline_total + config deltas)",
+ "transform_targets_n": 38,
+ "runtime_s": 48.6
+}
