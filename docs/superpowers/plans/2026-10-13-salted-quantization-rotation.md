@@ -1,6 +1,9 @@
 # Salted quantization — rotation follow-up (2026-10-13)
 
-Status: investigation complete; next phase (rotation re-quant output check) PENDING GO/NO-GO.
+Status: CLOSED NO-GO (2026-10-16) — the Step-1 ppl gate failed: the MSE-only selective
+rot-patch (all 38 rotated kept, floor accepted-lost) is +0.05910 ppl WORSE than the
+AutoRound baseline at ~10⁴× duplicate noise, and costs ~2–2.5× per-window latency.
+Findings: `2026-10-16-rotation-step1-findings.md`. Step 2 (full re-quant) NOT triggered.
 Branch: `spike/salted-quantization`. Three subagents ran this round: A = prior-work survey
 (`analysis/salted/prior_work_rotation.md`), B = fresh re-derivation + rotation simulation
 (`analysis/salted/rotation/`), C = records cross-check.

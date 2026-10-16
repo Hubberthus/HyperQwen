@@ -203,14 +203,23 @@ served. Task 2's smoke step would have caught this; fixed here instead.
 
 ### Task 2: perplexity measurement (GPU)
 **Produces:** per-run ppl table, `analysis/rotation/ppl.json`
-- [ ] Step 1: confirm what `bench/quality_battery.py` measures (corpus, token count, metric);
+- [x] Step 1: confirm what `bench/quality_battery.py` measures (corpus, token count, metric);
   use it if it yields per-checkpoint perplexity/logprob. Otherwise a minimal eval script:
   wikitext-2 test split, 2048-token sliding windows at 256 stride, ≥100k tokens total (the
   corpus must be large enough that ppl noise is well below any plausible delta).
-- [ ] Step 2: run BOTH checkpoints sequentially, identical flags: current W4A16 ×2 runs,
+- [x] Step 2: run BOTH checkpoints sequentially, identical flags: current W4A16 ×2 runs,
   rot-patch ×2 runs (duplicates establish measurement noise). Record ppl + wall per run.
-- [ ] Step 3: post-load serving smoke on the patch copy (a few tokens through the real server)
+- [x] Step 3: post-load serving smoke on the patch copy (a few tokens through the real server)
   before the full runs — a layout mismatch would show as garbage output, not a subtle ppl.
+
+**Result (2026-10-15/16): DONE — verdict FAIL.** `quality_battery.py` was not used (no
+per-checkpoint ppl); a minimal eval was written instead: `ppl_eval.py` (wikitext-2-raw-v1
+test raw-joined, 2048/256, 1153 windows, 2,360,191 tokens predicted per run, via
+prompt_logprobs on the live server). Runs (patch-first order, base1 of 10-15 VOID —
+interrupted mid-eval, server killed, re-run 10-16): baseline 6.8183772 / 6.8183723,
+patch 6.8774678 / 6.8774737; duplicate spread ≈ 6e-6. Smoke passed before the patch full
+runs (26 rotated parents wrapped `CompressedTensorsLinearTransformMethod`, plain
+`in_proj_qkvz` unwrapped — `smoke_mse.json`).
 
 ### Task 3: gate + report
 **Produces:** `docs/superpowers/plans/2026-10-13-rotation-step1-findings.md` + ledger update
@@ -225,8 +234,15 @@ served. Task 2's smoke step would have caught this; fixed here instead.
     document the boundary of what rotation buys at W4A16.
   - **AMBIGUOUS** (within noise): one re-run pair; if still ambiguous, expand to 8 layers and/or
     a larger corpus, then adjudicate.
-- [ ] Step 1: findings doc — per-run table, noise estimate, verdict, next-step recommendation.
-- [ ] Step 2: SDD ledger updated; rotation doc status line updated.
+- [x] Step 1: findings doc — per-run table, noise estimate, verdict, next-step recommendation.
+- [x] Step 2: SDD ledger updated; rotation doc status line updated.
+
+**Result (2026-10-16): GATE = FAIL → NO-GO.** patch − baseline = +0.05910 ppl vs duplicate
+noise ≈ 6e-6 (~10⁴×): **PATCH-REGRESSION**. The MSE-only relaxed gate (all 38 rotated kept,
+floor accepted-lost 34/38 by design) still loses at output level — the tail-fidelity floor
+requirement was protecting real quality, not over-strict. Latency: runtime Hadamard costs
+~2.0–2.5× per-window (patch 5024/6270 s vs baseline 2492 s; base2 wall contended, excluded).
+Findings: `2026-10-16-rotation-step1-findings.md`. Step 2 (full re-quant) NOT triggered.
 
 ## Review focus (what this experiment can get wrong if nobody checks)
 
