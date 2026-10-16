@@ -1,0 +1,78 @@
+KEPT 38 / DESELECTED 0
+fused actions: {"layers.0.mlp.gate_up_proj": "uniform_keep", "layers.27.mlp.gate_up_proj": "uniform_keep", "layers.27.self_attn.qkv_proj": "uniform_keep", "layers.38.mlp.gate_up_proj": "uniform_keep", "layers.45.mlp.gate_up_proj": "uniform_keep", "layers.56.mlp.gate_up_proj": "uniform_keep", "layers.58.mlp.gate_up_proj": "uniform_keep", "layers.60.mlp.gate_up_proj": "uniform_keep", "layers.63.mlp.gate_up_proj": "uniform_keep", "layers.63.self_attn.qkv_proj": "uniform_keep"}
+copied baseline: 27 files, 23132037266 bytes (match=True)
+
+=== splicing 38 kept tensors ===
+  spliced L0.linear_attn.out_proj                                    src=naive pin=0.000e+00
+  spliced L0.mlp.down_proj                                           src=naive pin=0.000e+00
+  spliced L0.mlp.gate_proj                                           src=naive pin=0.000e+00
+  spliced L0.mlp.up_proj                                             src=naive pin=0.000e+00
+  spliced L27.mlp.down_proj                                          src=naive pin=0.000e+00
+  spliced L27.mlp.gate_proj                                          src=naive pin=0.000e+00
+  spliced L27.mlp.up_proj                                            src=naive pin=0.000e+00
+  spliced L27.self_attn.k_proj                                       src=naive pin=0.000e+00
+  spliced L27.self_attn.o_proj                                       src=naive pin=0.000e+00
+  spliced L27.self_attn.q_proj                                       src=naive pin=0.000e+00
+  spliced L27.self_attn.v_proj                                       src=naive pin=0.000e+00
+  spliced L38.linear_attn.out_proj                                   src=naive pin=0.000e+00
+  spliced L38.mlp.down_proj                                          src=naive pin=0.000e+00
+  spliced L38.mlp.gate_proj                                          src=naive pin=0.000e+00
+  spliced L38.mlp.up_proj                                            src=naive pin=0.000e+00
+  spliced L45.linear_attn.out_proj                                   src=naive pin=0.000e+00
+  spliced L45.mlp.down_proj                                          src=naive pin=0.000e+00
+  spliced L45.mlp.gate_proj                                          src=naive pin=0.000e+00
+  spliced L45.mlp.up_proj                                            src=naive pin=0.000e+00
+  spliced L56.linear_attn.out_proj                                   src=naive pin=0.000e+00
+  spliced L56.mlp.down_proj                                          src=naive pin=0.000e+00
+  spliced L56.mlp.gate_proj                                          src=naive pin=0.000e+00
+  spliced L56.mlp.up_proj                                            src=naive pin=0.000e+00
+  spliced L58.linear_attn.out_proj                                   src=naive pin=0.000e+00
+  spliced L58.mlp.down_proj                                          src=naive pin=0.000e+00
+  spliced L58.mlp.gate_proj                                          src=naive pin=0.000e+00
+  spliced L58.mlp.up_proj                                            src=naive pin=0.000e+00
+  spliced L60.linear_attn.out_proj                                   src=naive pin=0.000e+00
+  spliced L60.mlp.down_proj                                          src=naive pin=0.000e+00
+  spliced L60.mlp.gate_proj                                          src=naive pin=0.000e+00
+  spliced L60.mlp.up_proj                                            src=naive pin=0.000e+00
+  spliced L63.mlp.down_proj                                          src=naive pin=0.000e+00
+  spliced L63.mlp.gate_proj                                          src=naive pin=0.000e+00
+  spliced L63.mlp.up_proj                                            src=naive pin=0.000e+00
+  spliced L63.self_attn.k_proj                                       src=naive pin=0.000e+00
+  spliced L63.self_attn.o_proj                                       src=naive pin=0.000e+00
+  spliced L63.self_attn.q_proj                                       src=naive pin=0.000e+00
+  spliced L63.self_attn.v_proj                                       src=naive pin=0.000e+00
+dequant pin: PASS (all 0.0, 38 touched tensors)
+transform_config written: hadamard/head_dim=128, 38 targets
+
+=== sha256 sweep vs baseline ===
+  .gitattributes                                IDENTICAL
+  README.md                                     IDENTICAL
+  chat_template.jinja                           IDENTICAL
+  config.json                                   IDENTICAL
+  config.json.bak-mtp                           IDENTICAL
+  config.json.bak-quant                         IDENTICAL
+  generation_config.json                        IDENTICAL
+  model-00001-of-00007.safetensors              CHANGED
+  model-00002-of-00007.safetensors              CHANGED
+  model-00003-of-00007.safetensors              CHANGED
+  model-00004-of-00007.safetensors              CHANGED
+  model-00005-of-00007.safetensors              IDENTICAL
+  model-00006-of-00007.safetensors              IDENTICAL
+  model-00006-of-00007.safetensors.bak_embed    IDENTICAL
+  model-00007-of-00007.safetensors              IDENTICAL
+  model-00007-of-00007.safetensors.bak          IDENTICAL
+  model.safetensors.index.json                  IDENTICAL
+  model.safetensors.index.json.bak-mtp          IDENTICAL
+  model.safetensors.index.json.bak-quant        IDENTICAL
+  model_extra_tensors.safetensors               IDENTICAL
+  model_extra_tensors.safetensors.bak-draft     IDENTICAL
+  model_extra_tensors.safetensors.bak-mtp       IDENTICAL
+  mtp_draft_vocab_ids.pt                        IDENTICAL
+  processor_config.json                         IDENTICAL
+  quantization_config.json                      CHANGED
+  tokenizer.json                                IDENTICAL
+  tokenizer_config.json                         IDENTICAL
+byte identity: 22 untouched identical, 5 changed (expected: 4 touched shards + quantization_config.json)
+TOTAL dst bytes: 23132039128 (baseline 23132037266)
+wrote /home/hubbe/qwen-serving/analysis/rotation/selective_selection_mse.json
+DONE splice phase in 132.3s

@@ -1,0 +1,1207 @@
+{
+ "decision_rule": "MSE-ONLY: keep rotated tensor iff best rotated variant (argmin of naive-rot / rot-AR corrected MSE) beats the current baseline MSE; low-band tail NOT a criterion this round. Fused qkv_proj/gate_up_proj parents decided whole-parent (every member must win, else parent deselected).",
+ "fused_rule_basis": "vLLM compressed_tensors transform/linear.py: single input transform wraps the whole fused input; _validate_tlm_schemes raises on partial targeting.",
+ "plain_in_proj_policy": "12 plain linear_attn in_proj tensors keep current baseline weights (option B; fresh baseline copy holds them by construction) and get no transform target.",
+ "n_rotated": 38,
+ "n_plain": 12,
+ "n_kept": 38,
+ "n_deselected": 0,
+ "n_fused_parents_kept": 10,
+ "fused_actions": {
+  "layers.0.mlp.gate_up_proj": "uniform_keep",
+  "layers.27.mlp.gate_up_proj": "uniform_keep",
+  "layers.27.self_attn.qkv_proj": "uniform_keep",
+  "layers.38.mlp.gate_up_proj": "uniform_keep",
+  "layers.45.mlp.gate_up_proj": "uniform_keep",
+  "layers.56.mlp.gate_up_proj": "uniform_keep",
+  "layers.58.mlp.gate_up_proj": "uniform_keep",
+  "layers.60.mlp.gate_up_proj": "uniform_keep",
+  "layers.63.mlp.gate_up_proj": "uniform_keep",
+  "layers.63.self_attn.qkv_proj": "uniform_keep"
+ },
+ "kept": [
+  "model.language_model.layers.0.linear_attn.out_proj",
+  "model.language_model.layers.0.mlp.down_proj",
+  "model.language_model.layers.0.mlp.gate_proj",
+  "model.language_model.layers.0.mlp.up_proj",
+  "model.language_model.layers.27.mlp.down_proj",
+  "model.language_model.layers.27.mlp.gate_proj",
+  "model.language_model.layers.27.mlp.up_proj",
+  "model.language_model.layers.27.self_attn.k_proj",
+  "model.language_model.layers.27.self_attn.o_proj",
+  "model.language_model.layers.27.self_attn.q_proj",
+  "model.language_model.layers.27.self_attn.v_proj",
+  "model.language_model.layers.38.linear_attn.out_proj",
+  "model.language_model.layers.38.mlp.down_proj",
+  "model.language_model.layers.38.mlp.gate_proj",
+  "model.language_model.layers.38.mlp.up_proj",
+  "model.language_model.layers.45.linear_attn.out_proj",
+  "model.language_model.layers.45.mlp.down_proj",
+  "model.language_model.layers.45.mlp.gate_proj",
+  "model.language_model.layers.45.mlp.up_proj",
+  "model.language_model.layers.56.linear_attn.out_proj",
+  "model.language_model.layers.56.mlp.down_proj",
+  "model.language_model.layers.56.mlp.gate_proj",
+  "model.language_model.layers.56.mlp.up_proj",
+  "model.language_model.layers.58.linear_attn.out_proj",
+  "model.language_model.layers.58.mlp.down_proj",
+  "model.language_model.layers.58.mlp.gate_proj",
+  "model.language_model.layers.58.mlp.up_proj",
+  "model.language_model.layers.60.linear_attn.out_proj",
+  "model.language_model.layers.60.mlp.down_proj",
+  "model.language_model.layers.60.mlp.gate_proj",
+  "model.language_model.layers.60.mlp.up_proj",
+  "model.language_model.layers.63.mlp.down_proj",
+  "model.language_model.layers.63.mlp.gate_proj",
+  "model.language_model.layers.63.mlp.up_proj",
+  "model.language_model.layers.63.self_attn.k_proj",
+  "model.language_model.layers.63.self_attn.o_proj",
+  "model.language_model.layers.63.self_attn.q_proj",
+  "model.language_model.layers.63.self_attn.v_proj"
+ ],
+ "deselected": [],
+ "macro_mse": {
+  "kept_current": 0.0003806481981071951,
+  "kept_naive": 2.1207448630628216e-06,
+  "kept_rot_ar": 2.2543691915195197e-06,
+  "all38_current": 0.0003143323542191854
+ },
+ "largest_mse_wins": [
+  {
+   "tensor": "model.language_model.layers.63.self_attn.k_proj",
+   "current": 0.00037686428492070094,
+   "naive": 2.0326094266557512e-06,
+   "ar": 2.1411471566922043e-06
+  },
+  {
+   "tensor": "model.language_model.layers.63.self_attn.v_proj",
+   "current": 0.0013972050986738645,
+   "naive": 7.620151024827074e-06,
+   "ar": 8.021983501164333e-06
+  },
+  {
+   "tensor": "model.language_model.layers.63.self_attn.o_proj",
+   "current": 0.0006428997782554375,
+   "naive": 3.539638234431482e-06,
+   "ar": 3.663711138680983e-06
+  }
+ ],
+ "splice_pins": {
+  "model.language_model.layers.0.linear_attn.out_proj": {
+   "shard": "model-00001-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.0.mlp.down_proj": {
+   "shard": "model-00001-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.0.mlp.gate_proj": {
+   "shard": "model-00001-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.0.mlp.up_proj": {
+   "shard": "model-00001-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.27.mlp.down_proj": {
+   "shard": "model-00002-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.27.mlp.gate_proj": {
+   "shard": "model-00002-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.27.mlp.up_proj": {
+   "shard": "model-00002-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.27.self_attn.k_proj": {
+   "shard": "model-00002-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.27.self_attn.o_proj": {
+   "shard": "model-00002-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.27.self_attn.q_proj": {
+   "shard": "model-00002-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.27.self_attn.v_proj": {
+   "shard": "model-00002-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.38.linear_attn.out_proj": {
+   "shard": "model-00003-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.38.mlp.down_proj": {
+   "shard": "model-00003-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.38.mlp.gate_proj": {
+   "shard": "model-00003-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.38.mlp.up_proj": {
+   "shard": "model-00003-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.45.linear_attn.out_proj": {
+   "shard": "model-00003-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.45.mlp.down_proj": {
+   "shard": "model-00003-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.45.mlp.gate_proj": {
+   "shard": "model-00003-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.45.mlp.up_proj": {
+   "shard": "model-00003-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.56.linear_attn.out_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.56.mlp.down_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.56.mlp.gate_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.56.mlp.up_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.58.linear_attn.out_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.58.mlp.down_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.58.mlp.gate_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.58.mlp.up_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.60.linear_attn.out_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.60.mlp.down_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.60.mlp.gate_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.60.mlp.up_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.63.mlp.down_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.63.mlp.gate_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.63.mlp.up_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.63.self_attn.k_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.63.self_attn.o_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.63.self_attn.q_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  },
+  "model.language_model.layers.63.self_attn.v_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "source_dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch",
+   "pin": 0.0,
+   "dequant_equals_source": true
+  }
+ },
+ "transform_config": {
+  "type": "hadamard",
+  "head_dim": 128,
+  "location": "input",
+  "inverse": false,
+  "n_targets": 38
+ },
+ "dir": "/home/hubbe/qwen-serving/models/Qwen3.8-27B-W4A16-rot-patch-selective-mse",
+ "total_size_bytes": 23132039128,
+ "baseline_total_bytes": 23132037266,
+ "byte_identity": {
+  "untouched_identical": [
+   ".gitattributes",
+   "README.md",
+   "chat_template.jinja",
+   "config.json",
+   "config.json.bak-mtp",
+   "config.json.bak-quant",
+   "generation_config.json",
+   "model-00005-of-00007.safetensors",
+   "model-00006-of-00007.safetensors",
+   "model-00006-of-00007.safetensors.bak_embed",
+   "model-00007-of-00007.safetensors",
+   "model-00007-of-00007.safetensors.bak",
+   "model.safetensors.index.json",
+   "model.safetensors.index.json.bak-mtp",
+   "model.safetensors.index.json.bak-quant",
+   "model_extra_tensors.safetensors",
+   "model_extra_tensors.safetensors.bak-draft",
+   "model_extra_tensors.safetensors.bak-mtp",
+   "mtp_draft_vocab_ids.pt",
+   "processor_config.json",
+   "tokenizer.json",
+   "tokenizer_config.json"
+  ],
+  "changed": [
+   "model-00001-of-00007.safetensors",
+   "model-00002-of-00007.safetensors",
+   "model-00003-of-00007.safetensors",
+   "model-00004-of-00007.safetensors",
+   "quantization_config.json"
+  ]
+ },
+ "canary_63_o_proj_kept": true,
+ "per_tensor": {
+  "model.language_model.layers.0.linear_attn.out_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    6144
+   ],
+   "mse_current": 0.0004930455388807639,
+   "mse_naive": 3.083682809049731e-06,
+   "mse_ar": 3.3022217061007703e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 3.083682809049731e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "best rotated variant naive (3.0837e-06) vs current (4.9305e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.0.mlp.down_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    17408
+   ],
+   "mse_current": 0.00022529297782485216,
+   "mse_naive": 1.2578149914504368e-06,
+   "mse_ar": 1.3564690724207347e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.2578149914504368e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "best rotated variant naive (1.2578e-06) vs current (2.2529e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.0.mlp.gate_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.0002067651967887626,
+   "mse_naive": 1.14956150202879e-06,
+   "mse_ar": 1.2412976162579534e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.14956150202879e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.0.mlp.gate_up_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (1.1496e-06) vs current (2.0677e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.0.mlp.up_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00019279276885387424,
+   "mse_naive": 1.0720957366641552e-06,
+   "mse_ar": 1.1578141360381611e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.0720957366641552e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.0.mlp.gate_up_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (1.0721e-06) vs current (1.9279e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.27.mlp.down_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    17408
+   ],
+   "mse_current": 0.00025900842899407125,
+   "mse_naive": 1.4421928216207128e-06,
+   "mse_ar": 1.5569855448504039e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.4421928216207128e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "best rotated variant naive (1.4422e-06) vs current (2.5901e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.27.mlp.gate_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.0002554172249484988,
+   "mse_naive": 1.4217487397112677e-06,
+   "mse_ar": 1.5295405361856989e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.4217487397112677e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.27.mlp.gate_up_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (1.4217e-06) vs current (2.5542e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.27.mlp.up_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.0002668753758016877,
+   "mse_naive": 1.4851666051026334e-06,
+   "mse_ar": 1.5956679967200906e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.4851666051026334e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.27.mlp.gate_up_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (1.4852e-06) vs current (2.6688e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.27.self_attn.k_proj": {
+   "rotated": true,
+   "shape": [
+    1024,
+    5120
+   ],
+   "mse_current": 0.0004850606981445115,
+   "mse_naive": 2.670651555187212e-06,
+   "mse_ar": 2.829431260401751e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 2.670651555187212e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.27.self_attn.qkv_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (2.6707e-06) vs current (4.8506e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.27.self_attn.o_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    6144
+   ],
+   "mse_current": 0.0004846318092340919,
+   "mse_naive": 2.697317320603813e-06,
+   "mse_ar": 2.8159626357461982e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 2.697317320603813e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "best rotated variant naive (2.6973e-06) vs current (4.8463e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.27.self_attn.q_proj": {
+   "rotated": true,
+   "shape": [
+    12288,
+    5120
+   ],
+   "mse_current": 0.0004924571338876469,
+   "mse_naive": 2.7348145674350345e-06,
+   "mse_ar": 2.8967852997540043e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 2.7348145674350345e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.27.self_attn.qkv_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (2.7348e-06) vs current (4.9246e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.27.self_attn.v_proj": {
+   "rotated": true,
+   "shape": [
+    1024,
+    5120
+   ],
+   "mse_current": 0.0005250370222055815,
+   "mse_naive": 2.912833947590782e-06,
+   "mse_ar": 3.086674983222985e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 2.912833947590782e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.27.self_attn.qkv_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (2.9128e-06) vs current (5.2504e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.38.linear_attn.out_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    6144
+   ],
+   "mse_current": 0.000478182629695983,
+   "mse_naive": 2.6747621295476093e-06,
+   "mse_ar": 2.943616850851219e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 2.6747621295476093e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "best rotated variant naive (2.6748e-06) vs current (4.7818e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.38.mlp.down_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    17408
+   ],
+   "mse_current": 0.00024025070818935,
+   "mse_naive": 1.3377572422613925e-06,
+   "mse_ar": 1.4420132603294216e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.3377572422613925e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "best rotated variant naive (1.3378e-06) vs current (2.4025e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.38.mlp.gate_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.0002844666406085467,
+   "mse_naive": 1.5839720512175578e-06,
+   "mse_ar": 1.6978178668804902e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.5839720512175578e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.38.mlp.gate_up_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (1.5840e-06) vs current (2.8447e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.38.mlp.up_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00024272902718243711,
+   "mse_naive": 1.3529401735167127e-06,
+   "mse_ar": 1.4473576837941519e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.3529401735167127e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.38.mlp.gate_up_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (1.3529e-06) vs current (2.4273e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.45.linear_attn.out_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    6144
+   ],
+   "mse_current": 0.0004858683960487845,
+   "mse_naive": 2.7127482012691487e-06,
+   "mse_ar": 2.961358189686754e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 2.7127482012691487e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "best rotated variant naive (2.7127e-06) vs current (4.8587e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.45.mlp.down_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    17408
+   ],
+   "mse_current": 0.0002635514587536326,
+   "mse_naive": 1.46894475452166e-06,
+   "mse_ar": 1.5848737551618481e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.46894475452166e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "best rotated variant naive (1.4689e-06) vs current (2.6355e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.45.mlp.gate_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00024504379880157227,
+   "mse_naive": 1.3638032041324772e-06,
+   "mse_ar": 1.467957185398164e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.3638032041324772e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.45.mlp.gate_up_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (1.3638e-06) vs current (2.4504e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.45.mlp.up_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.0002736366198060894,
+   "mse_naive": 1.5239642856152389e-06,
+   "mse_ar": 1.633452206100393e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.5239642856152389e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.45.mlp.gate_up_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (1.5240e-06) vs current (2.7364e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.56.linear_attn.out_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    6144
+   ],
+   "mse_current": 0.0004838021014091026,
+   "mse_naive": 2.699045390540556e-06,
+   "mse_ar": 2.8763406128354195e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 2.699045390540556e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "best rotated variant naive (2.6990e-06) vs current (4.8380e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.56.mlp.down_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    17408
+   ],
+   "mse_current": 0.0002793372378018281,
+   "mse_naive": 1.5601634248538755e-06,
+   "mse_ar": 1.6483194989939285e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.5601634248538755e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "best rotated variant naive (1.5602e-06) vs current (2.7934e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.56.mlp.gate_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00031619283074224547,
+   "mse_naive": 1.759881177065484e-06,
+   "mse_ar": 1.8691982230061993e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.759881177065484e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.56.mlp.gate_up_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (1.7599e-06) vs current (3.1619e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.56.mlp.up_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00028422670546157186,
+   "mse_naive": 1.5834560010462272e-06,
+   "mse_ar": 1.6803579266389215e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.5834560010462272e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.56.mlp.gate_up_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (1.5835e-06) vs current (2.8423e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.58.linear_attn.out_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    6144
+   ],
+   "mse_current": 0.0004983892685141801,
+   "mse_naive": 2.7732396996670737e-06,
+   "mse_ar": 2.995367342956823e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 2.7732396996670737e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "best rotated variant naive (2.7732e-06) vs current (4.9839e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.58.mlp.down_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    17408
+   ],
+   "mse_current": 0.0002983820594623996,
+   "mse_naive": 1.6663732738535619e-06,
+   "mse_ar": 1.7610794023349878e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.6663732738535619e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "best rotated variant naive (1.6664e-06) vs current (2.9838e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.58.mlp.gate_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00034302614690550725,
+   "mse_naive": 1.9086124787873027e-06,
+   "mse_ar": 2.0307294683543156e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.9086124787873027e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.58.mlp.gate_up_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (1.9086e-06) vs current (3.4303e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.58.mlp.up_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.0003025745125740967,
+   "mse_naive": 1.6843627890240686e-06,
+   "mse_ar": 1.7912922147636773e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.6843627890240686e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.58.mlp.gate_up_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (1.6844e-06) vs current (3.0257e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.60.linear_attn.out_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    6144
+   ],
+   "mse_current": 0.0004983177243595977,
+   "mse_naive": 2.7848793007915443e-06,
+   "mse_ar": 2.9660906119529263e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 2.7848793007915443e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "best rotated variant naive (2.7849e-06) vs current (4.9832e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.60.mlp.down_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    17408
+   ],
+   "mse_current": 0.00030326011706089095,
+   "mse_naive": 1.6939616696429308e-06,
+   "mse_ar": 1.7862520368045854e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.6939616696429308e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "best rotated variant naive (1.6940e-06) vs current (3.0326e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.60.mlp.gate_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00033395913735587975,
+   "mse_naive": 1.856573973945449e-06,
+   "mse_ar": 1.9677300192239224e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.856573973945449e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.60.mlp.gate_up_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (1.8566e-06) vs current (3.3396e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.60.mlp.up_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00031177706680485555,
+   "mse_naive": 1.7355398702789353e-06,
+   "mse_ar": 1.8391436256648777e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.7355398702789353e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.60.mlp.gate_up_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (1.7355e-06) vs current (3.1178e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.63.mlp.down_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    17408
+   ],
+   "mse_current": 0.0002694265484592942,
+   "mse_naive": 1.499014290573325e-06,
+   "mse_ar": 1.5335112360551902e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.499014290573325e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "best rotated variant naive (1.4990e-06) vs current (2.6943e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.63.mlp.gate_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00037260732601182377,
+   "mse_naive": 2.0676177542718774e-06,
+   "mse_ar": 2.162119854005756e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 2.0676177542718774e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.63.mlp.gate_up_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (2.0676e-06) vs current (3.7261e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.63.mlp.up_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.0003449886302029681,
+   "mse_naive": 1.9196843737491676e-06,
+   "mse_ar": 2.0101575194941997e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 1.9196843737491676e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.63.mlp.gate_up_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (1.9197e-06) vs current (3.4499e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.63.self_attn.k_proj": {
+   "rotated": true,
+   "shape": [
+    1024,
+    5120
+   ],
+   "mse_current": 0.00037686428492070094,
+   "mse_naive": 2.0326094266557512e-06,
+   "mse_ar": 2.1411471566922043e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 2.0326094266557512e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.63.self_attn.qkv_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (2.0326e-06) vs current (3.7686e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.63.self_attn.o_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    6144
+   ],
+   "mse_current": 0.0006428997782554375,
+   "mse_naive": 3.539638234431482e-06,
+   "mse_ar": 3.663711138680983e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 3.539638234431482e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "best rotated variant naive (3.5396e-06) vs current (6.4290e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.63.self_attn.q_proj": {
+   "rotated": true,
+   "shape": [
+    12288,
+    5120
+   ],
+   "mse_current": 0.0004072814984464304,
+   "mse_naive": 2.2567280038551572e-06,
+   "mse_ar": 2.374200102217304e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 2.2567280038551572e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.63.self_attn.qkv_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (2.2567e-06) vs current (4.0728e-04) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.63.self_attn.v_proj": {
+   "rotated": true,
+   "shape": [
+    1024,
+    5120
+   ],
+   "mse_current": 0.0013972050986738645,
+   "mse_naive": 7.620151024827074e-06,
+   "mse_ar": 8.021983501164333e-06,
+   "best_variant": "naive",
+   "best_variant_mse": 7.620151024827074e-06,
+   "wins_mse_only": true,
+   "decision": "KEEP",
+   "fused_parent": "layers.63.self_attn.qkv_proj",
+   "fused_action": "uniform_keep",
+   "rationale": "best rotated variant naive (7.6202e-06) vs current (1.3972e-03) -> kept (MSE-only)"
+  },
+  "model.language_model.layers.0.linear_attn.in_proj_qkv": {
+   "rotated": false,
+   "shape": [
+    10240,
+    5120
+   ],
+   "mse_current_optionB": 2.5912286130191012e-06,
+   "mse_ar_optionA": 3.168146273734396e-06,
+   "decision": "KEEP_CURRENT_BASELINE_WEIGHTS",
+   "fused_parent": null,
+   "rationale": "plain in_proj tensor (option B established): baseline copy already holds option-B weights; no splice, no transform target."
+  },
+  "model.language_model.layers.0.linear_attn.in_proj_z": {
+   "rotated": false,
+   "shape": [
+    6144,
+    5120
+   ],
+   "mse_current_optionB": 2.7812833648193364e-06,
+   "mse_ar_optionA": 3.4409655591881818e-06,
+   "decision": "KEEP_CURRENT_BASELINE_WEIGHTS",
+   "fused_parent": null,
+   "rationale": "plain in_proj tensor (option B established): baseline copy already holds option-B weights; no splice, no transform target."
+  },
+  "model.language_model.layers.38.linear_attn.in_proj_qkv": {
+   "rotated": false,
+   "shape": [
+    10240,
+    5120
+   ],
+   "mse_current_optionB": 2.813638984053314e-06,
+   "mse_ar_optionA": 3.3052212799154308e-06,
+   "decision": "KEEP_CURRENT_BASELINE_WEIGHTS",
+   "fused_parent": null,
+   "rationale": "plain in_proj tensor (option B established): baseline copy already holds option-B weights; no splice, no transform target."
+  },
+  "model.language_model.layers.38.linear_attn.in_proj_z": {
+   "rotated": false,
+   "shape": [
+    6144,
+    5120
+   ],
+   "mse_current_optionB": 2.7031403492224606e-06,
+   "mse_ar_optionA": 3.1563303575816504e-06,
+   "decision": "KEEP_CURRENT_BASELINE_WEIGHTS",
+   "fused_parent": null,
+   "rationale": "plain in_proj tensor (option B established): baseline copy already holds option-B weights; no splice, no transform target."
+  },
+  "model.language_model.layers.45.linear_attn.in_proj_qkv": {
+   "rotated": false,
+   "shape": [
+    10240,
+    5120
+   ],
+   "mse_current_optionB": 2.868167083570523e-06,
+   "mse_ar_optionA": 3.2208898516740062e-06,
+   "decision": "KEEP_CURRENT_BASELINE_WEIGHTS",
+   "fused_parent": null,
+   "rationale": "plain in_proj tensor (option B established): baseline copy already holds option-B weights; no splice, no transform target."
+  },
+  "model.language_model.layers.45.linear_attn.in_proj_z": {
+   "rotated": false,
+   "shape": [
+    6144,
+    5120
+   ],
+   "mse_current_optionB": 2.3143114938202117e-06,
+   "mse_ar_optionA": 2.7312791923639492e-06,
+   "decision": "KEEP_CURRENT_BASELINE_WEIGHTS",
+   "fused_parent": null,
+   "rationale": "plain in_proj tensor (option B established): baseline copy already holds option-B weights; no splice, no transform target."
+  },
+  "model.language_model.layers.56.linear_attn.in_proj_qkv": {
+   "rotated": false,
+   "shape": [
+    10240,
+    5120
+   ],
+   "mse_current_optionB": 3.2922510632023175e-06,
+   "mse_ar_optionA": 3.8591852304149e-06,
+   "decision": "KEEP_CURRENT_BASELINE_WEIGHTS",
+   "fused_parent": null,
+   "rationale": "plain in_proj tensor (option B established): baseline copy already holds option-B weights; no splice, no transform target."
+  },
+  "model.language_model.layers.56.linear_attn.in_proj_z": {
+   "rotated": false,
+   "shape": [
+    6144,
+    5120
+   ],
+   "mse_current_optionB": 2.705506204844642e-06,
+   "mse_ar_optionA": 3.1515587184835474e-06,
+   "decision": "KEEP_CURRENT_BASELINE_WEIGHTS",
+   "fused_parent": null,
+   "rationale": "plain in_proj tensor (option B established): baseline copy already holds option-B weights; no splice, no transform target."
+  },
+  "model.language_model.layers.58.linear_attn.in_proj_qkv": {
+   "rotated": false,
+   "shape": [
+    10240,
+    5120
+   ],
+   "mse_current_optionB": 3.2708036613732774e-06,
+   "mse_ar_optionA": 3.7759397783016333e-06,
+   "decision": "KEEP_CURRENT_BASELINE_WEIGHTS",
+   "fused_parent": null,
+   "rationale": "plain in_proj tensor (option B established): baseline copy already holds option-B weights; no splice, no transform target."
+  },
+  "model.language_model.layers.58.linear_attn.in_proj_z": {
+   "rotated": false,
+   "shape": [
+    6144,
+    5120
+   ],
+   "mse_current_optionB": 2.8982255089521746e-06,
+   "mse_ar_optionA": 3.3329970784634328e-06,
+   "decision": "KEEP_CURRENT_BASELINE_WEIGHTS",
+   "fused_parent": null,
+   "rationale": "plain in_proj tensor (option B established): baseline copy already holds option-B weights; no splice, no transform target."
+  },
+  "model.language_model.layers.60.linear_attn.in_proj_qkv": {
+   "rotated": false,
+   "shape": [
+    10240,
+    5120
+   ],
+   "mse_current_optionB": 3.598414145127687e-06,
+   "mse_ar_optionA": 4.1793629429284716e-06,
+   "decision": "KEEP_CURRENT_BASELINE_WEIGHTS",
+   "fused_parent": null,
+   "rationale": "plain in_proj tensor (option B established): baseline copy already holds option-B weights; no splice, no transform target."
+  },
+  "model.language_model.layers.60.linear_attn.in_proj_z": {
+   "rotated": false,
+   "shape": [
+    6144,
+    5120
+   ],
+   "mse_current_optionB": 2.837147200486247e-06,
+   "mse_ar_optionA": 3.249567191358459e-06,
+   "decision": "KEEP_CURRENT_BASELINE_WEIGHTS",
+   "fused_parent": null,
+   "rationale": "plain in_proj tensor (option B established): baseline copy already holds option-B weights; no splice, no transform target."
+  }
+ },
+ "floor_table_summary": {
+  "n_tensors": 38,
+  "selective_beats_current_on_zeros": 10,
+  "selective_beats_current_on_band_retention": 4,
+  "floor_satisfied_no_regression_both": 4,
+  "floor_tensors": [
+   "27.self_attn.k_proj",
+   "63.self_attn.k_proj",
+   "63.self_attn.o_proj",
+   "63.self_attn.v_proj"
+  ],
+  "regressing_tensors": [
+   "0.linear_attn.out_proj",
+   "0.mlp.down_proj",
+   "0.mlp.gate_proj",
+   "0.mlp.up_proj",
+   "27.mlp.down_proj",
+   "27.mlp.gate_proj",
+   "27.mlp.up_proj",
+   "27.self_attn.o_proj",
+   "27.self_attn.q_proj",
+   "27.self_attn.v_proj",
+   "38.linear_attn.out_proj",
+   "38.mlp.down_proj",
+   "38.mlp.gate_proj",
+   "38.mlp.up_proj",
+   "45.linear_attn.out_proj",
+   "45.mlp.down_proj",
+   "45.mlp.gate_proj",
+   "45.mlp.up_proj",
+   "56.linear_attn.out_proj",
+   "56.mlp.down_proj",
+   "56.mlp.gate_proj",
+   "56.mlp.up_proj",
+   "58.linear_attn.out_proj",
+   "58.mlp.down_proj",
+   "58.mlp.gate_proj",
+   "58.mlp.up_proj",
+   "60.linear_attn.out_proj",
+   "60.mlp.down_proj",
+   "60.mlp.gate_proj",
+   "60.mlp.up_proj",
+   "63.mlp.down_proj",
+   "63.mlp.gate_proj",
+   "63.mlp.up_proj",
+   "63.self_attn.q_proj"
+  ],
+  "note": "low-band regressions on kept tensors are EXPECTED this round (MSE-only criterion) and are recorded, not gated",
+  "n_kept": 38,
+  "n_deselected": 0
+ },
+ "floor_table_file": "analysis/rotation/tail_fidelity_selective_mse.json"
+}

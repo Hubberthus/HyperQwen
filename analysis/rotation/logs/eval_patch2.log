@@ -1,0 +1,5 @@
+server_pid=123404
+(EngineCore pid=123706) INFO 10-15 14:09:20 [kv_cache_utils.py:2659] GPU KV cache size: 77,486 tokens, Maximum concurrency for 65,536 tokens per request: 1.18x
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (297053 > 262144). Running this sequence through the model will result in indexing errors
+{"tag": "patch2", "corpus": "wikitext-2-raw-v1/test (raw, joined)", "window_tokens": 2048, "stride": 256, "n_windows": 1153, "corpus_tokens": 297053, "n_tokens_predicted": 2360191, "mean_nll": 1.928251388595625, "ppl": 6.877473692093112, "wall_s": 6270.2, "server_pid": "123404", "port": "18020"}
+EVAL_EXIT=0

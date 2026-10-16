@@ -1,0 +1,14 @@
+{
+ "tag": "base2",
+ "corpus": "wikitext-2-raw-v1/test (raw, joined)",
+ "window_tokens": 2048,
+ "stride": 256,
+ "n_windows": 1153,
+ "corpus_tokens": 297053,
+ "n_tokens_predicted": 2360191,
+ "mean_nll": 1.919620771610597,
+ "ppl": 6.818372258609506,
+ "wall_s": 5606.3,
+ "server_pid": "15284",
+ "port": "18020"
+}

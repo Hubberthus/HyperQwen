@@ -1,0 +1,69 @@
+{
+ "metric": "perplexity = exp(-mean NLL) over ALL predicted prompt tokens; wikitext-2-raw-v1 test (raw, joined), 2048-token windows, stride 256, identical script/corpus/token budget both arms; measured via prompt_logprobs through the live vLLM server (SPEC=mtp, CTX=fast, PREFIX_CACHE off)",
+ "runs": {
+  "baseline": [
+   {
+    "tag": "base1",
+    "ppl": 6.818377210577999,
+    "mean_nll": 1.91962149787876,
+    "n_tokens_predicted": 2360191,
+    "n_windows": 1153,
+    "wall_s": 2491.8,
+    "server_pid": "6221",
+    "port": "18020"
+   },
+   {
+    "tag": "base2",
+    "ppl": 6.818372258609506,
+    "mean_nll": 1.919620771610597,
+    "n_tokens_predicted": 2360191,
+    "n_windows": 1153,
+    "wall_s": 5606.3,
+    "server_pid": "15284",
+    "port": "18020"
+   }
+  ],
+  "patch": [
+   {
+    "tag": "patch1",
+    "ppl": 6.877467799147642,
+    "mean_nll": 1.928250531747855,
+    "n_tokens_predicted": 2360191,
+    "n_windows": 1153,
+    "wall_s": 5023.8,
+    "server_pid": "90685",
+    "port": "18020"
+   },
+   {
+    "tag": "patch2",
+    "ppl": 6.877473692093112,
+    "mean_nll": 1.928251388595625,
+    "n_tokens_predicted": 2360191,
+    "n_windows": 1153,
+    "wall_s": 6270.2,
+    "server_pid": "123404",
+    "port": "18020"
+   }
+  ]
+ },
+ "per_arm": {
+  "baseline": {
+   "n_runs": 2,
+   "ppl_mean": 6.818374734593753,
+   "ppl_min": 6.818372258609506,
+   "ppl_max": 6.818377210577999,
+   "duplicate_spread": 4.951968493038805e-06
+  },
+  "patch": {
+   "n_runs": 2,
+   "ppl_mean": 6.877470745620377,
+   "ppl_min": 6.877467799147642,
+   "ppl_max": 6.877473692093112,
+   "duplicate_spread": 5.892945470264976e-06
+  }
+ },
+ "noise_estimate_duplicate_spread": 5.892945470264976e-06,
+ "patch_minus_baseline_ppl": 0.05909601102662343,
+ "verdict": "PATCH-REGRESSION",
+ "verdict_detail": "patch ppl 6.8775 vs baseline 6.8184: delta +0.0591 exceeds duplicate noise 0.0000; delta is worse (patch higher)"
+}

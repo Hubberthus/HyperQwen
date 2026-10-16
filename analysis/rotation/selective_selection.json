@@ -1,0 +1,1422 @@
+{
+ "decision_rule": "KEEP rotated iff (a) rot-AR corrected-MSE < current baseline MSE AND (b) rot-AR low-band retention >= current retention (same t/band defs as tail_fidelity_autoround.json); fused parents decided at whole-module granularity (mixed parent -> whole parent deselected).",
+ "fused_rule_basis": "vLLM compressed_tensors transform/linear.py: get_linear_transform_schemes assigns per-partition input_tfms; _validate_tfm_schemes raises ValueError('Must have same input') on mismatch; a single input transform wraps the whole fused module input, so partial targeting is invalid.",
+ "fused_actions": {
+  "layers.0.mlp.gate_up_proj": "uniform_deselect",
+  "layers.27.mlp.gate_up_proj": "uniform_deselect",
+  "layers.27.self_attn.qkv_proj": "mixed->whole_parent_deselected",
+  "layers.38.mlp.gate_up_proj": "uniform_deselect",
+  "layers.45.mlp.gate_up_proj": "uniform_deselect",
+  "layers.56.mlp.gate_up_proj": "uniform_deselect",
+  "layers.58.mlp.gate_up_proj": "uniform_deselect",
+  "layers.60.mlp.gate_up_proj": "uniform_deselect",
+  "layers.63.mlp.gate_up_proj": "uniform_deselect",
+  "layers.63.self_attn.qkv_proj": "mixed->whole_parent_deselected"
+ },
+ "n_rotated": 38,
+ "n_plain_in_proj": 12,
+ "n_kept": 1,
+ "n_deselected": 49,
+ "spec_deviations": [
+  "The 12 plain linear_attn in_proj tensors were NOT holding current baseline weights in rot-patch-AR as the task spec assumed: they hold AutoRound option-A re-quantized weights (verified byte-difference vs baseline and via mse_table_ar.json optionA vs optionB). Since option-A loses on BOTH corrected MSE (+12..24% worse) and low-band retention, they were restored to baseline under the same decision rule (fused in_proj_qkvz parents uniformly deselected)."
+ ],
+ "kept": [
+  "model.language_model.layers.63.self_attn.o_proj"
+ ],
+ "deselected": [
+  "model.language_model.layers.0.linear_attn.out_proj",
+  "model.language_model.layers.0.mlp.down_proj",
+  "model.language_model.layers.0.mlp.gate_proj",
+  "model.language_model.layers.0.mlp.up_proj",
+  "model.language_model.layers.27.mlp.down_proj",
+  "model.language_model.layers.27.mlp.gate_proj",
+  "model.language_model.layers.27.mlp.up_proj",
+  "model.language_model.layers.27.self_attn.k_proj",
+  "model.language_model.layers.27.self_attn.o_proj",
+  "model.language_model.layers.27.self_attn.q_proj",
+  "model.language_model.layers.27.self_attn.v_proj",
+  "model.language_model.layers.38.linear_attn.out_proj",
+  "model.language_model.layers.38.mlp.down_proj",
+  "model.language_model.layers.38.mlp.gate_proj",
+  "model.language_model.layers.38.mlp.up_proj",
+  "model.language_model.layers.45.linear_attn.out_proj",
+  "model.language_model.layers.45.mlp.down_proj",
+  "model.language_model.layers.45.mlp.gate_proj",
+  "model.language_model.layers.45.mlp.up_proj",
+  "model.language_model.layers.56.linear_attn.out_proj",
+  "model.language_model.layers.56.mlp.down_proj",
+  "model.language_model.layers.56.mlp.gate_proj",
+  "model.language_model.layers.56.mlp.up_proj",
+  "model.language_model.layers.58.linear_attn.out_proj",
+  "model.language_model.layers.58.mlp.down_proj",
+  "model.language_model.layers.58.mlp.gate_proj",
+  "model.language_model.layers.58.mlp.up_proj",
+  "model.language_model.layers.60.linear_attn.out_proj",
+  "model.language_model.layers.60.mlp.down_proj",
+  "model.language_model.layers.60.mlp.gate_proj",
+  "model.language_model.layers.60.mlp.up_proj",
+  "model.language_model.layers.63.mlp.down_proj",
+  "model.language_model.layers.63.mlp.gate_proj",
+  "model.language_model.layers.63.mlp.up_proj",
+  "model.language_model.layers.63.self_attn.k_proj",
+  "model.language_model.layers.63.self_attn.q_proj",
+  "model.language_model.layers.63.self_attn.v_proj",
+  "model.language_model.layers.0.linear_attn.in_proj_qkv",
+  "model.language_model.layers.0.linear_attn.in_proj_z",
+  "model.language_model.layers.38.linear_attn.in_proj_qkv",
+  "model.language_model.layers.38.linear_attn.in_proj_z",
+  "model.language_model.layers.45.linear_attn.in_proj_qkv",
+  "model.language_model.layers.45.linear_attn.in_proj_z",
+  "model.language_model.layers.56.linear_attn.in_proj_qkv",
+  "model.language_model.layers.56.linear_attn.in_proj_z",
+  "model.language_model.layers.58.linear_attn.in_proj_qkv",
+  "model.language_model.layers.58.linear_attn.in_proj_z",
+  "model.language_model.layers.60.linear_attn.in_proj_qkv",
+  "model.language_model.layers.60.linear_attn.in_proj_z"
+ ],
+ "macro": {
+  "rotated_macro_from_mse_table": {
+   "current": 0.0003143323542191854,
+   "naive_rot": 1.7533989451839833e-06,
+   "rot_ar": 1.8655545874196916e-06
+  },
+  "selective_kept_macro_rot_ar_mse": 3.663711138680983e-06,
+  "selective_kept_macro_current_mse": 0.0006428997782554375
+ },
+ "restore_pins": {
+  "model.language_model.layers.0.linear_attn.in_proj_qkv": {
+   "shard": "model-00001-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.0.linear_attn.in_proj_z": {
+   "shard": "model-00001-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.0.linear_attn.out_proj": {
+   "shard": "model-00001-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.0.mlp.down_proj": {
+   "shard": "model-00001-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.0.mlp.gate_proj": {
+   "shard": "model-00001-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.0.mlp.up_proj": {
+   "shard": "model-00001-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.27.mlp.down_proj": {
+   "shard": "model-00002-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.27.mlp.gate_proj": {
+   "shard": "model-00002-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.27.mlp.up_proj": {
+   "shard": "model-00002-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.27.self_attn.k_proj": {
+   "shard": "model-00002-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.27.self_attn.o_proj": {
+   "shard": "model-00002-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.27.self_attn.q_proj": {
+   "shard": "model-00002-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.27.self_attn.v_proj": {
+   "shard": "model-00002-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.38.linear_attn.in_proj_qkv": {
+   "shard": "model-00003-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.38.linear_attn.in_proj_z": {
+   "shard": "model-00003-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.38.linear_attn.out_proj": {
+   "shard": "model-00003-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.38.mlp.down_proj": {
+   "shard": "model-00003-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.38.mlp.gate_proj": {
+   "shard": "model-00003-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.38.mlp.up_proj": {
+   "shard": "model-00003-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.45.linear_attn.in_proj_qkv": {
+   "shard": "model-00003-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.45.linear_attn.in_proj_z": {
+   "shard": "model-00003-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.45.linear_attn.out_proj": {
+   "shard": "model-00003-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.45.mlp.down_proj": {
+   "shard": "model-00003-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.45.mlp.gate_proj": {
+   "shard": "model-00003-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.45.mlp.up_proj": {
+   "shard": "model-00003-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.56.linear_attn.in_proj_qkv": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.56.linear_attn.in_proj_z": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.56.linear_attn.out_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.56.mlp.down_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.56.mlp.gate_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.56.mlp.up_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.58.linear_attn.in_proj_qkv": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.58.linear_attn.in_proj_z": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.58.linear_attn.out_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.58.mlp.down_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.58.mlp.gate_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.58.mlp.up_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.60.linear_attn.in_proj_qkv": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.60.linear_attn.in_proj_z": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.60.linear_attn.out_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.60.mlp.down_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.60.mlp.gate_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.60.mlp.up_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.63.mlp.down_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.63.mlp.gate_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.63.mlp.up_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.63.self_attn.k_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.63.self_attn.q_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  },
+  "model.language_model.layers.63.self_attn.v_proj": {
+   "shard": "model-00004-of-00007.safetensors",
+   "pin_manual_vs_ct": 0.0,
+   "dequant_equals_baseline": true,
+   "ar_had_different_bytes": true
+  }
+ },
+ "per_tensor": {
+  "model.language_model.layers.0.linear_attn.out_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    6144
+   ],
+   "mse_current": 0.0004930455388807639,
+   "mse_naive_rot": 3.083682809049731e-06,
+   "mse_rot_ar": 3.3022217061007703e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.004150390625,
+   "zeros_current": 4440037,
+   "zeros_rot_ar": 4419446,
+   "retention_current": 0.2808442938983394,
+   "retention_rot_ar": 0.19004437295963797,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "loses tail criterion (retention drop -32.33%)"
+  },
+  "model.language_model.layers.0.mlp.down_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    17408
+   ],
+   "mse_current": 0.00022529297782485216,
+   "mse_naive_rot": 1.2578149914504368e-06,
+   "mse_rot_ar": 1.3564690724207347e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.00294189453125,
+   "zeros_current": 11725123,
+   "zeros_rot_ar": 12473741,
+   "retention_current": 0.21482890196446344,
+   "retention_rot_ar": 0.08573296907617307,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "loses tail criterion (retention drop -60.09%)"
+  },
+  "model.language_model.layers.0.mlp.gate_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.0002067651967887626,
+   "mse_naive_rot": 1.14956150202879e-06,
+   "mse_rot_ar": 1.2412976162579534e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.00281982421875,
+   "zeros_current": 12177136,
+   "zeros_rot_ar": 12470440,
+   "retention_current": 0.17700461766256642,
+   "retention_rot_ar": 0.11052895191215223,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.0.mlp.gate_up_proj",
+   "fused_action": "uniform_deselect",
+   "rationale": "loses tail criterion (retention drop -37.56%); forced by fused parent layers.0.mlp.gate_up_proj (uniform_deselect)"
+  },
+  "model.language_model.layers.0.mlp.up_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00019279276885387424,
+   "mse_naive_rot": 1.0720957366641552e-06,
+   "mse_rot_ar": 1.1578141360381611e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0027343750000000003,
+   "zeros_current": 12143131,
+   "zeros_rot_ar": 12474353,
+   "retention_current": 0.15719753826586694,
+   "retention_rot_ar": 0.0958107021404776,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.0.mlp.gate_up_proj",
+   "fused_action": "uniform_deselect",
+   "rationale": "loses tail criterion (retention drop -39.05%); forced by fused parent layers.0.mlp.gate_up_proj (uniform_deselect)"
+  },
+  "model.language_model.layers.27.mlp.down_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    17408
+   ],
+   "mse_current": 0.00025900842899407125,
+   "mse_naive_rot": 1.4421928216207128e-06,
+   "mse_rot_ar": 1.5569855448504039e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0032470703125,
+   "zeros_current": 11928750,
+   "zeros_rot_ar": 12464946,
+   "retention_current": 0.32726355204539936,
+   "retention_rot_ar": 0.246009527266425,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "loses tail criterion (retention drop -24.83%)"
+  },
+  "model.language_model.layers.27.mlp.gate_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.0002554172249484988,
+   "mse_naive_rot": 1.4217487397112677e-06,
+   "mse_rot_ar": 1.5295405361856989e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.003173828125,
+   "zeros_current": 11907252,
+   "zeros_rot_ar": 12470948,
+   "retention_current": 0.23266508302938987,
+   "retention_rot_ar": 0.1350413371737092,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.27.mlp.gate_up_proj",
+   "fused_action": "uniform_deselect",
+   "rationale": "loses tail criterion (retention drop -41.96%); forced by fused parent layers.27.mlp.gate_up_proj (uniform_deselect)"
+  },
+  "model.language_model.layers.27.mlp.up_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.0002668753758016877,
+   "mse_naive_rot": 1.4851666051026334e-06,
+   "mse_rot_ar": 1.5956679967200906e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.003271484375,
+   "zeros_current": 12113337,
+   "zeros_rot_ar": 12469130,
+   "retention_current": 0.219779122295779,
+   "retention_rot_ar": 0.12410775327194583,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.27.mlp.gate_up_proj",
+   "fused_action": "uniform_deselect",
+   "rationale": "loses tail criterion (retention drop -43.53%); forced by fused parent layers.27.mlp.gate_up_proj (uniform_deselect)"
+  },
+  "model.language_model.layers.27.self_attn.k_proj": {
+   "rotated": true,
+   "shape": [
+    1024,
+    5120
+   ],
+   "mse_current": 0.0004850606981445115,
+   "mse_naive_rot": 2.670651555187212e-06,
+   "mse_rot_ar": 2.829431260401751e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0047363281250000005,
+   "zeros_current": 861015,
+   "zeros_rot_ar": 727945,
+   "retention_current": 0.36898646363669313,
+   "retention_rot_ar": 0.3956976494456025,
+   "tail_no_regression": true,
+   "decision": "DESELECT",
+   "fused_parent": "layers.27.self_attn.qkv_proj",
+   "fused_action": "mixed->whole_parent_deselected",
+   "rationale": "wins both criteria; forced by fused parent layers.27.self_attn.qkv_proj (mixed->whole_parent_deselected)"
+  },
+  "model.language_model.layers.27.self_attn.o_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    6144
+   ],
+   "mse_current": 0.0004846318092340919,
+   "mse_naive_rot": 2.697317320603813e-06,
+   "mse_rot_ar": 2.8159626357461982e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.00439453125,
+   "zeros_current": 4240210,
+   "zeros_rot_ar": 4402099,
+   "retention_current": 0.3955192790936932,
+   "retention_rot_ar": 0.30412036931930203,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "loses tail criterion (retention drop -23.11%)"
+  },
+  "model.language_model.layers.27.self_attn.q_proj": {
+   "rotated": true,
+   "shape": [
+    12288,
+    5120
+   ],
+   "mse_current": 0.0004924571338876469,
+   "mse_naive_rot": 2.7348145674350345e-06,
+   "mse_rot_ar": 2.8967852997540043e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.004443359375,
+   "zeros_current": 8969533,
+   "zeros_rot_ar": 8801061,
+   "retention_current": 0.3497794863894216,
+   "retention_rot_ar": 0.29897068670641924,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.27.self_attn.qkv_proj",
+   "fused_action": "mixed->whole_parent_deselected",
+   "rationale": "loses tail criterion (retention drop -14.53%); forced by fused parent layers.27.self_attn.qkv_proj (mixed->whole_parent_deselected)"
+  },
+  "model.language_model.layers.27.self_attn.v_proj": {
+   "rotated": true,
+   "shape": [
+    1024,
+    5120
+   ],
+   "mse_current": 0.0005250370222055815,
+   "mse_naive_rot": 2.912833947590782e-06,
+   "mse_rot_ar": 3.086674983222985e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.00478515625,
+   "zeros_current": 802503,
+   "zeros_rot_ar": 732701,
+   "retention_current": 0.3660245998472341,
+   "retention_rot_ar": 0.34570442973102483,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.27.self_attn.qkv_proj",
+   "fused_action": "mixed->whole_parent_deselected",
+   "rationale": "loses tail criterion (retention drop -5.55%); forced by fused parent layers.27.self_attn.qkv_proj (mixed->whole_parent_deselected)"
+  },
+  "model.language_model.layers.38.linear_attn.out_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    6144
+   ],
+   "mse_current": 0.000478182629695983,
+   "mse_naive_rot": 2.6747621295476093e-06,
+   "mse_rot_ar": 2.943616850851219e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0043701171875000005,
+   "zeros_current": 4213868,
+   "zeros_rot_ar": 4405852,
+   "retention_current": 0.2534176777875365,
+   "retention_rot_ar": 0.13386614024941898,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "loses tail criterion (retention drop -47.18%)"
+  },
+  "model.language_model.layers.38.mlp.down_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    17408
+   ],
+   "mse_current": 0.00024025070818935,
+   "mse_naive_rot": 1.3377572422613925e-06,
+   "mse_rot_ar": 1.4420132603294216e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.00311279296875,
+   "zeros_current": 11877856,
+   "zeros_rot_ar": 12459671,
+   "retention_current": 0.25900580546830704,
+   "retention_rot_ar": 0.16910447471613999,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "loses tail criterion (retention drop -34.71%)"
+  },
+  "model.language_model.layers.38.mlp.gate_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.0002844666406085467,
+   "mse_naive_rot": 1.5839720512175578e-06,
+   "mse_rot_ar": 1.6978178668804902e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.003271484375,
+   "zeros_current": 11992003,
+   "zeros_rot_ar": 12473453,
+   "retention_current": 0.30004997709132125,
+   "retention_rot_ar": 0.18540937206105765,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.38.mlp.gate_up_proj",
+   "fused_action": "uniform_deselect",
+   "rationale": "loses tail criterion (retention drop -38.21%); forced by fused parent layers.38.mlp.gate_up_proj (uniform_deselect)"
+  },
+  "model.language_model.layers.38.mlp.up_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00024272902718243711,
+   "mse_naive_rot": 1.3529401735167127e-06,
+   "mse_rot_ar": 1.4473576837941519e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.00311279296875,
+   "zeros_current": 12036187,
+   "zeros_rot_ar": 12476673,
+   "retention_current": 0.20662038039206992,
+   "retention_rot_ar": 0.1088122226105429,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.38.mlp.gate_up_proj",
+   "fused_action": "uniform_deselect",
+   "rationale": "loses tail criterion (retention drop -47.34%); forced by fused parent layers.38.mlp.gate_up_proj (uniform_deselect)"
+  },
+  "model.language_model.layers.45.linear_attn.out_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    6144
+   ],
+   "mse_current": 0.0004858683960487845,
+   "mse_naive_rot": 2.7127482012691487e-06,
+   "mse_rot_ar": 2.961358189686754e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.00439453125,
+   "zeros_current": 4199564,
+   "zeros_rot_ar": 4408021,
+   "retention_current": 0.3732627650203217,
+   "retention_rot_ar": 0.25985473911282275,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "loses tail criterion (retention drop -30.38%)"
+  },
+  "model.language_model.layers.45.mlp.down_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    17408
+   ],
+   "mse_current": 0.0002635514587536326,
+   "mse_naive_rot": 1.46894475452166e-06,
+   "mse_rot_ar": 1.5848737551618481e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.003271484375,
+   "zeros_current": 11904780,
+   "zeros_rot_ar": 12470249,
+   "retention_current": 0.32423058254347425,
+   "retention_rot_ar": 0.22573716691308315,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "loses tail criterion (retention drop -30.38%)"
+  },
+  "model.language_model.layers.45.mlp.gate_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00024504379880157227,
+   "mse_naive_rot": 1.3638032041324772e-06,
+   "mse_rot_ar": 1.467957185398164e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.00311279296875,
+   "zeros_current": 12023804,
+   "zeros_rot_ar": 12472182,
+   "retention_current": 0.26733170402705775,
+   "retention_rot_ar": 0.16416289412578675,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.45.mlp.gate_up_proj",
+   "fused_action": "uniform_deselect",
+   "rationale": "loses tail criterion (retention drop -38.59%); forced by fused parent layers.45.mlp.gate_up_proj (uniform_deselect)"
+  },
+  "model.language_model.layers.45.mlp.up_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.0002736366198060894,
+   "mse_naive_rot": 1.5239642856152389e-06,
+   "mse_rot_ar": 1.633452206100393e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0033203125000000003,
+   "zeros_current": 12094297,
+   "zeros_rot_ar": 12470687,
+   "retention_current": 0.23596197219670267,
+   "retention_rot_ar": 0.13417144648639584,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.45.mlp.gate_up_proj",
+   "fused_action": "uniform_deselect",
+   "rationale": "loses tail criterion (retention drop -43.14%); forced by fused parent layers.45.mlp.gate_up_proj (uniform_deselect)"
+  },
+  "model.language_model.layers.56.linear_attn.out_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    6144
+   ],
+   "mse_current": 0.0004838021014091026,
+   "mse_naive_rot": 2.699045390540556e-06,
+   "mse_rot_ar": 2.8763406128354195e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0044189453125,
+   "zeros_current": 4188751,
+   "zeros_rot_ar": 4402643,
+   "retention_current": 0.29650647400786745,
+   "retention_rot_ar": 0.1495910283995872,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "loses tail criterion (retention drop -49.55%)"
+  },
+  "model.language_model.layers.56.mlp.down_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    17408
+   ],
+   "mse_current": 0.0002793372378018281,
+   "mse_naive_rot": 1.5601634248538755e-06,
+   "mse_rot_ar": 1.6483194989939285e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0033447265625000003,
+   "zeros_current": 11562537,
+   "zeros_rot_ar": 12479089,
+   "retention_current": 0.30991759807901603,
+   "retention_rot_ar": 0.19206403567870736,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "loses tail criterion (retention drop -38.03%)"
+  },
+  "model.language_model.layers.56.mlp.gate_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00031619283074224547,
+   "mse_naive_rot": 1.759881177065484e-06,
+   "mse_rot_ar": 1.8691982230061993e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.003515625,
+   "zeros_current": 11908723,
+   "zeros_rot_ar": 12481644,
+   "retention_current": 0.26642482213031493,
+   "retention_rot_ar": 0.15991226626081134,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.56.mlp.gate_up_proj",
+   "fused_action": "uniform_deselect",
+   "rationale": "loses tail criterion (retention drop -39.98%); forced by fused parent layers.56.mlp.gate_up_proj (uniform_deselect)"
+  },
+  "model.language_model.layers.56.mlp.up_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00028422670546157186,
+   "mse_naive_rot": 1.5834560010462272e-06,
+   "mse_rot_ar": 1.6803579266389215e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0033447265625000003,
+   "zeros_current": 11966157,
+   "zeros_rot_ar": 12478965,
+   "retention_current": 0.20000827287028528,
+   "retention_rot_ar": 0.11447704707415958,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.56.mlp.gate_up_proj",
+   "fused_action": "uniform_deselect",
+   "rationale": "loses tail criterion (retention drop -42.76%); forced by fused parent layers.56.mlp.gate_up_proj (uniform_deselect)"
+  },
+  "model.language_model.layers.58.linear_attn.out_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    6144
+   ],
+   "mse_current": 0.0004983892685141801,
+   "mse_naive_rot": 2.7732396996670737e-06,
+   "mse_rot_ar": 2.995367342956823e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0044677734375,
+   "zeros_current": 4243447,
+   "zeros_rot_ar": 4397098,
+   "retention_current": 0.24936873585085736,
+   "retention_rot_ar": 0.15384765885206925,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "loses tail criterion (retention drop -38.31%)"
+  },
+  "model.language_model.layers.58.mlp.down_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    17408
+   ],
+   "mse_current": 0.0002983820594623996,
+   "mse_naive_rot": 1.6663732738535619e-06,
+   "mse_rot_ar": 1.7610794023349878e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0034667968750000003,
+   "zeros_current": 11512965,
+   "zeros_rot_ar": 12477138,
+   "retention_current": 0.34981975126578735,
+   "retention_rot_ar": 0.22097980495342792,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "loses tail criterion (retention drop -36.83%)"
+  },
+  "model.language_model.layers.58.mlp.gate_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00034302614690550725,
+   "mse_naive_rot": 1.9086124787873027e-06,
+   "mse_rot_ar": 2.0307294683543156e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.003662109375,
+   "zeros_current": 11939013,
+   "zeros_rot_ar": 12470960,
+   "retention_current": 0.24924072195344038,
+   "retention_rot_ar": 0.1518357552279206,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.58.mlp.gate_up_proj",
+   "fused_action": "uniform_deselect",
+   "rationale": "loses tail criterion (retention drop -39.08%); forced by fused parent layers.58.mlp.gate_up_proj (uniform_deselect)"
+  },
+  "model.language_model.layers.58.mlp.up_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.0003025745125740967,
+   "mse_naive_rot": 1.6843627890240686e-06,
+   "mse_rot_ar": 1.7912922147636773e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0034667968750000003,
+   "zeros_current": 12018399,
+   "zeros_rot_ar": 12473966,
+   "retention_current": 0.21032222697626773,
+   "retention_rot_ar": 0.12624278965587823,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.58.mlp.gate_up_proj",
+   "fused_action": "uniform_deselect",
+   "rationale": "loses tail criterion (retention drop -39.98%); forced by fused parent layers.58.mlp.gate_up_proj (uniform_deselect)"
+  },
+  "model.language_model.layers.60.linear_attn.out_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    6144
+   ],
+   "mse_current": 0.0004983177243595977,
+   "mse_naive_rot": 2.7848793007915443e-06,
+   "mse_rot_ar": 2.9660906119529263e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0044921875000000005,
+   "zeros_current": 4155791,
+   "zeros_rot_ar": 4396829,
+   "retention_current": 0.3291671845680402,
+   "retention_rot_ar": 0.1554076108984463,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "loses tail criterion (retention drop -52.79%)"
+  },
+  "model.language_model.layers.60.mlp.down_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    17408
+   ],
+   "mse_current": 0.00030326011706089095,
+   "mse_naive_rot": 1.6939616696429308e-06,
+   "mse_rot_ar": 1.7862520368045854e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0034912109375,
+   "zeros_current": 11556935,
+   "zeros_rot_ar": 12478813,
+   "retention_current": 0.3345404034581368,
+   "retention_rot_ar": 0.20179331737711204,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "loses tail criterion (retention drop -39.68%)"
+  },
+  "model.language_model.layers.60.mlp.gate_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00033395913735587975,
+   "mse_naive_rot": 1.856573973945449e-06,
+   "mse_rot_ar": 1.9677300192239224e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0036376953125,
+   "zeros_current": 12163518,
+   "zeros_rot_ar": 12466748,
+   "retention_current": 0.2754215782562722,
+   "retention_rot_ar": 0.18709436494637569,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.60.mlp.gate_up_proj",
+   "fused_action": "uniform_deselect",
+   "rationale": "loses tail criterion (retention drop -32.07%); forced by fused parent layers.60.mlp.gate_up_proj (uniform_deselect)"
+  },
+  "model.language_model.layers.60.mlp.up_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00031177706680485555,
+   "mse_naive_rot": 1.7355398702789353e-06,
+   "mse_rot_ar": 1.8391436256648777e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.003515625,
+   "zeros_current": 12092964,
+   "zeros_rot_ar": 12472186,
+   "retention_current": 0.21748062168656998,
+   "retention_rot_ar": 0.14061173027969998,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.60.mlp.gate_up_proj",
+   "fused_action": "uniform_deselect",
+   "rationale": "loses tail criterion (retention drop -35.35%); forced by fused parent layers.60.mlp.gate_up_proj (uniform_deselect)"
+  },
+  "model.language_model.layers.63.mlp.down_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    17408
+   ],
+   "mse_current": 0.0002694265484592942,
+   "mse_naive_rot": 1.499014290573325e-06,
+   "mse_rot_ar": 1.5335112360551902e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0034423828125000003,
+   "zeros_current": 13068977,
+   "zeros_rot_ar": 12449686,
+   "retention_current": 0.32017582382794463,
+   "retention_rot_ar": 0.22877633327870942,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "loses tail criterion (retention drop -28.55%)"
+  },
+  "model.language_model.layers.63.mlp.gate_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.00037260732601182377,
+   "mse_naive_rot": 2.0676177542718774e-06,
+   "mse_rot_ar": 2.162119854005756e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0038330078125000003,
+   "zeros_current": 12604635,
+   "zeros_rot_ar": 12466226,
+   "retention_current": 0.3292141967273516,
+   "retention_rot_ar": 0.28605584612911383,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.63.mlp.gate_up_proj",
+   "fused_action": "uniform_deselect",
+   "rationale": "loses tail criterion (retention drop -13.11%); forced by fused parent layers.63.mlp.gate_up_proj (uniform_deselect)"
+  },
+  "model.language_model.layers.63.mlp.up_proj": {
+   "rotated": true,
+   "shape": [
+    17408,
+    5120
+   ],
+   "mse_current": 0.0003449886302029681,
+   "mse_naive_rot": 1.9196843737491676e-06,
+   "mse_rot_ar": 2.0101575194941997e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0036376953125,
+   "zeros_current": 12384612,
+   "zeros_rot_ar": 12473864,
+   "retention_current": 0.25393593782895285,
+   "retention_rot_ar": 0.2063977862637643,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.63.mlp.gate_up_proj",
+   "fused_action": "uniform_deselect",
+   "rationale": "loses tail criterion (retention drop -18.72%); forced by fused parent layers.63.mlp.gate_up_proj (uniform_deselect)"
+  },
+  "model.language_model.layers.63.self_attn.k_proj": {
+   "rotated": true,
+   "shape": [
+    1024,
+    5120
+   ],
+   "mse_current": 0.00037686428492070094,
+   "mse_naive_rot": 2.0326094266557512e-06,
+   "mse_rot_ar": 2.1411471566922043e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.004687500000000001,
+   "zeros_current": 1102711,
+   "zeros_rot_ar": 720503,
+   "retention_current": 0.442290007611123,
+   "retention_rot_ar": 0.6716222350119182,
+   "tail_no_regression": true,
+   "decision": "DESELECT",
+   "fused_parent": "layers.63.self_attn.qkv_proj",
+   "fused_action": "mixed->whole_parent_deselected",
+   "rationale": "wins both criteria; forced by fused parent layers.63.self_attn.qkv_proj (mixed->whole_parent_deselected)"
+  },
+  "model.language_model.layers.63.self_attn.o_proj": {
+   "rotated": true,
+   "shape": [
+    5120,
+    6144
+   ],
+   "mse_current": 0.0006428997782554375,
+   "mse_naive_rot": 3.539638234431482e-06,
+   "mse_rot_ar": 3.663711138680983e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0054687500000000005,
+   "zeros_current": 5377175,
+   "zeros_rot_ar": 4385329,
+   "retention_current": 0.33918694485755874,
+   "retention_rot_ar": 0.473540490445953,
+   "tail_no_regression": true,
+   "decision": "KEEP",
+   "fused_parent": null,
+   "fused_action": null,
+   "rationale": "wins both criteria"
+  },
+  "model.language_model.layers.63.self_attn.q_proj": {
+   "rotated": true,
+   "shape": [
+    12288,
+    5120
+   ],
+   "mse_current": 0.0004072814984464304,
+   "mse_naive_rot": 2.2567280038551572e-06,
+   "mse_rot_ar": 2.374200102217304e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.004052734375,
+   "zeros_current": 9402720,
+   "zeros_rot_ar": 8789749,
+   "retention_current": 0.3240774918911717,
+   "retention_rot_ar": 0.3161651308608558,
+   "tail_no_regression": false,
+   "decision": "DESELECT",
+   "fused_parent": "layers.63.self_attn.qkv_proj",
+   "fused_action": "mixed->whole_parent_deselected",
+   "rationale": "loses tail criterion (retention drop -2.44%); forced by fused parent layers.63.self_attn.qkv_proj (mixed->whole_parent_deselected)"
+  },
+  "model.language_model.layers.63.self_attn.v_proj": {
+   "rotated": true,
+   "shape": [
+    1024,
+    5120
+   ],
+   "mse_current": 0.0013972050986738645,
+   "mse_naive_rot": 7.620151024827074e-06,
+   "mse_rot_ar": 8.021983501164333e-06,
+   "mse_rot_ar_beats_current": true,
+   "t": 0.0076660156250000005,
+   "zeros_current": 929498,
+   "zeros_rot_ar": 725806,
+   "retention_current": 0.4919655114883457,
+   "retention_rot_ar": 0.53263187864592,
+   "tail_no_regression": true,
+   "decision": "DESELECT",
+   "fused_parent": "layers.63.self_attn.qkv_proj",
+   "fused_action": "mixed->whole_parent_deselected",
+   "rationale": "wins both criteria; forced by fused parent layers.63.self_attn.qkv_proj (mixed->whole_parent_deselected)"
+  },
+  "model.language_model.layers.0.linear_attn.in_proj_qkv": {
+   "rotated": false,
+   "shape": [
+    10240,
+    5120
+   ],
+   "mse_current_optionB": 2.5912286130191012e-06,
+   "mse_rot_ar_optionA": 3.168146273734396e-06,
+   "mse_rot_ar_beats_current": false,
+   "t": 0.0042236328125,
+   "zeros_current": 7146627,
+   "zeros_rot_ar": 7440759,
+   "retention_current": 0.34867824875274717,
+   "retention_rot_ar": 0.2837577702404817,
+   "tail_no_regression": false,
+   "decision": "RESTORE_BASELINE",
+   "fused_parent": "layers.0.linear_attn.in_proj_qkvz",
+   "fused_action": "uniform_deselect",
+   "rationale": "plain in_proj tensor held AutoRound option-A re-quantized weights in rot-patch-AR (NOT current weights as spec assumed); option-A loses to current on both MSE (+22.3%) and tail retention -> restored to baseline (fused in_proj_qkvz parent uniformly deselected)"
+  },
+  "model.language_model.layers.0.linear_attn.in_proj_z": {
+   "rotated": false,
+   "shape": [
+    6144,
+    5120
+   ],
+   "mse_current_optionB": 2.7812833648193364e-06,
+   "mse_rot_ar_optionA": 3.4409655591881818e-06,
+   "mse_rot_ar_beats_current": false,
+   "t": 0.0045166015625,
+   "zeros_current": 4327137,
+   "zeros_rot_ar": 4562664,
+   "retention_current": 0.22601054896584147,
+   "retention_rot_ar": 0.15098249856606333,
+   "tail_no_regression": false,
+   "decision": "RESTORE_BASELINE",
+   "fused_parent": "layers.0.linear_attn.in_proj_qkvz",
+   "fused_action": "uniform_deselect",
+   "rationale": "plain in_proj tensor held AutoRound option-A re-quantized weights in rot-patch-AR (NOT current weights as spec assumed); option-A loses to current on both MSE (+23.7%) and tail retention -> restored to baseline (fused in_proj_qkvz parent uniformly deselected)"
+  },
+  "model.language_model.layers.38.linear_attn.in_proj_qkv": {
+   "rotated": false,
+   "shape": [
+    10240,
+    5120
+   ],
+   "mse_current_optionB": 2.813638984053314e-06,
+   "mse_rot_ar_optionA": 3.3052212799154308e-06,
+   "mse_rot_ar_beats_current": false,
+   "t": 0.0044921875000000005,
+   "zeros_current": 7321056,
+   "zeros_rot_ar": 7725697,
+   "retention_current": 0.1874775588368488,
+   "retention_rot_ar": 0.1107361592767924,
+   "tail_no_regression": false,
+   "decision": "RESTORE_BASELINE",
+   "fused_parent": "layers.38.linear_attn.in_proj_qkvz",
+   "fused_action": "uniform_deselect",
+   "rationale": "plain in_proj tensor held AutoRound option-A re-quantized weights in rot-patch-AR (NOT current weights as spec assumed); option-A loses to current on both MSE (+17.5%) and tail retention -> restored to baseline (fused in_proj_qkvz parent uniformly deselected)"
+  },
+  "model.language_model.layers.38.linear_attn.in_proj_z": {
+   "rotated": false,
+   "shape": [
+    6144,
+    5120
+   ],
+   "mse_current_optionB": 2.7031403492224606e-06,
+   "mse_rot_ar_optionA": 3.1563303575816504e-06,
+   "mse_rot_ar_beats_current": false,
+   "t": 0.004443359375,
+   "zeros_current": 4262269,
+   "zeros_rot_ar": 4525205,
+   "retention_current": 0.2898664003924983,
+   "retention_rot_ar": 0.18830197126934548,
+   "tail_no_regression": false,
+   "decision": "RESTORE_BASELINE",
+   "fused_parent": "layers.38.linear_attn.in_proj_qkvz",
+   "fused_action": "uniform_deselect",
+   "rationale": "plain in_proj tensor held AutoRound option-A re-quantized weights in rot-patch-AR (NOT current weights as spec assumed); option-A loses to current on both MSE (+16.8%) and tail retention -> restored to baseline (fused in_proj_qkvz parent uniformly deselected)"
+  },
+  "model.language_model.layers.45.linear_attn.in_proj_qkv": {
+   "rotated": false,
+   "shape": [
+    10240,
+    5120
+   ],
+   "mse_current_optionB": 2.868167083570523e-06,
+   "mse_rot_ar_optionA": 3.2208898516740062e-06,
+   "mse_rot_ar_beats_current": false,
+   "t": 0.004541015625,
+   "zeros_current": 7413570,
+   "zeros_rot_ar": 7885322,
+   "retention_current": 0.22382465302411292,
+   "retention_rot_ar": 0.12380533538530379,
+   "tail_no_regression": false,
+   "decision": "RESTORE_BASELINE",
+   "fused_parent": "layers.45.linear_attn.in_proj_qkvz",
+   "fused_action": "uniform_deselect",
+   "rationale": "plain in_proj tensor held AutoRound option-A re-quantized weights in rot-patch-AR (NOT current weights as spec assumed); option-A loses to current on both MSE (+12.3%) and tail retention -> restored to baseline (fused in_proj_qkvz parent uniformly deselected)"
+  },
+  "model.language_model.layers.45.linear_attn.in_proj_z": {
+   "rotated": false,
+   "shape": [
+    6144,
+    5120
+   ],
+   "mse_current_optionB": 2.3143114938202117e-06,
+   "mse_rot_ar_optionA": 2.7312791923639492e-06,
+   "mse_rot_ar_beats_current": false,
+   "t": 0.0040771484375,
+   "zeros_current": 4320194,
+   "zeros_rot_ar": 4587866,
+   "retention_current": 0.24473266538073446,
+   "retention_rot_ar": 0.150135192875664,
+   "tail_no_regression": false,
+   "decision": "RESTORE_BASELINE",
+   "fused_parent": "layers.45.linear_attn.in_proj_qkvz",
+   "fused_action": "uniform_deselect",
+   "rationale": "plain in_proj tensor held AutoRound option-A re-quantized weights in rot-patch-AR (NOT current weights as spec assumed); option-A loses to current on both MSE (+18.0%) and tail retention -> restored to baseline (fused in_proj_qkvz parent uniformly deselected)"
+  },
+  "model.language_model.layers.56.linear_attn.in_proj_qkv": {
+   "rotated": false,
+   "shape": [
+    10240,
+    5120
+   ],
+   "mse_current_optionB": 3.2922510632023175e-06,
+   "mse_rot_ar_optionA": 3.8591852304149e-06,
+   "mse_rot_ar_beats_current": false,
+   "t": 0.00478515625,
+   "zeros_current": 7370770,
+   "zeros_rot_ar": 7740967,
+   "retention_current": 0.22901733057275073,
+   "retention_rot_ar": 0.1396640692001789,
+   "tail_no_regression": false,
+   "decision": "RESTORE_BASELINE",
+   "fused_parent": "layers.56.linear_attn.in_proj_qkvz",
+   "fused_action": "uniform_deselect",
+   "rationale": "plain in_proj tensor held AutoRound option-A re-quantized weights in rot-patch-AR (NOT current weights as spec assumed); option-A loses to current on both MSE (+17.2%) and tail retention -> restored to baseline (fused in_proj_qkvz parent uniformly deselected)"
+  },
+  "model.language_model.layers.56.linear_attn.in_proj_z": {
+   "rotated": false,
+   "shape": [
+    6144,
+    5120
+   ],
+   "mse_current_optionB": 2.705506204844642e-06,
+   "mse_rot_ar_optionA": 3.1515587184835474e-06,
+   "mse_rot_ar_beats_current": false,
+   "t": 0.0044189453125,
+   "zeros_current": 4273951,
+   "zeros_rot_ar": 4557404,
+   "retention_current": 0.3298449040826897,
+   "retention_rot_ar": 0.21261903398280368,
+   "tail_no_regression": false,
+   "decision": "RESTORE_BASELINE",
+   "fused_parent": "layers.56.linear_attn.in_proj_qkvz",
+   "fused_action": "uniform_deselect",
+   "rationale": "plain in_proj tensor held AutoRound option-A re-quantized weights in rot-patch-AR (NOT current weights as spec assumed); option-A loses to current on both MSE (+16.5%) and tail retention -> restored to baseline (fused in_proj_qkvz parent uniformly deselected)"
+  },
+  "model.language_model.layers.58.linear_attn.in_proj_qkv": {
+   "rotated": false,
+   "shape": [
+    10240,
+    5120
+   ],
+   "mse_current_optionB": 3.2708036613732774e-06,
+   "mse_rot_ar_optionA": 3.7759397783016333e-06,
+   "mse_rot_ar_beats_current": false,
+   "t": 0.0047119140625,
+   "zeros_current": 7402876,
+   "zeros_rot_ar": 7722042,
+   "retention_current": 0.1779332916424024,
+   "retention_rot_ar": 0.11125578965935613,
+   "tail_no_regression": false,
+   "decision": "RESTORE_BASELINE",
+   "fused_parent": "layers.58.linear_attn.in_proj_qkvz",
+   "fused_action": "uniform_deselect",
+   "rationale": "plain in_proj tensor held AutoRound option-A re-quantized weights in rot-patch-AR (NOT current weights as spec assumed); option-A loses to current on both MSE (+15.4%) and tail retention -> restored to baseline (fused in_proj_qkvz parent uniformly deselected)"
+  },
+  "model.language_model.layers.58.linear_attn.in_proj_z": {
+   "rotated": false,
+   "shape": [
+    6144,
+    5120
+   ],
+   "mse_current_optionB": 2.8982255089521746e-06,
+   "mse_rot_ar_optionA": 3.3329970784634328e-06,
+   "mse_rot_ar_beats_current": false,
+   "t": 0.00458984375,
+   "zeros_current": 4309106,
+   "zeros_rot_ar": 4545847,
+   "retention_current": 0.2639073043409037,
+   "retention_rot_ar": 0.18274236813748496,
+   "tail_no_regression": false,
+   "decision": "RESTORE_BASELINE",
+   "fused_parent": "layers.58.linear_attn.in_proj_qkvz",
+   "fused_action": "uniform_deselect",
+   "rationale": "plain in_proj tensor held AutoRound option-A re-quantized weights in rot-patch-AR (NOT current weights as spec assumed); option-A loses to current on both MSE (+15.0%) and tail retention -> restored to baseline (fused in_proj_qkvz parent uniformly deselected)"
+  },
+  "model.language_model.layers.60.linear_attn.in_proj_qkv": {
+   "rotated": false,
+   "shape": [
+    10240,
+    5120
+   ],
+   "mse_current_optionB": 3.598414145127687e-06,
+   "mse_rot_ar_optionA": 4.1793629429284716e-06,
+   "mse_rot_ar_beats_current": false,
+   "t": 0.004809570312500001,
+   "zeros_current": 7547343,
+   "zeros_rot_ar": 7927098,
+   "retention_current": 0.2234668539463315,
+   "retention_rot_ar": 0.14109505448298756,
+   "tail_no_regression": false,
+   "decision": "RESTORE_BASELINE",
+   "fused_parent": "layers.60.linear_attn.in_proj_qkvz",
+   "fused_action": "uniform_deselect",
+   "rationale": "plain in_proj tensor held AutoRound option-A re-quantized weights in rot-patch-AR (NOT current weights as spec assumed); option-A loses to current on both MSE (+16.1%) and tail retention -> restored to baseline (fused in_proj_qkvz parent uniformly deselected)"
+  },
+  "model.language_model.layers.60.linear_attn.in_proj_z": {
+   "rotated": false,
+   "shape": [
+    6144,
+    5120
+   ],
+   "mse_current_optionB": 2.837147200486247e-06,
+   "mse_rot_ar_optionA": 3.249567191358459e-06,
+   "mse_rot_ar_beats_current": false,
+   "t": 0.0044921875000000005,
+   "zeros_current": 4376218,
+   "zeros_rot_ar": 4613084,
+   "retention_current": 0.32866059361643085,
+   "retention_rot_ar": 0.2668989974589603,
+   "tail_no_regression": false,
+   "decision": "RESTORE_BASELINE",
+   "fused_parent": "layers.60.linear_attn.in_proj_qkvz",
+   "fused_action": "uniform_deselect",
+   "rationale": "plain in_proj tensor held AutoRound option-A re-quantized weights in rot-patch-AR (NOT current weights as spec assumed); option-A loses to current on both MSE (+14.5%) and tail retention -> restored to baseline (fused in_proj_qkvz parent uniformly deselected)"
+  }
+ }
+}

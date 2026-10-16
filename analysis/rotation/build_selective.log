@@ -1,0 +1,69 @@
+KEEP  : 1
+    model.language_model.layers.63.self_attn.o_proj
+DESEL : 49
+fused actions: {
+ "layers.0.mlp.gate_up_proj": "uniform_deselect",
+ "layers.27.mlp.gate_up_proj": "uniform_deselect",
+ "layers.27.self_attn.qkv_proj": "mixed->whole_parent_deselected",
+ "layers.38.mlp.gate_up_proj": "uniform_deselect",
+ "layers.45.mlp.gate_up_proj": "uniform_deselect",
+ "layers.56.mlp.gate_up_proj": "uniform_deselect",
+ "layers.58.mlp.gate_up_proj": "uniform_deselect",
+ "layers.60.mlp.gate_up_proj": "uniform_deselect",
+ "layers.63.mlp.gate_up_proj": "uniform_deselect",
+ "layers.63.self_attn.qkv_proj": "mixed->whole_parent_deselected"
+}
+copied 27 files (31.8s)
+  restored L0.linear_attn.in_proj_qkv                                 pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L0.linear_attn.in_proj_z                                   pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L0.linear_attn.out_proj                                    pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L0.mlp.down_proj                                           pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L0.mlp.gate_proj                                           pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L0.mlp.up_proj                                             pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L27.mlp.down_proj                                          pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L27.mlp.gate_proj                                          pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L27.mlp.up_proj                                            pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L27.self_attn.k_proj                                       pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L27.self_attn.o_proj                                       pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L27.self_attn.q_proj                                       pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L27.self_attn.v_proj                                       pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L38.linear_attn.in_proj_qkv                                pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L38.linear_attn.in_proj_z                                  pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L38.linear_attn.out_proj                                   pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L38.mlp.down_proj                                          pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L38.mlp.gate_proj                                          pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L38.mlp.up_proj                                            pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L45.linear_attn.in_proj_qkv                                pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L45.linear_attn.in_proj_z                                  pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L45.linear_attn.out_proj                                   pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L45.mlp.down_proj                                          pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L45.mlp.gate_proj                                          pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L45.mlp.up_proj                                            pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L56.linear_attn.in_proj_qkv                                pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L56.linear_attn.in_proj_z                                  pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L56.linear_attn.out_proj                                   pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L56.mlp.down_proj                                          pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L56.mlp.gate_proj                                          pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L56.mlp.up_proj                                            pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L58.linear_attn.in_proj_qkv                                pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L58.linear_attn.in_proj_z                                  pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L58.linear_attn.out_proj                                   pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L58.mlp.down_proj                                          pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L58.mlp.gate_proj                                          pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L58.mlp.up_proj                                            pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L60.linear_attn.in_proj_qkv                                pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L60.linear_attn.in_proj_z                                  pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L60.linear_attn.out_proj                                   pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L60.mlp.down_proj                                          pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L60.mlp.gate_proj                                          pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L60.mlp.up_proj                                            pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L63.mlp.down_proj                                          pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L63.mlp.gate_proj                                          pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L63.mlp.up_proj                                            pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L63.self_attn.k_proj                                       pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L63.self_attn.q_proj                                       pin=0.000e+00 same_as_baseline=True ar_differed=True
+  restored L63.self_attn.v_proj                                       pin=0.000e+00 same_as_baseline=True ar_differed=True
+dequant pin: PASS (all 0.0) (49 touched tensors)
+transform targets: 38 -> 1
+wrote /home/hubbe/qwen-serving/analysis/rotation/selective_selection.json
+TOTAL selective dir bytes: 23132039848

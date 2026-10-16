@@ -1,0 +1,91 @@
+0.linear_attn.out_proj                                  t=0.0041504 zeros c/s=4440037/4421437 retain c/s=0.2808/0.1901 -> regress
+0.mlp.down_proj                                         t=0.0029419 zeros c/s=11725123/12484051 retain c/s=0.2148/0.0858 -> regress
+0.mlp.gate_proj                                         t=0.0028198 zeros c/s=12177136/12481834 retain c/s=0.1770/0.1106 -> regress
+0.mlp.up_proj                                           t=0.0027344 zeros c/s=12143131/12486621 retain c/s=0.1572/0.0959 -> regress
+27.mlp.down_proj                                        t=0.0032471 zeros c/s=11928750/12475184 retain c/s=0.3273/0.2461 -> regress
+27.mlp.gate_proj                                        t=0.0031738 zeros c/s=11907252/12480832 retain c/s=0.2327/0.1351 -> regress
+27.mlp.up_proj                                          t=0.0032715 zeros c/s=12113337/12478338 retain c/s=0.2198/0.1241 -> regress
+27.self_attn.k_proj                                     t=0.0047363 zeros c/s=861015/728146 retain c/s=0.3690/0.3964 -> FLOOR_OK
+27.self_attn.o_proj                                     t=0.0043945 zeros c/s=4240210/4403171 retain c/s=0.3955/0.3041 -> regress
+27.self_attn.q_proj                                     t=0.0044434 zeros c/s=8969533/8807092 retain c/s=0.3498/0.2991 -> regress
+27.self_attn.v_proj                                     t=0.0047852 zeros c/s=802503/732718 retain c/s=0.3660/0.3460 -> regress
+38.linear_attn.out_proj                                 t=0.0043701 zeros c/s=4213868/4407067 retain c/s=0.2534/0.1338 -> regress
+38.mlp.down_proj                                        t=0.0031128 zeros c/s=11877856/12469723 retain c/s=0.2590/0.1691 -> regress
+38.mlp.gate_proj                                        t=0.0032715 zeros c/s=11992003/12480774 retain c/s=0.3000/0.1854 -> regress
+38.mlp.up_proj                                          t=0.0031128 zeros c/s=12036187/12483663 retain c/s=0.2066/0.1088 -> regress
+45.linear_attn.out_proj                                 t=0.0043945 zeros c/s=4199564/4409899 retain c/s=0.3733/0.2600 -> regress
+45.mlp.down_proj                                        t=0.0032715 zeros c/s=11904780/12476044 retain c/s=0.3242/0.2258 -> regress
+45.mlp.gate_proj                                        t=0.0031128 zeros c/s=12023804/12479299 retain c/s=0.2673/0.1642 -> regress
+45.mlp.up_proj                                          t=0.0033203 zeros c/s=12094297/12474762 retain c/s=0.2360/0.1342 -> regress
+56.linear_attn.out_proj                                 t=0.0044189 zeros c/s=4188751/4404370 retain c/s=0.2965/0.1496 -> regress
+56.mlp.down_proj                                        t=0.0033447 zeros c/s=11562537/12483048 retain c/s=0.3099/0.1922 -> regress
+56.mlp.gate_proj                                        t=0.0035156 zeros c/s=11908723/12485379 retain c/s=0.2664/0.1599 -> regress
+56.mlp.up_proj                                          t=0.0033447 zeros c/s=11966157/12484893 retain c/s=0.2000/0.1145 -> regress
+58.linear_attn.out_proj                                 t=0.0044678 zeros c/s=4243447/4399270 retain c/s=0.2494/0.1539 -> regress
+58.mlp.down_proj                                        t=0.0034668 zeros c/s=11512965/12480187 retain c/s=0.3498/0.2210 -> regress
+58.mlp.gate_proj                                        t=0.0036621 zeros c/s=11939013/12475044 retain c/s=0.2492/0.1519 -> regress
+58.mlp.up_proj                                          t=0.0034668 zeros c/s=12018399/12477833 retain c/s=0.2103/0.1263 -> regress
+60.linear_attn.out_proj                                 t=0.0044922 zeros c/s=4155791/4398781 retain c/s=0.3292/0.1554 -> regress
+60.mlp.down_proj                                        t=0.0034912 zeros c/s=11556935/12483226 retain c/s=0.3345/0.2019 -> regress
+60.mlp.gate_proj                                        t=0.0036377 zeros c/s=12163518/12473096 retain c/s=0.2754/0.1872 -> regress
+60.mlp.up_proj                                          t=0.0035156 zeros c/s=12092964/12476111 retain c/s=0.2175/0.1406 -> regress
+63.mlp.down_proj                                        t=0.0034424 zeros c/s=13068977/12451114 retain c/s=0.3202/0.2288 -> regress
+63.mlp.gate_proj                                        t=0.003833 zeros c/s=12604635/12469238 retain c/s=0.3292/0.2862 -> regress
+63.mlp.up_proj                                          t=0.0036377 zeros c/s=12384612/12480104 retain c/s=0.2539/0.2064 -> regress
+63.self_attn.k_proj                                     t=0.0046875 zeros c/s=1102711/721417 retain c/s=0.4423/0.6717 -> FLOOR_OK
+63.self_attn.o_proj                                     t=0.0054688 zeros c/s=5377175/4386320 retain c/s=0.3392/0.4736 -> FLOOR_OK
+63.self_attn.q_proj                                     t=0.0040527 zeros c/s=9402720/8794826 retain c/s=0.3241/0.3162 -> regress
+63.self_attn.v_proj                                     t=0.007666 zeros c/s=929498/726086 retain c/s=0.4920/0.5331 -> FLOOR_OK
+
+SUMMARY: {
+ "n_tensors": 38,
+ "selective_beats_current_on_zeros": 10,
+ "selective_beats_current_on_band_retention": 4,
+ "floor_satisfied_no_regression_both": 4,
+ "floor_tensors": [
+  "27.self_attn.k_proj",
+  "63.self_attn.k_proj",
+  "63.self_attn.o_proj",
+  "63.self_attn.v_proj"
+ ],
+ "regressing_tensors": [
+  "0.linear_attn.out_proj",
+  "0.mlp.down_proj",
+  "0.mlp.gate_proj",
+  "0.mlp.up_proj",
+  "27.mlp.down_proj",
+  "27.mlp.gate_proj",
+  "27.mlp.up_proj",
+  "27.self_attn.o_proj",
+  "27.self_attn.q_proj",
+  "27.self_attn.v_proj",
+  "38.linear_attn.out_proj",
+  "38.mlp.down_proj",
+  "38.mlp.gate_proj",
+  "38.mlp.up_proj",
+  "45.linear_attn.out_proj",
+  "45.mlp.down_proj",
+  "45.mlp.gate_proj",
+  "45.mlp.up_proj",
+  "56.linear_attn.out_proj",
+  "56.mlp.down_proj",
+  "56.mlp.gate_proj",
+  "56.mlp.up_proj",
+  "58.linear_attn.out_proj",
+  "58.mlp.down_proj",
+  "58.mlp.gate_proj",
+  "58.mlp.up_proj",
+  "60.linear_attn.out_proj",
+  "60.mlp.down_proj",
+  "60.mlp.gate_proj",
+  "60.mlp.up_proj",
+  "63.mlp.down_proj",
+  "63.mlp.gate_proj",
+  "63.mlp.up_proj",
+  "63.self_attn.q_proj"
+ ],
+ "note": "low-band regressions on kept tensors are EXPECTED this round (MSE-only criterion) and are recorded, not gated",
+ "n_kept": 38,
+ "n_deselected": 0
+}
+written (58.0s)

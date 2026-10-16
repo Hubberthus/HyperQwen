@@ -1,0 +1,14 @@
+{
+ "tag": "patch1",
+ "corpus": "wikitext-2-raw-v1/test (raw, joined)",
+ "window_tokens": 2048,
+ "stride": 256,
+ "n_windows": 1153,
+ "corpus_tokens": 297053,
+ "n_tokens_predicted": 2360191,
+ "mean_nll": 1.928250531747855,
+ "ppl": 6.877467799147642,
+ "wall_s": 5023.8,
+ "server_pid": "90685",
+ "port": "18020"
+}
