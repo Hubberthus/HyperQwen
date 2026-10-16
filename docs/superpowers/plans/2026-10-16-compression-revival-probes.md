@@ -131,5 +131,48 @@ scale delta coding saves ~0.17 bits/scale over ~2.4M scales/layer × 63 layers �
 applied as the codec's inter-frame prediction analogue. If it lands, it validates the
 codec direction on a small, cheap surface.
 
+## Probe 5 — Approach A spike: cross-layer scale DPCM (DONE 2026-10-16)
+
+**Question:** can a per-family delta scheme actually bank Probe 4's +0.165/+0.199
+bit/scale conditional-entropy gap as stream compression?
+
+**Artifacts:** `analysis/salted/scale_dpcm.py` + `.json` (untracked; 24 s CPU, all
+64 layers, both families; scales = 696,320 values/layer per family — the Probe 4
+estimate's ~2.4M/layer figure was off, both families have the same per-layer count).
+Binning: 256 equal-frequency bins, quantiles pooled across all 64 layers per family
+(same recipe as Probe 4). Deltas stored cyclic mod 256 => losslessly reconstructable
+given layer-0 codes.
+
+**Results (baseline = 8 bits/scale, fp16 storage 89.13 MB/family):**
+
+| Arm | gate_proj | down_proj |
+|---|---|---|
+| delta H(d1), bits/scale | 7.9954 (saved 0.05 MB) | 7.9833 (saved 0.18 MB) |
+| delta-of-delta H(d2) | 7.9999 (saved 0.00 MB) | 7.9987 (saved 0.02 MB) |
+
+Reconstruction check: layer-0 codes + mod-256 deltas reproduce layer-1 and layer-63
+binned codes exactly (diff = 0 on both, both families). Gate: pin = 0 (89M codes).
+
+**Verdict: NO-GO.** The conditional-entropy gap does NOT survive delta coding: H(d1)
+is ~7.98-8.00, essentially flat. The +0.17-bit structure Probe 4 found is a tight
+joint distribution around the diagonal, and the mod-256 fold (required for lossless
+cyclic reconstruction) plus the spread of |d| across ±127 destroys it. Second-order
+deltas are pure noise (~8.00). Total real saving on the full checkpoint: **~0.23 MB
+(arm 1), ~0.02 MB (arm 2)** vs the ~16 MB the Probe 4 projection suggested — and that
+projection was itself optimistic (wrong scale count). Scale DPCM is not worth a
+checkpoint-format change.
 
 
+
+
+## Probe 6 — Vector Quantization feasibility on weight codes (2026-10-16)
+Script: analysis/salted/vq_block_probe.py → vq_block_probe.json. Gate: unpack_from_int32 pin check = 0 on all 4 tensors. Design: 1 row × 4 consecutive group-128 blocks = 512 codes, k-means (seed 0) on 50k sampled blocks per tensor, k=256/1024, vs shuffled-blocks baseline (globally permuting the sampled codes — destroys all spatial structure while preserving the exact marginal code distribution). Tensors: L0/L63 × gate_proj/down_proj (174080 blocks each).
+
+| tensor | real k256 resid | shuffled k256 | real k1024 resid | shuffled k1024 | H(res|idx) k1024 | H_scalar |
+|---|---|---|---|---|---|---|
+| L0.gate  | 8.803 | 8.718 | 8.633 | 8.599 | 3.905 | 3.600 |
+| L0.down  | 9.293 | 9.210 | 9.128 | 9.079 | 3.907 | 3.636 |
+| L63.gate | 8.487 | 8.439 | 8.359 | 8.328 | 3.904 | 3.576 |
+| L63.down | 8.474 | 8.412 | 8.331 | 8.290 | 3.895 | 3.567 |
+
+Verdict: **NO-GO.** Real k-means residual is *worse* than the shuffled baseline at k=256 (all 4 tensors, ~0.4-0.8% higher MSE) and still worse at k=1024 — real blocks explain LESS block energy than shuffled blocks (explained fraction 0.56-2.47% real vs 1.51-2.94% shuffled; mean_block_l2² ≈ 4400-4800, so ≤3% of block energy explained either way). Residual entropy H(residual code | codebook index) is 3.90-3.98 bits vs scalar-code marginal 3.57-3.64 bits — i.e. VQ residual coding is ~0.3 bits/weight WORSE than the 4-bit baseline, not below it. No block structure: adjacent group codes within a row are effectively independent draws from the marginal. Index bits (0.0156-0.0195/weight) are dwarfed by the ~4-bit residual; conclusion: block-level VQ on int4 codes has no headroom.

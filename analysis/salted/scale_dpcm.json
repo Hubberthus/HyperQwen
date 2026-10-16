@@ -1,0 +1,38 @@
+{
+  "pin_max_diff": 0,
+  "families": {
+    "gate_proj": {
+      "scales_per_layer": 696320,
+      "H_delta_bits_per_scale": 7.9954,
+      "H_delta2_bits_per_scale": 7.9999,
+      "stream_bits_arm1": 511.71,
+      "stream_bits_arm2": 511.99,
+      "stream_bits_baseline": 512.0,
+      "baseline_MB": 89.13,
+      "saved_MB_arm1": 0.05,
+      "saved_MB_arm2": 0.0,
+      "recon_max_diff": {
+        "1": 0,
+        "63": 0
+      }
+    },
+    "down_proj": {
+      "scales_per_layer": 696320,
+      "H_delta_bits_per_scale": 7.9833,
+      "H_delta2_bits_per_scale": 7.9987,
+      "stream_bits_arm1": 510.95,
+      "stream_bits_arm2": 511.9,
+      "stream_bits_baseline": 512.0,
+      "baseline_MB": 89.13,
+      "saved_MB_arm1": 0.18,
+      "saved_MB_arm2": 0.02,
+      "recon_max_diff": {
+        "1": 0,
+        "63": 0
+      }
+    }
+  },
+  "total_saved_MB_arm1": 0.23,
+  "total_saved_MB_arm2": 0.02,
+  "verdict": "NO-GO: mod-256 delta entropy is ~7.995-7.983 vs the 8-bit baseline — the +0.165/+0.199 bit conditional-entropy gap collapses under delta coding (cyclic folding destroys the signed, near-diagonal structure), saving only ~0.23 MB total on the full checkpoint. Not worth a format change."
+}

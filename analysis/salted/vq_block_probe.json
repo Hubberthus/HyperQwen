@@ -1,0 +1,166 @@
+{
+  "probe": "vq_block_probe",
+  "seed": 0,
+  "block": 512,
+  "sample_blocks": 50000,
+  "res_bins": 16,
+  "tensors": {
+    "L0.gate": {
+      "base": "model.language_model.layers.0.mlp.gate_proj",
+      "shape": [
+        17408,
+        5120
+      ],
+      "pin_max_diff": 0,
+      "total_blocks": 174080,
+      "sampled_blocks": 50000,
+      "mean_block_l2sq": 4532.22324,
+      "scalar_code_entropy_bits": 3.59964780679631,
+      "ks": {
+        "real_k256": {
+          "resid_mse": 8.802625251346475,
+          "explained_fraction": 0.00557764037029318,
+          "resid_cond_entropy_bits": 3.982380805565107,
+          "index_bits_per_weight": 0.015625
+        },
+        "real_k1024": {
+          "resid_mse": 8.632915231313296,
+          "explained_fraction": 0.024749584393286117,
+          "resid_cond_entropy_bits": 3.9052257107884403,
+          "index_bits_per_weight": 0.01953125
+        },
+        "shuffled_k256": {
+          "resid_mse": 8.718386867975495,
+          "explained_fraction": 0.015093952785200204,
+          "resid_cond_entropy_bits": 3.979697164047405,
+          "index_bits_per_weight": 0.015625
+        },
+        "shuffled_k1024": {
+          "resid_mse": 8.599184060989689,
+          "explained_fraction": 0.028560155561375145,
+          "resid_cond_entropy_bits": 3.9130097642797015,
+          "index_bits_per_weight": 0.01953125
+        }
+      },
+      "runtime_s": 32.3
+    },
+    "L0.down": {
+      "base": "model.language_model.layers.0.mlp.down_proj",
+      "shape": [
+        5120,
+        17408
+      ],
+      "pin_max_diff": 0,
+      "total_blocks": 174080,
+      "sampled_blocks": 50000,
+      "mean_block_l2sq": 4788.62508,
+      "scalar_code_entropy_bits": 3.635563813412699,
+      "ks": {
+        "real_k256": {
+          "resid_mse": 9.293017492627712,
+          "explained_fraction": 0.006390169049236061,
+          "resid_cond_entropy_bits": 3.952384878866776,
+          "index_bits_per_weight": 0.015625
+        },
+        "real_k1024": {
+          "resid_mse": 9.128287477105353,
+          "explained_fraction": 0.024003109410699386,
+          "resid_cond_entropy_bits": 3.9066486052937783,
+          "index_bits_per_weight": 0.01953125
+        },
+        "shuffled_k256": {
+          "resid_mse": 9.21015949827844,
+          "explained_fraction": 0.015249349377220112,
+          "resid_cond_entropy_bits": 3.98060936482311,
+          "index_bits_per_weight": 0.015625
+        },
+        "shuffled_k1024": {
+          "resid_mse": 9.079374626197046,
+          "explained_fraction": 0.029232873538538207,
+          "resid_cond_entropy_bits": 3.9164491207180756,
+          "index_bits_per_weight": 0.01953125
+        }
+      },
+      "runtime_s": 32.0
+    },
+    "L63.gate": {
+      "base": "model.language_model.layers.63.mlp.gate_proj",
+      "shape": [
+        17408,
+        5120
+      ],
+      "pin_max_diff": 0,
+      "total_blocks": 174080,
+      "sampled_blocks": 50000,
+      "mean_block_l2sq": 4388.2204,
+      "scalar_code_entropy_bits": 3.575851417536029,
+      "ks": {
+        "real_k256": {
+          "resid_mse": 8.486940196604275,
+          "explained_fraction": 0.009777772178127475,
+          "resid_cond_entropy_bits": 3.9772648427312105,
+          "index_bits_per_weight": 0.015625
+        },
+        "real_k1024": {
+          "resid_mse": 8.359430083281152,
+          "explained_fraction": 0.024655142061700053,
+          "resid_cond_entropy_bits": 3.9043467756219337,
+          "index_bits_per_weight": 0.01953125
+        },
+        "shuffled_k256": {
+          "resid_mse": 8.439269799698428,
+          "explained_fraction": 0.015339763370683324,
+          "resid_cond_entropy_bits": 3.9792630209051154,
+          "index_bits_per_weight": 0.015625
+        },
+        "shuffled_k1024": {
+          "resid_mse": 8.327906713256196,
+          "explained_fraction": 0.028333162758376496,
+          "resid_cond_entropy_bits": 3.9094746129505182,
+          "index_bits_per_weight": 0.01953125
+        }
+      },
+      "runtime_s": 31.9
+    },
+    "L63.down": {
+      "base": "model.language_model.layers.63.mlp.down_proj",
+      "shape": [
+        5120,
+        17408
+      ],
+      "pin_max_diff": 0,
+      "total_blocks": 174080,
+      "sampled_blocks": 50000,
+      "mean_block_l2sq": 4372.94954,
+      "scalar_code_entropy_bits": 3.567071680551383,
+      "ks": {
+        "real_k256": {
+          "resid_mse": 8.474204255975684,
+          "explained_fraction": 0.00781096617466337,
+          "resid_cond_entropy_bits": 3.974582972688492,
+          "index_bits_per_weight": 0.015625
+        },
+        "real_k1024": {
+          "resid_mse": 8.330550444880355,
+          "explained_fraction": 0.024630449365134366,
+          "resid_cond_entropy_bits": 3.8952790643773687,
+          "index_bits_per_weight": 0.01953125
+        },
+        "shuffled_k256": {
+          "resid_mse": 8.411979425530443,
+          "explained_fraction": 0.015096463731070764,
+          "resid_cond_entropy_bits": 3.9782277267289956,
+          "index_bits_per_weight": 0.015625
+        },
+        "shuffled_k1024": {
+          "resid_mse": 8.290010185016087,
+          "explained_fraction": 0.029377042679473386,
+          "resid_cond_entropy_bits": 3.9090857374576364,
+          "index_bits_per_weight": 0.01953125
+        }
+      },
+      "runtime_s": 31.9
+    }
+  },
+  "runtime_s_total": 128.0
+}
