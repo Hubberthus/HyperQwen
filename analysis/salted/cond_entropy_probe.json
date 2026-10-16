@@ -1,0 +1,20 @@
+{
+  "tensor": "model.language_model.layers.63.mlp.down_proj",
+  "shape": [
+    5120,
+    17408
+  ],
+  "group": 128,
+  "pin": {
+    "tensor": "model.language_model.layers.63.mlp.down_proj",
+    "num_bits": 4,
+    "max_abs_diff": 0,
+    "codes": 89128960
+  },
+  "marginal_code_entropy_bits": 3.5673451304829182,
+  "A_prev_col": 3.566674421458191,
+  "B_prev_row": 3.5656935329046977,
+  "C_paeth_2d": 3.487910565304801,
+  "D_scale_prev_row": 7.925335055216551,
+  "E_scale_prev_group": 7.877739300436258
+}

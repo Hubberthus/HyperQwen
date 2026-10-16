@@ -1,0 +1,171 @@
+{
+  "probe": "sensitivity_map (GPTQ/AWQ-style activation-exposure proxy, group-128)",
+  "date": "2026-10-16T12:02:31.298967+00:00",
+  "checkpoint": "models/Qwen3.8-27B-W4A16-AutoRound",
+  "definition": "sens_ij = w_ij^2 * exposure_j^2; group score S[i,g] = sum_{j in g} sens_ij; groups along input dim",
+  "activation_source": "PROXY (weaker): no cached calibration hidden states found under analysis/ or bench/ (only bench/results/kv_spectrum_grams.pt = KV-cache Gram matrices, not activations). exposure_j = per-column weight L2 norm ||W[:,j]||_2 stands in for expected activation magnitude.",
+  "scheme_note": "Layer MLP tensors: W4A16 int4 symmetric group-128. lm_head: packed as 8-bit (unpack_from_int32 num_bits=8 reproduces original bf16 in model-00007-of-00007.safetensors.bak to 3.6e-4 = fp16-scale rounding; num_bits=4 fails), despite quantization_config.json claiming 4-bit and listing lm_head in ignore. Documented in this probe.",
+  "tensors": {
+    "model.language_model.layers.0.mlp.gate_proj": {
+      "shape": [
+        17408,
+        5120
+      ],
+      "num_bits": 4,
+      "shard": "model-00001-of-00007.safetensors",
+      "n_groups": 696320,
+      "group_size": 128,
+      "pin_check": {
+        "max_abs_diff": 0,
+        "codes_checked": 89128960
+      },
+      "exposure_dequant_gate": {
+        "max_rel_err": 7.172696678423002e-09
+      },
+      "direct_score_gate": {
+        "max_rel_err": 7.870776030739155e-08
+      },
+      "concentration": {
+        "frac_groups_50pct": 0.42284869025735294,
+        "frac_groups_80pct": 0.7442583869485294,
+        "frac_groups_95pct": 0.9283432904411765
+      },
+      "spearman_sens_vs_scale": {
+        "rho": -0.006697067201289092,
+        "pvalue": 2.2907456815629675e-08,
+        "n": 696320
+      },
+      "total_sensitivity": 16623.495848255232,
+      "runtime_s": 1.5
+    },
+    "model.language_model.layers.0.mlp.down_proj": {
+      "shape": [
+        5120,
+        17408
+      ],
+      "num_bits": 4,
+      "shard": "model-00001-of-00007.safetensors",
+      "n_groups": 696320,
+      "group_size": 128,
+      "pin_check": {
+        "max_abs_diff": 0,
+        "codes_checked": 89128960
+      },
+      "exposure_dequant_gate": {
+        "max_rel_err": 7.500487437982204e-09
+      },
+      "direct_score_gate": {
+        "max_rel_err": 1.277165185611168e-07
+      },
+      "concentration": {
+        "frac_groups_50pct": 0.4234719669117647,
+        "frac_groups_80pct": 0.7470128676470589,
+        "frac_groups_95pct": 0.9298785041360295
+      },
+      "spearman_sens_vs_scale": {
+        "rho": -0.005001113038317486,
+        "pvalue": 3.003023688129794e-05,
+        "n": 696320
+      },
+      "total_sensitivity": 5792.297367044957,
+      "runtime_s": 2.2
+    },
+    "model.language_model.layers.63.mlp.gate_proj": {
+      "shape": [
+        17408,
+        5120
+      ],
+      "num_bits": 4,
+      "shard": "model-00004-of-00007.safetensors",
+      "n_groups": 696320,
+      "group_size": 128,
+      "pin_check": {
+        "max_abs_diff": 0,
+        "codes_checked": 89128960
+      },
+      "exposure_dequant_gate": {
+        "max_rel_err": 4.116190689947517e-09
+      },
+      "direct_score_gate": {
+        "max_rel_err": 8.87926484538534e-08
+      },
+      "concentration": {
+        "frac_groups_50pct": 0.37688706341911765,
+        "frac_groups_80pct": 0.6977567784926471,
+        "frac_groups_95pct": 0.9048440372242647
+      },
+      "spearman_sens_vs_scale": {
+        "rho": -0.013518667356510902,
+        "pvalue": 1.6241397233190594e-29,
+        "n": 696320
+      },
+      "total_sensitivity": 54461.24268087372,
+      "runtime_s": 1.5
+    },
+    "model.language_model.layers.63.mlp.down_proj": {
+      "shape": [
+        5120,
+        17408
+      ],
+      "num_bits": 4,
+      "shard": "model-00004-of-00007.safetensors",
+      "n_groups": 696320,
+      "group_size": 128,
+      "pin_check": {
+        "max_abs_diff": 0,
+        "codes_checked": 89128960
+      },
+      "exposure_dequant_gate": {
+        "max_rel_err": 4.8589544286957915e-09
+      },
+      "direct_score_gate": {
+        "max_rel_err": 6.571928278230298e-08
+      },
+      "concentration": {
+        "frac_groups_50pct": 0.41952119715073527,
+        "frac_groups_80pct": 0.7381448184742647,
+        "frac_groups_95pct": 0.9238353056066176
+      },
+      "spearman_sens_vs_scale": {
+        "rho": -0.0034259284726250506,
+        "pvalue": 0.0042525167564344876,
+        "n": 696320
+      },
+      "total_sensitivity": 8986.330393795855,
+      "runtime_s": 1.8
+    },
+    "lm_head": {
+      "shape": [
+        248320,
+        5120
+      ],
+      "num_bits": 8,
+      "shard": "model-00007-of-00007.safetensors",
+      "n_groups": 9932800,
+      "group_size": 128,
+      "pin_check": {
+        "max_abs_diff": 0,
+        "codes_checked": 1271398400
+      },
+      "exposure_dequant_gate": {
+        "max_rel_err": 1.2673322224773058e-09
+      },
+      "direct_score_gate": {
+        "max_rel_err": 1.0407375549084145e-07
+      },
+      "concentration": {
+        "frac_groups_50pct": 0.32480851320876286,
+        "frac_groups_80pct": 0.6705234173646907,
+        "frac_groups_95pct": 0.8964993758054124
+      },
+      "spearman_sens_vs_scale": {
+        "rho": 0.7584115489645625,
+        "pvalue": 0.0,
+        "n": 9932800
+      },
+      "total_sensitivity": 13442970.343547706,
+      "runtime_s": 19.3
+    }
+  },
+  "runtime_s": 26.3
+}

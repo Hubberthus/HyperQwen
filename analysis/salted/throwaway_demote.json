@@ -1,0 +1,169 @@
+{
+  "probe": "throwaway-weight stage 2: bottom-K demotion to INT2 (RTN, CPU, memory-only)",
+  "date": "2026-10-16T13:07:59.868317+00:00",
+  "checkpoint": "models/Qwen3.8-27B-W4A16-AutoRound",
+  "definition": "bottom-K% groups by stage-1 group sensitivity (S[i,g], ascending); demote to INT2 symmetric RTN using the group's existing 4-bit scale: c2 = clip(signed_code, -2, 1), w2 = c2 * s_g (AutoRound re-quant NOT needed for a distortion curve). raw = sum delta^2 / sum w^2; sens-weighted = sum delta^2*exposure^2 / sum w^2*exposure^2; exposure_j = per-column weight L2 norm (WEAKER proxy, same as sensitivity_probe.py).",
+  "activation_source": "PROXY (weaker): exposure_j = ||W[:,j]||_2, no cached activations.",
+  "int2_convention": "2-bit symmetric signed codes {-2,-1,0,1} (unsigned c+2 in 0..3).",
+  "k_values": [
+    5,
+    10,
+    20
+  ],
+  "stage1_ranking_source": "analysis/salted/throwaway_ranking.json",
+  "gates": [
+    "pin unpack == 0",
+    "demotion reconstruction == 0"
+  ],
+  "tensors": {
+    "model.language_model.layers.0.mlp.gate_proj": {
+      "shape": [
+        17408,
+        5120
+      ],
+      "shard": "model-00001-of-00007.safetensors",
+      "n_groups": 696320,
+      "group_size": 128,
+      "pin_check": {
+        "max_abs_diff": 0,
+        "codes_checked": 89128960
+      },
+      "total_sensitivity": 16623.495848255232,
+      "recon_check": {
+        "max_abs_diff": 0,
+        "elements_checked": 15360
+      },
+      "k_results": {
+        "5": {
+          "raw_l2_frac": 0.0142886340346145,
+          "sens_weighted_frac": 0.014245101785438375,
+          "bits_saved_per_elem": 0.025
+        },
+        "10": {
+          "raw_l2_frac": 0.030242187205524466,
+          "sens_weighted_frac": 0.030164441317938183,
+          "bits_saved_per_elem": 0.05
+        },
+        "20": {
+          "raw_l2_frac": 0.06435821456156067,
+          "sens_weighted_frac": 0.06422818050837216,
+          "bits_saved_per_elem": 0.1
+        }
+      },
+      "int2_note": "2-bit symmetric signed codes {0..3} -> {-2,-1,0,1}; RTN clip uses the group's existing 4-bit scale (no requant).",
+      "runtime_s": 3.0
+    },
+    "model.language_model.layers.0.mlp.down_proj": {
+      "shape": [
+        5120,
+        17408
+      ],
+      "shard": "model-00001-of-00007.safetensors",
+      "n_groups": 696320,
+      "group_size": 128,
+      "pin_check": {
+        "max_abs_diff": 0,
+        "codes_checked": 89128960
+      },
+      "total_sensitivity": 5792.297367044957,
+      "recon_check": {
+        "max_abs_diff": 0,
+        "elements_checked": 6144
+      },
+      "k_results": {
+        "5": {
+          "raw_l2_frac": 0.015682271117360647,
+          "sens_weighted_frac": 0.014963456850502608,
+          "bits_saved_per_elem": 0.025
+        },
+        "10": {
+          "raw_l2_frac": 0.03276798103131533,
+          "sens_weighted_frac": 0.0314476754525073,
+          "bits_saved_per_elem": 0.05
+        },
+        "20": {
+          "raw_l2_frac": 0.0688655369170531,
+          "sens_weighted_frac": 0.06660910890634106,
+          "bits_saved_per_elem": 0.1
+        }
+      },
+      "int2_note": "2-bit symmetric signed codes {0..3} -> {-2,-1,0,1}; RTN clip uses the group's existing 4-bit scale (no requant).",
+      "runtime_s": 3.8
+    },
+    "model.language_model.layers.63.mlp.gate_proj": {
+      "shape": [
+        17408,
+        5120
+      ],
+      "shard": "model-00004-of-00007.safetensors",
+      "n_groups": 696320,
+      "group_size": 128,
+      "pin_check": {
+        "max_abs_diff": 0,
+        "codes_checked": 89128960
+      },
+      "total_sensitivity": 54461.24268087372,
+      "recon_check": {
+        "max_abs_diff": 0,
+        "elements_checked": 15360
+      },
+      "k_results": {
+        "5": {
+          "raw_l2_frac": 0.009746905485957379,
+          "sens_weighted_frac": 0.009678868293478925,
+          "bits_saved_per_elem": 0.025
+        },
+        "10": {
+          "raw_l2_frac": 0.02191700406990191,
+          "sens_weighted_frac": 0.021768602539121617,
+          "bits_saved_per_elem": 0.05
+        },
+        "20": {
+          "raw_l2_frac": 0.05033215358494117,
+          "sens_weighted_frac": 0.049977516168253903,
+          "bits_saved_per_elem": 0.1
+        }
+      },
+      "int2_note": "2-bit symmetric signed codes {0..3} -> {-2,-1,0,1}; RTN clip uses the group's existing 4-bit scale (no requant).",
+      "runtime_s": 2.8
+    },
+    "model.language_model.layers.63.mlp.down_proj": {
+      "shape": [
+        5120,
+        17408
+      ],
+      "shard": "model-00004-of-00007.safetensors",
+      "n_groups": 696320,
+      "group_size": 128,
+      "pin_check": {
+        "max_abs_diff": 0,
+        "codes_checked": 89128960
+      },
+      "total_sensitivity": 8986.330393795855,
+      "recon_check": {
+        "max_abs_diff": 0,
+        "elements_checked": 6144
+      },
+      "k_results": {
+        "5": {
+          "raw_l2_frac": 0.013975450291993794,
+          "sens_weighted_frac": 0.013416437284892896,
+          "bits_saved_per_elem": 0.025
+        },
+        "10": {
+          "raw_l2_frac": 0.030345166588703495,
+          "sens_weighted_frac": 0.029345371021355607,
+          "bits_saved_per_elem": 0.05
+        },
+        "20": {
+          "raw_l2_frac": 0.06560531479273937,
+          "sens_weighted_frac": 0.06411824568291788,
+          "bits_saved_per_elem": 0.1
+        }
+      },
+      "int2_note": "2-bit symmetric signed codes {0..3} -> {-2,-1,0,1}; RTN clip uses the group's existing 4-bit scale (no requant).",
+      "runtime_s": 3.8
+    }
+  },
+  "runtime_s": 13.4
+}

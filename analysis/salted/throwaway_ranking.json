@@ -1,0 +1,197 @@
+{
+  "probe": "throwaway-weight stage 1: bottom-K% sensitivity concentration ranking (CPU)",
+  "date": "2026-10-16T12:56:09.355592+00:00",
+  "checkpoint": "models/Qwen3.8-27B-W4A16-AutoRound",
+  "definition": "sens_ij = w_ij^2 * exposure_j^2 (exposure_j = per-column weight L2-norm proxy, per sensitivity_probe.py); group score S[i,g] = sum_{j in g} sens_ij; groups along input dim. bottom-K% = the K% of groups with the SMALLEST scores.",
+  "gate": "pin check manual_unpack vs unpack_from_int32 == 0 must pass first",
+  "k_values": [
+    5,
+    10,
+    20,
+    30,
+    50
+  ],
+  "tensors": {
+    "model.language_model.layers.0.mlp.gate_proj": {
+      "shape": [
+        17408,
+        5120
+      ],
+      "num_bits": 4,
+      "shard": "model-00001-of-00007.safetensors",
+      "n_groups": 696320,
+      "group_size": 128,
+      "pin_check": {
+        "max_abs_diff": 0,
+        "codes_checked": 89128960
+      },
+      "total_sensitivity": 16623.495848255232,
+      "verify_vs_probe": {
+        "total_sensitivity_rel_err": 0.0,
+        "recomputed_concentration": {
+          "frac_groups_50pct": 0.42284869025735294,
+          "frac_groups_80pct": 0.7442583869485294,
+          "frac_groups_95pct": 0.9283432904411765
+        },
+        "probe_concentration": {
+          "frac_groups_50pct": 0.42284869025735294,
+          "frac_groups_80pct": 0.7442583869485294,
+          "frac_groups_95pct": 0.9283432904411765
+        },
+        "concentration_match": true
+      },
+      "bottom_k_by_sensitivity": {
+        "bottom_5pct": 0.03393219238427812,
+        "bottom_10pct": 0.07169343320145313,
+        "bottom_20pct": 0.15257737197203156,
+        "bottom_30pct": 0.23868265103831618,
+        "bottom_50pct": 0.4239706827199904
+      },
+      "bottom_k_by_scale": {
+        "bottom_5pct": 0.03673877861044852,
+        "bottom_10pct": 0.07645439593780169,
+        "bottom_20pct": 0.16030060581112257,
+        "bottom_30pct": 0.24852011200573187,
+        "bottom_50pct": 0.43601372517248904
+      },
+      "pearson_log_sens_vs_log_scale": 0.6359470306959091,
+      "runtime_s": 1.2
+    },
+    "model.language_model.layers.0.mlp.down_proj": {
+      "shape": [
+        5120,
+        17408
+      ],
+      "num_bits": 4,
+      "shard": "model-00001-of-00007.safetensors",
+      "n_groups": 696320,
+      "group_size": 128,
+      "pin_check": {
+        "max_abs_diff": 0,
+        "codes_checked": 89128960
+      },
+      "total_sensitivity": 5792.297367044957,
+      "verify_vs_probe": {
+        "total_sensitivity_rel_err": 0.0,
+        "recomputed_concentration": {
+          "frac_groups_50pct": 0.4234719669117647,
+          "frac_groups_80pct": 0.7470128676470589,
+          "frac_groups_95pct": 0.9298785041360295
+        },
+        "probe_concentration": {
+          "frac_groups_50pct": 0.4234719669117647,
+          "frac_groups_80pct": 0.7470128676470589,
+          "frac_groups_95pct": 0.9298785041360295
+        },
+        "concentration_match": true
+      },
+      "bottom_k_by_sensitivity": {
+        "bottom_5pct": 0.03484402070268699,
+        "bottom_10pct": 0.07315424162270556,
+        "bottom_20pct": 0.15475805107899712,
+        "bottom_30pct": 0.24113289748867375,
+        "bottom_50pct": 0.42553542900779723
+      },
+      "bottom_k_by_scale": {
+        "bottom_5pct": 0.0380458875742634,
+        "bottom_10pct": 0.07878856054574507,
+        "bottom_20pct": 0.1641989242625336,
+        "bottom_30pct": 0.2534493519891054,
+        "bottom_50pct": 0.44158580687227317
+      },
+      "pearson_log_sens_vs_log_scale": 0.601865434057553,
+      "runtime_s": 1.3
+    },
+    "model.language_model.layers.63.mlp.gate_proj": {
+      "shape": [
+        17408,
+        5120
+      ],
+      "num_bits": 4,
+      "shard": "model-00004-of-00007.safetensors",
+      "n_groups": 696320,
+      "group_size": 128,
+      "pin_check": {
+        "max_abs_diff": 0,
+        "codes_checked": 89128960
+      },
+      "total_sensitivity": 54461.24268087372,
+      "verify_vs_probe": {
+        "total_sensitivity_rel_err": 0.0,
+        "recomputed_concentration": {
+          "frac_groups_50pct": 0.37688706341911765,
+          "frac_groups_80pct": 0.6977567784926471,
+          "frac_groups_95pct": 0.9048440372242647
+        },
+        "probe_concentration": {
+          "frac_groups_50pct": 0.37688706341911765,
+          "frac_groups_80pct": 0.6977567784926471,
+          "frac_groups_95pct": 0.9048440372242647
+        },
+        "concentration_match": true
+      },
+      "bottom_k_by_sensitivity": {
+        "bottom_5pct": 0.023688742716627003,
+        "bottom_10pct": 0.05299778180410808,
+        "bottom_20pct": 0.120855599046873,
+        "bottom_30pct": 0.1981697881944485,
+        "bottom_50pct": 0.3760314270610027
+      },
+      "bottom_k_by_scale": {
+        "bottom_5pct": 0.03211343538929161,
+        "bottom_10pct": 0.06837047874537001,
+        "bottom_20pct": 0.14690978514224823,
+        "bottom_30pct": 0.23129869939563144,
+        "bottom_50pct": 0.4144879485609894
+      },
+      "pearson_log_sens_vs_log_scale": 0.7681196466216752,
+      "runtime_s": 1.1
+    },
+    "model.language_model.layers.63.mlp.down_proj": {
+      "shape": [
+        5120,
+        17408
+      ],
+      "num_bits": 4,
+      "shard": "model-00004-of-00007.safetensors",
+      "n_groups": 696320,
+      "group_size": 128,
+      "pin_check": {
+        "max_abs_diff": 0,
+        "codes_checked": 89128960
+      },
+      "total_sensitivity": 8986.330393795855,
+      "verify_vs_probe": {
+        "total_sensitivity_rel_err": 0.0,
+        "recomputed_concentration": {
+          "frac_groups_50pct": 0.41952119715073527,
+          "frac_groups_80pct": 0.7381448184742647,
+          "frac_groups_95pct": 0.9238353056066176
+        },
+        "probe_concentration": {
+          "frac_groups_50pct": 0.41952119715073527,
+          "frac_groups_80pct": 0.7381448184742647,
+          "frac_groups_95pct": 0.9238353056066176
+        },
+        "concentration_match": true
+      },
+      "bottom_k_by_sensitivity": {
+        "bottom_5pct": 0.031204637786285554,
+        "bottom_10pct": 0.06780677732541876,
+        "bottom_20pct": 0.1475369223871747,
+        "bottom_30pct": 0.23336033575584594,
+        "bottom_50pct": 0.41971684790967234
+      },
+      "bottom_k_by_scale": {
+        "bottom_5pct": 0.03592802024395284,
+        "bottom_10pct": 0.07507235563883248,
+        "bottom_20pct": 0.15785459796385296,
+        "bottom_30pct": 0.24504096389038024,
+        "bottom_50pct": 0.43052456174541565
+      },
+      "pearson_log_sens_vs_log_scale": 0.6409700793264236,
+      "runtime_s": 1.8
+    }
+  },
+  "runtime_s": 5.5
+}
