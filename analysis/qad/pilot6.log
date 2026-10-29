@@ -1,0 +1,262 @@
+loading student...
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/transformers/quantizers/auto.py:279: UserWarning: You passed `quantization_config` or equivalent parameters to `from_pretrained` but the model you're loading already has a `quantization_config` attribute. The `quantization_config` from the model will be used.However, loading attributes (e.g. ['dequantize', 'use_optimized_inference']) will be overwritten with the one you passed to `from_pretrained`. The rest will be ignored.
+  warnings.warn(warning_msg)
+Could not match `re:^mtp\..*` in instance of Qwen3_5ForConditionalGeneration
+Could not match `re:.*lm_head$` in instance of Qwen3_5ForConditionalGeneration
+Compressing model:   0%|          | 0/402 [00:00<?, ?it/s]Compressing model:  21%|██        | 85/402 [00:00<00:00, 849.26it/s]Compressing model:  43%|████▎     | 171/402 [00:00<00:00, 852.25it/s]Compressing model:  64%|██████▍   | 257/402 [00:00<00:00, 847.03it/s]Compressing model:  85%|████████▌ | 342/402 [00:00<00:00, 845.95it/s]Compressing model: 100%|██████████| 402/402 [00:00<00:00, 851.51it/s]
+Loading weights:   0%|          | 0/1988 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1988 [00:01<1:02:10,  1.88s/it]Loading weights:   1%|          | 21/1988 [00:01<02:15, 14.53it/s] Loading weights:   2%|▏         | 40/1988 [00:02<01:04, 30.18it/s]Loading weights:   3%|▎         | 54/1988 [00:02<00:46, 41.51it/s]Loading weights:   4%|▍         | 76/1988 [00:02<00:30, 63.03it/s]Loading weights:   5%|▍         | 90/1988 [00:02<00:27, 69.78it/s]Loading weights:   6%|▌         | 124/1988 [00:02<00:17, 109.53it/s]Loading weights:   7%|▋         | 143/1988 [00:02<00:15, 121.80it/s]Loading weights:   8%|▊         | 160/1988 [00:02<00:14, 124.83it/s]Loading weights:   9%|▉         | 181/1988 [00:03<00:13, 135.38it/s]Loading weights:  10%|▉         | 197/1988 [00:03<00:14, 126.45it/s]Loading weights:  12%|█▏        | 229/1988 [00:03<00:11, 157.83it/s]Loading weights:  12%|█▏        | 247/1988 [00:03<00:11, 157.85it/s]Loading weights:  13%|█▎        | 264/1988 [00:03<00:11, 151.20it/s]Loading weights:  14%|█▍        | 284/1988 [00:03<00:11, 153.18it/s]Loading weights:  15%|█▌        | 300/1988 [00:03<00:12, 137.62it/s]Loading weights:  17%|█▋        | 329/1988 [00:03<00:09, 173.91it/s]Loading weights:  18%|█▊        | 348/1988 [00:04<00:10, 161.31it/s]Loading weights:  18%|█▊        | 366/1988 [00:04<00:10, 150.52it/s]Loading weights:  19%|█▉        | 387/1988 [00:04<00:10, 154.35it/s]Loading weights:  20%|██        | 403/1988 [00:04<00:11, 138.76it/s]Loading weights:  22%|██▏       | 429/1988 [00:04<00:09, 167.45it/s]Loading weights:  22%|██▏       | 447/1988 [00:04<00:09, 162.69it/s]Loading weights:  23%|██▎       | 465/1988 [00:04<00:09, 155.88it/s]Loading weights:  24%|██▍       | 487/1988 [00:04<00:09, 160.38it/s]Loading weights:  25%|██▌       | 504/1988 [00:05<00:11, 132.88it/s]Loading weights:  27%|██▋       | 534/1988 [00:05<00:08, 170.20it/s]Loading weights:  28%|██▊       | 553/1988 [00:05<00:08, 166.44it/s]Loading weights:  29%|██▊       | 571/1988 [00:05<00:09, 145.81it/s]Loading weights:  30%|██▉       | 593/1988 [00:05<00:09, 152.63it/s]Loading weights:  31%|███       | 610/1988 [00:05<00:09, 139.91it/s]Loading weights:  32%|███▏      | 638/1988 [00:05<00:07, 172.31it/s]Loading weights:  33%|███▎      | 657/1988 [00:06<00:08, 161.73it/s]Loading weights:  34%|███▍      | 675/1988 [00:06<00:08, 151.59it/s]Loading weights:  35%|███▌      | 696/1988 [00:06<00:08, 156.57it/s]Loading weights:  36%|███▌      | 713/1988 [00:06<00:08, 142.91it/s]Loading weights:  37%|███▋      | 742/1988 [00:06<00:07, 164.42it/s]Loading weights:  38%|███▊      | 761/1988 [00:06<00:07, 165.64it/s]Loading weights:  39%|███▉      | 778/1988 [00:06<00:07, 157.20it/s]Loading weights:  40%|████      | 799/1988 [00:06<00:07, 160.03it/s]Loading weights:  41%|████      | 816/1988 [00:07<00:08, 144.63it/s]Loading weights:  43%|████▎     | 847/1988 [00:07<00:06, 172.07it/s]Loading weights:  44%|████▎     | 865/1988 [00:07<00:06, 168.78it/s]Loading weights:  44%|████▍     | 882/1988 [00:07<00:06, 159.41it/s]Loading weights:  45%|████▌     | 902/1988 [00:07<00:06, 159.56it/s]Loading weights:  46%|████▌     | 919/1988 [00:07<00:07, 143.72it/s]Loading weights:  48%|████▊     | 948/1988 [00:07<00:05, 179.28it/s]Loading weights:  49%|████▊     | 967/1988 [00:07<00:06, 165.28it/s]Loading weights:  50%|████▉     | 985/1988 [00:08<00:06, 153.86it/s]Loading weights:  50%|█████     | 1003/1988 [00:08<00:06, 150.85it/s]Loading weights:  51%|█████▏    | 1019/1988 [00:08<00:07, 136.43it/s]Loading weights:  53%|█████▎    | 1053/1988 [00:08<00:05, 172.01it/s]Loading weights:  54%|█████▍    | 1071/1988 [00:08<00:05, 172.90it/s]Loading weights:  55%|█████▍    | 1089/1988 [00:08<00:05, 158.62it/s]Loading weights:  56%|█████▌    | 1108/1988 [00:08<00:05, 156.54it/s]Loading weights:  57%|█████▋    | 1124/1988 [00:09<00:06, 140.70it/s]Loading weights:  58%|█████▊    | 1154/1988 [00:09<00:04, 167.16it/s]Loading weights:  59%|█████▉    | 1173/1988 [00:09<00:04, 168.49it/s]Loading weights:  60%|█████▉    | 1191/1988 [00:09<00:04, 162.16it/s]Loading weights:  61%|██████    | 1211/1988 [00:09<00:04, 161.97it/s]Loading weights:  62%|██████▏   | 1228/1988 [00:09<00:05, 146.02it/s]Loading weights:  63%|██████▎   | 1259/1988 [00:09<00:04, 172.29it/s]Loading weights:  64%|██████▍   | 1277/1988 [00:09<00:04, 168.10it/s]Loading weights:  65%|██████▌   | 1294/1988 [00:10<00:04, 158.55it/s]Loading weights:  66%|██████▌   | 1312/1988 [00:10<00:04, 154.65it/s]Loading weights:  67%|██████▋   | 1328/1988 [00:10<00:04, 139.18it/s]Loading weights:  68%|██████▊   | 1359/1988 [00:10<00:03, 180.99it/s]Loading weights:  69%|██████▉   | 1379/1988 [00:10<00:03, 169.39it/s]Loading weights:  70%|███████   | 1397/1988 [00:10<00:03, 157.03it/s]Loading weights:  71%|███████   | 1415/1988 [00:10<00:03, 153.35it/s]Loading weights:  72%|███████▏  | 1431/1988 [00:10<00:04, 138.40it/s]Loading weights:  74%|███████▎  | 1463/1988 [00:11<00:02, 181.99it/s]Loading weights:  75%|███████▍  | 1483/1988 [00:11<00:02, 171.96it/s]Loading weights:  76%|███████▌  | 1502/1988 [00:11<00:03, 160.50it/s]Loading weights:  76%|███████▋  | 1520/1988 [00:11<00:03, 155.46it/s]Loading weights:  77%|███████▋  | 1537/1988 [00:11<00:03, 142.16it/s]Loading weights:  79%|███████▉  | 1566/1988 [00:11<00:02, 164.01it/s]Loading weights:  80%|███████▉  | 1584/1988 [00:11<00:02, 167.80it/s]Loading weights:  81%|████████  | 1602/1988 [00:11<00:02, 155.39it/s]Loading weights:  82%|████████▏ | 1623/1988 [00:12<00:02, 159.02it/s]Loading weights:  82%|████████▏ | 1640/1988 [00:12<00:02, 143.97it/s]Loading weights:  84%|████████▍ | 1675/1988 [00:12<00:01, 193.52it/s]Loading weights:  87%|████████▋ | 1720/1988 [00:12<00:01, 256.17it/s]Loading weights:  89%|████████▉ | 1766/1988 [00:12<00:00, 304.62it/s]Loading weights:  91%|█████████ | 1808/1988 [00:12<00:00, 334.55it/s]Loading weights:  93%|█████████▎| 1853/1988 [00:12<00:00, 363.77it/s]Loading weights:  95%|█████████▌| 1896/1988 [00:12<00:00, 374.71it/s]Loading weights:  97%|█████████▋| 1938/1988 [00:12<00:00, 385.32it/s]Loading weights: 100%|█████████▉| 1980/1988 [00:13<00:00, 337.79it/s]Loading weights: 100%|██████████| 1988/1988 [00:13<00:00, 151.00it/s]
+student: wrapped 401 packed linears
+pin_check L0.gate_proj: max_abs_diff=0
+pin_check L0.down_proj: max_abs_diff=0
+pin_check L63.gate_proj: max_abs_diff=0
+pin_check L63.down_proj: max_abs_diff=0
+sens weights raw={0: 0.005849090119803289, 63: 0.008472297914567977} norm={0: 0.6903782396209032, 63: 1.0}
+calib ids: (256, 2048) torch.int64
+teacher targets L0: (256, 2048, 5120) torch.bfloat16
+teacher targets L63: (256, 2048, 5120) torch.bfloat16
+wrapped: ['L0.gate_proj', 'L0.down_proj', 'L63.gate_proj', 'L63.down_proj']
+loaded adapters <- /home/hubbe/qwen-serving/analysis/qad/adapters_joint/joint.safetensors
+resume: loaded joint adapters; recovered 20 joint record rows from pilot5.log
+merge_check L0.gate_proj: max_abs=1.0203e-01 rel=3.6791e-03
+merge_check L0.down_proj: max_abs=1.0040e+00 rel=5.2566e-03
+merge_check L63.gate_proj: max_abs=1.2169e-01 rel=4.3674e-03
+merge_check L63.down_proj: max_abs=3.1316e-01 rel=4.0352e-03
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+chained s1 step 100 mse0 17479.268887 (21s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_step100.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+chained s1 step 200 mse0 3033.751428 (41s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_step200.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+chained s1 step 300 mse0 2372.999119 (61s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_step300.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+chained s1 step 400 mse0 2256.148529 (81s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_step400.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+chained s1 step 500 mse0 2173.474895 (101s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_step500.safetensors
+chained s1 step 600 mse0 2134.456268 (121s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_step600.safetensors
+chained s1 step 700 mse0 2100.760024 (141s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_step700.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+chained s1 step 800 mse0 2086.879261 (161s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_step800.safetensors
+chained s1 step 900 mse0 2056.295620 (181s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_step900.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_best.safetensors
+chained s1 step 1000 mse0 2027.461865 (201s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s1_L0_step1000.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained/stage1_L0.safetensors
+chained stage 2: precomputing input to L63 (layers 0..62, no_grad)...
+  precompute batch 1/16
+  precompute batch 2/16
+  precompute batch 3/16
+  precompute batch 4/16
+  precompute batch 5/16
+  precompute batch 6/16
+  precompute batch 7/16
+  precompute batch 8/16
+  precompute batch 9/16
+  precompute batch 10/16
+  precompute batch 11/16
+  precompute batch 12/16
+  precompute batch 13/16
+  precompute batch 14/16
+  precompute batch 15/16
+  precompute batch 16/16
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+chained s2 step 100 mse63 1600028.741250 (20s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_step100.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+chained s2 step 200 mse63 966272.837500 (40s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_step200.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+chained s2 step 300 mse63 936100.766875 (60s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_step300.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+chained s2 step 400 mse63 894468.363125 (80s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_step400.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+chained s2 step 500 mse63 821225.273125 (100s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_step500.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+chained s2 step 600 mse63 741618.005625 (120s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_step600.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+chained s2 step 700 mse63 693375.588750 (141s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_step700.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+chained s2 step 800 mse63 664570.543750 (161s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_step800.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+chained s2 step 900 mse63 625532.683125 (181s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_step900.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_best.safetensors
+chained s2 step 1000 mse63 600441.454375 (202s)
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained_ckpt/s2_L63_step1000.safetensors
+saved adapters -> /home/hubbe/qwen-serving/analysis/qad/adapters_chained/stage2_L63.safetensors
+chained arm done in 947s
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (297053 > 262144). Running this sequence through the model will result in indexing errors
+corpus: 297053 tokens, 1153 windows
+  ppl[base_null_run1] 0/1153 windows running_ppl=735630078.543744 (12s)

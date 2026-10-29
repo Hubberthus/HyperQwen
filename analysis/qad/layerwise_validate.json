@@ -1,0 +1,59 @@
+{
+ "layer0_loop": {
+  "max_abs": 0.0,
+  "mean_abs": 0.0,
+  "max_rel": 0.0
+ },
+ "layer63_loop": {
+  "max_abs": 0.0,
+  "mean_abs": 0.0,
+  "max_rel": 0.0
+ },
+ "sample_shard_keys": [
+  "model.language_model.layers.0.linear_attn.dt_bias",
+  "model.language_model.layers.0.linear_attn.A_log",
+  "model.language_model.layers.0.linear_attn.conv1d.weight",
+  "model.language_model.layers.0.linear_attn.norm.weight",
+  "model.language_model.layers.0.linear_attn.out_proj.weight_scale",
+  "model.language_model.layers.0.linear_attn.out_proj.weight_packed"
+ ],
+ "shard_materialization": {
+  "n": 26,
+  "exact": 20,
+  "mismatch": [
+   "linear_attn.out_proj.weight_scale",
+   "linear_attn.in_proj_qkv.weight_scale",
+   "linear_attn.in_proj_z.weight_scale",
+   "mlp.gate_proj.weight_scale",
+   "mlp.up_proj.weight_scale",
+   "mlp.down_proj.weight_scale"
+  ],
+  "missing": []
+ },
+ "wrapped_modules": [
+  "L0.gate_proj",
+  "L0.down_proj",
+  "L63.gate_proj",
+  "L63.down_proj"
+ ],
+ "target_modules": {
+  "layers.0.mlp.gate_proj": {
+   "type": "Linear",
+   "in": 5120,
+   "out": 17408
+  },
+  "layers.0.mlp.down_proj": {
+   "type": "Linear",
+   "in": 17408,
+   "out": 5120
+  }
+ },
+ "lora_smoke": {
+  "gradA_max": 0.0,
+  "gradB_max": 0.1328125,
+  "gradA_finite": true,
+  "gradB_finite": true
+ },
+ "runtime_s": 49.1,
+ "peak_gpu_GB": 30.13
+}

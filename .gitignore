@@ -17,4 +17,16 @@ models
 api_key.txt
 bench/results/
 analysis/rotation/opt_results/
+# QAD pilot: 321 GB of teacher targets / adapter checkpoints must never be
+# committed; only code and text logs from analysis/qad are tracked.
+analysis/qad/teacher_targets/
+analysis/qad/adapters_joint/
+analysis/qad/adapters_joint_ckpt/
+analysis/qad/adapters_chained/
+analysis/qad/adapters_chained_ckpt/
+analysis/qad/*.safetensors
+analysis/qad/__pycache__/
+# secret, never commit (see AGENTS.md)
+.webui_secret_key
+single-user/server.log
 

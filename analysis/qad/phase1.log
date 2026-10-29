@@ -1,0 +1,80 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+/home/hubbe/qwen-serving/venv/lib/python3.12/site-packages/transformers/quantizers/auto.py:279: UserWarning: You passed `quantization_config` or equivalent parameters to `from_pretrained` but the model you're loading already has a `quantization_config` attribute. The `quantization_config` from the model will be used.However, loading attributes (e.g. ['dequantize', 'use_optimized_inference']) will be overwritten with the one you passed to `from_pretrained`. The rest will be ignored.
+  warnings.warn(warning_msg)
+Could not match `re:^mtp\..*` in instance of Qwen3_5ForConditionalGeneration
+Could not match `re:.*lm_head$` in instance of Qwen3_5ForConditionalGeneration
+Compressing model:   0%|          | 0/402 [00:00<?, ?it/s]Compressing model:  24%|██▍       | 96/402 [00:00<00:00, 956.02it/s]Compressing model:  49%|████▉     | 198/402 [00:00<00:00, 992.75it/s]Compressing model:  75%|███████▍  | 300/402 [00:00<00:00, 1003.85it/s]Compressing model: 100%|█████████▉| 401/402 [00:00<00:00, 961.16it/s] Compressing model: 100%|██████████| 402/402 [00:00<00:00, 971.04it/s]
+Loading weights:   0%|          | 0/1988 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1988 [00:02<1:06:49,  2.02s/it]Loading weights:   1%|          | 23/1988 [00:02<02:14, 14.59it/s] Loading weights:   2%|▏         | 47/1988 [00:02<00:59, 32.73it/s]Loading weights:   3%|▎         | 65/1988 [00:02<00:39, 48.14it/s]Loading weights:   4%|▍         | 81/1988 [00:02<00:31, 59.69it/s]Loading weights:   5%|▍         | 95/1988 [00:02<00:26, 70.53it/s]Loading weights:   6%|▌         | 122/1988 [00:02<00:17, 105.30it/s]Loading weights:   7%|▋         | 140/1988 [00:02<00:15, 117.26it/s]Loading weights:   8%|▊         | 158/1988 [00:03<00:15, 115.79it/s]Loading weights:   9%|▉         | 181/1988 [00:03<00:13, 132.76it/s]Loading weights:  10%|▉         | 198/1988 [00:03<00:14, 126.31it/s]Loading weights:  12%|█▏        | 229/1988 [00:03<00:11, 155.93it/s]Loading weights:  12%|█▏        | 248/1988 [00:03<00:11, 153.62it/s]Loading weights:  13%|█▎        | 265/1988 [00:03<00:11, 148.49it/s]Loading weights:  14%|█▍        | 284/1988 [00:03<00:11, 148.96it/s]Loading weights:  15%|█▌        | 300/1988 [00:03<00:12, 135.46it/s]Loading weights:  17%|█▋        | 329/1988 [00:04<00:10, 158.09it/s]Loading weights:  17%|█▋        | 346/1988 [00:04<00:10, 160.63it/s]Loading weights:  18%|█▊        | 363/1988 [00:04<00:10, 162.11it/s]Loading weights:  19%|█▉        | 382/1988 [00:04<00:10, 157.74it/s]Loading weights:  20%|██        | 398/1988 [00:04<00:11, 140.84it/s]Loading weights:  21%|██▏       | 425/1988 [00:04<00:09, 169.89it/s]Loading weights:  22%|██▏       | 443/1988 [00:04<00:09, 157.27it/s]Loading weights:  23%|██▎       | 464/1988 [00:04<00:09, 160.74it/s]Loading weights:  24%|██▍       | 487/1988 [00:05<00:08, 167.04it/s]Loading weights:  25%|██▌       | 504/1988 [00:05<00:10, 137.14it/s]Loading weights:  27%|██▋       | 538/1988 [00:05<00:08, 170.32it/s]Loading weights:  28%|██▊       | 556/1988 [00:05<00:08, 171.99it/s]Loading weights:  29%|██▉       | 574/1988 [00:05<00:08, 158.01it/s]Loading weights:  30%|██▉       | 591/1988 [00:05<00:09, 151.32it/s]Loading weights:  31%|███       | 607/1988 [00:05<00:10, 137.09it/s]Loading weights:  32%|███▏      | 639/1988 [00:06<00:08, 167.25it/s]Loading weights:  33%|███▎      | 657/1988 [00:06<00:07, 169.72it/s]Loading weights:  34%|███▍      | 675/1988 [00:06<00:08, 150.59it/s]Loading weights:  35%|███▍      | 694/1988 [00:06<00:08, 151.57it/s]Loading weights:  36%|███▌      | 710/1988 [00:06<00:09, 137.66it/s]Loading weights:  37%|███▋      | 742/1988 [00:06<00:07, 166.70it/s]Loading weights:  38%|███▊      | 761/1988 [00:06<00:07, 167.44it/s]Loading weights:  39%|███▉      | 778/1988 [00:06<00:07, 159.29it/s]Loading weights:  40%|████      | 799/1988 [00:07<00:07, 162.92it/s]Loading weights:  41%|████      | 816/1988 [00:07<00:07, 147.63it/s]Loading weights:  43%|████▎     | 847/1988 [00:07<00:06, 174.41it/s]Loading weights:  44%|████▎     | 865/1988 [00:07<00:06, 171.06it/s]Loading weights:  44%|████▍     | 883/1988 [00:07<00:06, 163.65it/s]Loading weights:  45%|████▌     | 902/1988 [00:07<00:06, 160.41it/s]Loading weights:  46%|████▌     | 919/1988 [00:07<00:07, 144.91it/s]Loading weights:  48%|████▊     | 948/1988 [00:07<00:06, 167.78it/s]Loading weights:  49%|████▊     | 966/1988 [00:08<00:06, 169.16it/s]Loading weights:  49%|████▉     | 984/1988 [00:08<00:06, 155.41it/s]Loading weights:  51%|█████     | 1005/1988 [00:08<00:06, 158.33it/s]Loading weights:  51%|█████▏    | 1021/1988 [00:08<00:06, 141.70it/s]Loading weights:  53%|█████▎    | 1051/1988 [00:08<00:05, 166.00it/s]Loading weights:  54%|█████▍    | 1069/1988 [00:08<00:05, 168.80it/s]Loading weights:  55%|█████▍    | 1087/1988 [00:08<00:05, 155.90it/s]Loading weights:  56%|█████▌    | 1108/1988 [00:09<00:05, 158.56it/s]Loading weights:  57%|█████▋    | 1125/1988 [00:09<00:05, 143.88it/s]Loading weights:  58%|█████▊    | 1154/1988 [00:09<00:04, 166.96it/s]Loading weights:  59%|█████▉    | 1175/1988 [00:09<00:04, 172.77it/s]Loading weights:  60%|██████    | 1193/1988 [00:09<00:04, 165.22it/s]Loading weights:  61%|██████    | 1211/1988 [00:09<00:04, 159.56it/s]Loading weights:  62%|██████▏   | 1228/1988 [00:09<00:05, 144.31it/s]Loading weights:  63%|██████▎   | 1259/1988 [00:09<00:04, 169.88it/s]Loading weights:  64%|██████▍   | 1277/1988 [00:10<00:04, 166.31it/s]Loading weights:  65%|██████▌   | 1294/1988 [00:10<00:04, 157.19it/s]Loading weights:  66%|██████▌   | 1312/1988 [00:10<00:04, 153.98it/s]Loading weights:  67%|██████▋   | 1328/1988 [00:10<00:04, 138.26it/s]Loading weights:  69%|██████▊   | 1362/1988 [00:10<00:03, 172.93it/s]Loading weights:  69%|██████▉   | 1380/1988 [00:10<00:03, 169.49it/s]Loading weights:  70%|███████   | 1397/1988 [00:10<00:03, 159.41it/s]Loading weights:  71%|███████   | 1415/1988 [00:10<00:03, 155.43it/s]Loading weights:  72%|███████▏  | 1431/1988 [00:11<00:03, 140.15it/s]Loading weights:  74%|███████▎  | 1463/1988 [00:11<00:03, 170.14it/s]Loading weights:  75%|███████▍  | 1482/1988 [00:11<00:02, 174.83it/s]Loading weights:  75%|███████▌  | 1500/1988 [00:11<00:03, 161.09it/s]Loading weights:  76%|███████▋  | 1520/1988 [00:11<00:02, 160.53it/s]Loading weights:  77%|███████▋  | 1537/1988 [00:11<00:03, 145.02it/s]Loading weights:  79%|███████▉  | 1566/1988 [00:11<00:02, 167.46it/s]Loading weights:  80%|███████▉  | 1584/1988 [00:11<00:02, 170.21it/s]Loading weights:  81%|████████  | 1602/1988 [00:12<00:02, 158.00it/s]Loading weights:  82%|████████▏ | 1623/1988 [00:12<00:02, 161.61it/s]Loading weights:  82%|████████▏ | 1640/1988 [00:12<00:02, 146.46it/s]Loading weights:  84%|████████▍ | 1675/1988 [00:12<00:01, 195.96it/s]Loading weights:  87%|████████▋ | 1721/1988 [00:12<00:01, 260.21it/s]Loading weights:  89%|████████▊ | 1764/1988 [00:12<00:00, 303.92it/s]Loading weights:  91%|█████████ | 1807/1988 [00:12<00:00, 336.94it/s]Loading weights:  93%|█████████▎| 1853/1988 [00:12<00:00, 367.39it/s]Loading weights:  95%|█████████▌| 1898/1988 [00:12<00:00, 384.78it/s]Loading weights:  98%|█████████▊| 1939/1988 [00:13<00:00, 391.44it/s]Loading weights: 100%|█████████▉| 1981/1988 [00:13<00:00, 376.17it/s]Loading weights: 100%|██████████| 1988/1988 [00:13<00:00, 150.06it/s]
+student: wrapped 401 packed linears
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+pos_emb shapes: torch.Size([1, 2048, 64]) torch.Size([1, 2048, 64]) torch.bfloat16
+text cfg diffs vs student: {}
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+teacher text model: Qwen3_5TextModel 64 layers
+embed loaded keys: 1
+batch 0 layer 0 live 16.7 GB peak 30.1 GB
+batch 0 layer 16 live 16.7 GB peak 30.1 GB
+batch 0 layer 32 live 16.7 GB peak 30.1 GB
+batch 0 layer 48 live 16.7 GB peak 30.1 GB
+batch 1 layer 0 live 16.7 GB peak 30.1 GB
+batch 1 layer 16 live 16.7 GB peak 30.1 GB
+batch 1 layer 32 live 16.7 GB peak 30.1 GB
+batch 1 layer 48 live 16.7 GB peak 30.1 GB
+batch 2 layer 0 live 16.7 GB peak 30.1 GB
+batch 2 layer 16 live 16.7 GB peak 30.1 GB
+batch 2 layer 32 live 16.7 GB peak 30.1 GB
+batch 2 layer 48 live 16.7 GB peak 30.1 GB
+batch 3 layer 0 live 16.7 GB peak 30.1 GB
+batch 3 layer 16 live 16.7 GB peak 30.1 GB
+batch 3 layer 32 live 16.7 GB peak 30.1 GB
+batch 3 layer 48 live 16.7 GB peak 30.1 GB
+batch 4 layer 0 live 16.7 GB peak 30.1 GB
+batch 4 layer 16 live 16.7 GB peak 30.1 GB
+batch 4 layer 32 live 16.7 GB peak 30.1 GB
+batch 4 layer 48 live 16.7 GB peak 30.1 GB
+batch 5 layer 0 live 16.7 GB peak 30.1 GB
+batch 5 layer 16 live 16.7 GB peak 30.1 GB
+batch 5 layer 32 live 16.7 GB peak 30.1 GB
+batch 5 layer 48 live 16.7 GB peak 30.1 GB
+batch 6 layer 0 live 16.7 GB peak 30.1 GB
+batch 6 layer 16 live 16.7 GB peak 30.1 GB
+batch 6 layer 32 live 16.7 GB peak 30.1 GB
+batch 6 layer 48 live 16.7 GB peak 30.1 GB
+batch 7 layer 0 live 16.7 GB peak 30.1 GB
+batch 7 layer 16 live 16.7 GB peak 30.1 GB
+batch 7 layer 32 live 16.7 GB peak 30.1 GB
+batch 7 layer 48 live 16.7 GB peak 30.1 GB
+batch 8 layer 0 live 16.7 GB peak 30.1 GB
+batch 8 layer 16 live 16.7 GB peak 30.1 GB
+batch 8 layer 32 live 16.7 GB peak 30.1 GB
+batch 8 layer 48 live 16.7 GB peak 30.1 GB
+batch 9 layer 0 live 16.7 GB peak 30.1 GB
+batch 9 layer 16 live 16.7 GB peak 30.1 GB
+batch 9 layer 32 live 16.7 GB peak 30.1 GB
+batch 9 layer 48 live 16.7 GB peak 30.1 GB
+batch 10 layer 0 live 16.7 GB peak 30.1 GB
+batch 10 layer 16 live 16.7 GB peak 30.1 GB
+batch 10 layer 32 live 16.7 GB peak 30.1 GB
+batch 10 layer 48 live 16.7 GB peak 30.1 GB
+batch 11 layer 0 live 16.7 GB peak 30.1 GB
+batch 11 layer 16 live 16.7 GB peak 30.1 GB
+batch 11 layer 32 live 16.7 GB peak 30.1 GB
+batch 11 layer 48 live 16.7 GB peak 30.1 GB
+batch 12 layer 0 live 16.7 GB peak 30.1 GB
+batch 12 layer 16 live 16.7 GB peak 30.1 GB
+batch 12 layer 32 live 16.7 GB peak 30.1 GB
+batch 12 layer 48 live 16.7 GB peak 30.1 GB
+batch 13 layer 0 live 16.7 GB peak 30.1 GB
+batch 13 layer 16 live 16.7 GB peak 30.1 GB
+batch 13 layer 32 live 16.7 GB peak 30.1 GB
+batch 13 layer 48 live 16.7 GB peak 30.1 GB
+batch 14 layer 0 live 16.7 GB peak 30.1 GB
+batch 14 layer 16 live 16.7 GB peak 30.1 GB
+batch 14 layer 32 live 16.7 GB peak 30.1 GB
+batch 14 layer 48 live 16.7 GB peak 30.1 GB
+batch 15 layer 0 live 16.7 GB peak 30.1 GB
+batch 15 layer 16 live 16.7 GB peak 30.1 GB
+batch 15 layer 32 live 16.7 GB peak 30.1 GB
+batch 15 layer 48 live 16.7 GB peak 30.1 GB
+phase1 done: {"teacher_cfg": "Qwen3_5TextConfig", "text_cfg_diffs": {}, "runtime_s": 2139.0, "n_batches": 16, "n_layers": 64, "peak_gpu_GB": 30.13}
+total runtime_s: 2163.0

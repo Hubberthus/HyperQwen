@@ -176,3 +176,21 @@ Script: analysis/salted/vq_block_probe.py → vq_block_probe.json. Gate: unpack_
 | L63.down | 8.474 | 8.412 | 8.331 | 8.290 | 3.895 | 3.567 |
 
 Verdict: **NO-GO.** Real k-means residual is *worse* than the shuffled baseline at k=256 (all 4 tensors, ~0.4-0.8% higher MSE) and still worse at k=1024 — real blocks explain LESS block energy than shuffled blocks (explained fraction 0.56-2.47% real vs 1.51-2.94% shuffled; mean_block_l2² ≈ 4400-4800, so ≤3% of block energy explained either way). Residual entropy H(residual code | codebook index) is 3.90-3.98 bits vs scalar-code marginal 3.57-3.64 bits — i.e. VQ residual coding is ~0.3 bits/weight WORSE than the 4-bit baseline, not below it. No block structure: adjacent group codes within a row are effectively independent draws from the marginal. Index bits (0.0156-0.0195/weight) are dwarfed by the ~4-bit residual; conclusion: block-level VQ on int4 codes has no headroom.
+
+
+
+## Probe 7 — SVD / low-rank structure of dequantized weights (2026-10-16)
+Script: analysis/salted/svd_probe.py → svd_probe.json. Gate: unpack_from_int32 pin check = 0 (89,128,960 codes). Seed 0. Tensors: L0/L63 × gate_proj/down_proj (17408×5120 or transpose), full-tensor SVD (float32) + entry-permutation null (destroys all structure, preserves the value distribution exactly); per-block arm = 2000 sampled 32×32 blocks/tensor, mean spectrum vs within-block-permutation null.
+
+| tensor | E64 | E128 | E256 | E512 | E1024 | null E1024 |
+|---|---|---|---|---|---|---|
+| L0.gate | 0.089 | 0.154 | 0.262 | 0.416 | 0.613 | 0.370 |
+| L0.down | 0.073 | 0.109 | 0.173 | 0.280 | 0.453 | 0.370 |
+| L63.gate | 0.113 | 0.153 | 0.213 | 0.309 | 0.462 | 0.370 |
+| L63.down | 0.059 | 0.098 | 0.164 | 0.275 | 0.451 | 0.370 |
+
+Block arm: mean energy at rank 4/8/16 per 32×32 block is 0.386/0.633/0.900 (real) vs 0.382/0.629/0.897 (within-block permuted null) — margin ≤0.004-0.007, essentially no block-level low-rank structure, consistent with Probe 6's VQ null result.
+
+Implied bpw (r·(rows+cols)·16/(rows·cols) + 4·(1−E_r)): the ONLY rank beating the 4-bit baseline is rank 64-128 on L0/L63 gate_proj (3.80-3.90 bpw vs 4.00, ~0.1-0.2 bpw saving) and marginally rank 64 elsewhere (3.97-4.02, ~0-0.12 bpw); every rank ≥256 is above 4.0 bpw. Null bpw at the same ranks is always ≥4.14, so a real margin over the null exists — but the absolute capture is weak: even at rank 1024 the null explains 0.37 by construction (27M singular values) and the real tensor only ~0.45-0.61.
+
+Verdict: **NO-GO.** Tensor-level energy capture does beat the permutation null by a clear margin (e.g. E512: 0.28-0.42 real vs 0.20 null, margin ~0.1-0.2; E1024 margin ~0.08-0.24), and block-level capture does NOT beat its null beyond noise (~0.005). But the energy capture is far too weak for factor storage to win: implied bpw is below 4.0 only at rank ≤128 with ~0.1-0.2 bpw of saving, and that assumes fp16 factors and a lossless-enough 4-bit residual on the 55-92% of energy discarded — an optimistic lower bound, not a usable scheme. Caveats recorded in JSON: fp16 factor cost included; energy capture is necessary, not sufficient (no output-level check; residual re-quantization error ignored).

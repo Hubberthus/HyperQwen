@@ -1,0 +1,180 @@
+{
+  "pin_max_diff": 0,
+  "seed": 0,
+  "ts": "2026-10-16T14:15:17.179734+00:00",
+  "tensors": {
+    "model.language_model.layers.0.mlp.gate_proj": {
+      "shape": [
+        17408,
+        5120
+      ],
+      "n_elements": 89128960,
+      "tensor": {
+        "energy_rank64": 0.08882509171962738,
+        "energy_rank128": 0.1541653573513031,
+        "energy_rank256": 0.26150447130203247,
+        "energy_rank512": 0.4161125123500824,
+        "energy_rank1024": 0.6128923892974854,
+        "null_energy_rank64": 0.028635632246732712,
+        "null_energy_rank128": 0.056020088493824005,
+        "null_energy_rank256": 0.1080968827009201,
+        "null_energy_rank512": 0.20388710498809814,
+        "null_energy_rank1024": 0.3699984848499298,
+        "sigma_ratio_1024": 0.2556484043598175,
+        "null_sigma_ratio_1024": 0.799857497215271
+      },
+      "bpw": {
+        "bpw_rank64_real": 3.903523162533255,
+        "bpw_rank64_null": 4.144281000424834,
+        "bpw_rank128_real": 3.900985629418317,
+        "bpw_rank128_null": 4.293566704848233,
+        "bpw_rank256_real": 3.989276232438929,
+        "bpw_rank256_null": 4.602906586843378,
+        "bpw_rank512_real": 4.406138185893788,
+        "bpw_rank512_null": 5.255039815341725,
+        "bpw_rank1024_real": 5.689606913398294,
+        "bpw_rank1024_null": 6.661182531188516
+      },
+      "block": {
+        "n_blocks": 2000,
+        "energy_rank4": 0.38707281830641277,
+        "null_energy_rank4": 0.38089678393125126,
+        "energy_rank8": 0.6337360319374847,
+        "null_energy_rank8": 0.6281758400994002,
+        "energy_rank16": 0.8990354295317792,
+        "null_energy_rank16": 0.8967521328350536
+      }
+    },
+    "model.language_model.layers.0.mlp.down_proj": {
+      "shape": [
+        5120,
+        17408
+      ],
+      "n_elements": 89128960,
+      "tensor": {
+        "energy_rank64": 0.07338187098503113,
+        "energy_rank128": 0.10936237871646881,
+        "energy_rank256": 0.17254327237606049,
+        "energy_rank512": 0.2804948687553406,
+        "energy_rank1024": 0.45338115096092224,
+        "null_energy_rank64": 0.02869163267314434,
+        "null_energy_rank128": 0.05611388012766838,
+        "null_energy_rank256": 0.10826106369495392,
+        "null_energy_rank512": 0.20414389669895172,
+        "null_energy_rank1024": 0.3702927827835083,
+        "sigma_ratio_1024": 0.10745527595281601,
+        "null_sigma_ratio_1024": 0.7987838387489319
+      },
+      "bpw": {
+        "bpw_rank64_real": 3.96529604547164,
+        "bpw_rank64_null": 4.144056998719187,
+        "bpw_rank128_real": 4.080197543957654,
+        "bpw_rank128_null": 4.293191538312856,
+        "bpw_rank256_real": 4.345121028142817,
+        "bpw_rank256_null": 4.602249862867243,
+        "bpw_rank512_real": 4.948608760272755,
+        "bpw_rank512_null": 5.2540126484983105,
+        "bpw_rank1024_real": 6.327651866744547,
+        "bpw_rank1024_null": 6.6600053394542025
+      },
+      "block": {
+        "n_blocks": 2000,
+        "energy_rank4": 0.38506178518217254,
+        "null_energy_rank4": 0.38084273452027273,
+        "energy_rank8": 0.6313052547052741,
+        "null_energy_rank8": 0.6281592492277698,
+        "energy_rank16": 0.8977297989734715,
+        "null_energy_rank16": 0.8963594441471531
+      }
+    },
+    "model.language_model.layers.63.mlp.gate_proj": {
+      "shape": [
+        17408,
+        5120
+      ],
+      "n_elements": 89128960,
+      "tensor": {
+        "energy_rank64": 0.11264242976903915,
+        "energy_rank128": 0.15267308056354523,
+        "energy_rank256": 0.21277181804180145,
+        "energy_rank512": 0.30852171778678894,
+        "energy_rank1024": 0.4620816111564636,
+        "null_energy_rank64": 0.02864975668489933,
+        "null_energy_rank128": 0.0560501329600811,
+        "null_energy_rank256": 0.1081521287560463,
+        "null_energy_rank512": 0.20394816994667053,
+        "null_energy_rank1024": 0.37008535861968994,
+        "sigma_ratio_1024": 0.11318151652812958,
+        "null_sigma_ratio_1024": 0.7999427318572998
+      },
+      "bpw": {
+        "bpw_rank64_real": 3.808253810335608,
+        "bpw_rank64_null": 4.144224502672167,
+        "bpw_rank128_real": 3.9069547365693484,
+        "bpw_rank128_null": 4.293446526983205,
+        "bpw_rank256_real": 4.184206845479853,
+        "bpw_rank256_null": 4.6026856026228735,
+        "bpw_rank512_real": 4.836501364146962,
+        "bpw_rank512_null": 5.254795555507435,
+        "bpw_rank1024_real": 6.292850025962381,
+        "bpw_rank1024_null": 6.660835036109476
+      },
+      "block": {
+        "n_blocks": 2000,
+        "energy_rank4": 0.4001675776906991,
+        "null_energy_rank4": 0.3823952861958977,
+        "energy_rank8": 0.6456572139155764,
+        "null_energy_rank8": 0.629523754808907,
+        "energy_rank16": 0.9039027557692312,
+        "null_energy_rank16": 0.8970953157204976
+      }
+    },
+    "model.language_model.layers.63.mlp.down_proj": {
+      "shape": [
+        5120,
+        17408
+      ],
+      "n_elements": 89128960,
+      "tensor": {
+        "energy_rank64": 0.05921483412384987,
+        "energy_rank128": 0.09807184338569641,
+        "energy_rank256": 0.16425812244415283,
+        "energy_rank512": 0.27519577741622925,
+        "energy_rank1024": 0.45077070593833923,
+        "null_energy_rank64": 0.02864868752658367,
+        "null_energy_rank128": 0.05603809282183647,
+        "null_energy_rank256": 0.10811782628297806,
+        "null_energy_rank512": 0.20387859642505646,
+        "null_energy_rank1024": 0.36996203660964966,
+        "sigma_ratio_1024": 0.3367985486984253,
+        "null_sigma_ratio_1024": 0.7998658418655396
+      },
+      "bpw": {
+        "bpw_rank64_real": 4.021964192916365,
+        "bpw_rank64_null": 4.14422877930543,
+        "bpw_rank128_real": 4.125359685280744,
+        "bpw_rank128_null": 4.2934946875361835,
+        "bpw_rank256_real": 4.378261627870447,
+        "bpw_rank256_null": 4.6028228125151465,
+        "bpw_rank512_real": 4.9698051256292,
+        "bpw_rank512_null": 5.255073849593892,
+        "bpw_rank1024_real": 6.338093646834879,
+        "bpw_rank1024_null": 6.661328324149637
+      },
+      "block": {
+        "n_blocks": 2000,
+        "energy_rank4": 0.4019473462243766,
+        "null_energy_rank4": 0.38311157468770046,
+        "energy_rank8": 0.6496802308096727,
+        "null_energy_rank8": 0.6300479920410352,
+        "energy_rank16": 0.9065750811171115,
+        "null_energy_rank16": 0.8976292185515399
+      }
+    }
+  },
+  "caveats": [
+    "factor storage assumed fp16 (16 bits); fp8/int8 factors would lower the factor term",
+    "energy capture is necessary but NOT sufficient: no output/activation-level check performed; a residual re-quantized at 4 bits adds quantization error on top of the discarded tail",
+    "null = entry permutation, preserves the value distribution exactly, destroys all positional/low-rank structure; margin over null measures structure, not usefulness"
+  ]
+}
